@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   
   get 'admin/new_create'
   post 'admin/create'
+  get 'destroy/:info_id' => 'admin#destroy'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

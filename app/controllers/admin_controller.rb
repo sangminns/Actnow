@@ -17,4 +17,11 @@ class AdminController < ApplicationController
     
     redirect_to :back
   end
+  
+  def destroy 
+    one_info = Info.find(params[:info_id])
+    one_info.destroy
+    
+    redirect_to :back
+  end
 end

@@ -1,5 +1,5 @@
 <h2>관리자 페이지 - 데이터 추가</h2>
-
+<a href="/">Home으로 돌아가기</a><hr>
 <form action="/admin/create" method="post">
     가게 이름 : <input type="text" name="name"><br>
     가게 종목 : 
@@ -52,5 +52,6 @@
     지역 : <%= i.region %><br>
     주소 : <%= i.address %><br>
     위도 : <%= i.location_lat %><br>
-    경도 : <%= i.location_lng %><hr>
+    경도 : <%= i.location_lng %><br>
+    <a href="/destroy/<%= i.id %>">[삭제]</a><hr> 
 <% end %>
