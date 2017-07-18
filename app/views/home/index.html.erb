@@ -7,7 +7,7 @@
 <a href="/admin/new_create">데이터 추가하기 - admin만 접근 가능</a>
 <hr color="red">
 <!-- 지도 섹션-->
-<section id="map">
+<section id="activity">
     <form action="/find" method="get">
         종목 : 
         <select name="game">
@@ -47,6 +47,7 @@
         </select>
         <input type="button" value="찾기"/>
     </form>
+    
     <div id="map" style="width:100%;height:400px;"></div>
 </section>
 
@@ -76,9 +77,10 @@
 
     var seoulCenter = new naver.maps.LatLng(37.5665350, 126.9779690); //서울 시청 좌표값(서울 한가운데)
     
+    // 지도 기본 위치
     var map = new naver.maps.Map('map', {
         center: seoulCenter,
-        zoom: 5,
+        zoom: 6,
         scaleControl: false,
         logoControl: false,
         mapDataControl: false,
@@ -89,9 +91,18 @@
         }
     });
     
+    // GPS
+    // var locationBtnHtml = '<a href="#" class="btn_mylct"><span class="spr_trff spr_ico_mylct">NAVER 그린팩토리</span></a>';
+    var locationBtnHtml = '<img src="https://pbs.twimg.com/profile_images/565254803643592704/KaVxRt4p.png" style="width: 50px" onclick="getLocation()">';
+    var customControl = new naver.maps.CustomControl(locationBtnHtml, {
+        position: naver.maps.Position.TOP_LEFT
+    });
+    customControl.setMap(map);
+    
     //마커
     var bowlings = new Array();
     var marker = new Array();
+    var contentString;
     
     <% @storeInfo.each do |i| %>
         bowlings[<%= i.id %>] = new naver.maps.LatLng(<%= i.location_lat %>, <%= i.location_lng %>);
@@ -112,7 +123,7 @@
         
         // 마커 안에 정보 넣기 
         // db에 있는 정보 불러내기 아직 구현 못함
-        var contentString= [
+        contentString= [
             '<div class="iw_inner">',
             '   <h4><%#= i.name %></h4>',
             '   <p><%#= i.region %> | <%#= i.address %><br />',
@@ -135,6 +146,65 @@
             }
         });
     <% end %>
+
+// GPS이용하기
+
+    // HTML5의 geolocation으로 사용할 수 있는지 확인합니다 
+    function getLocation() {
+        if (navigator.geolocation) {
+            
+            // GeoLocation을 이용해서 접속 위치를 얻어옵니다
+            navigator.geolocation.getCurrentPosition(function(position) {
+                
+                var lat = position.coords.latitude, // 위도
+                    lon = position.coords.longitude; // 경도
+                
+                var locPosition = new naver.maps.LatLng(lat, lon), // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
+                    message = '<div style="padding:5px;">여기에 계신가요?!</div>'; // 인포윈도우에 표시될 내용입니다
+                
+                // 마커와 인포윈도우를 표시합니다
+                displayMarker(locPosition, message);
+              });
+        } else { // HTML5의 GeoLocation을 사용할 수 없을때 마커 표시 위치와 인포윈도우 내용을 설정합니다
+        
+            var locPosition = new naver.maps.LatLng(37.56653501, 126.9779690),    
+                message = 'geolocation을 사용할수 없어요'
+                
+            displayMarker(locPosition, message);
+        }
+    }
+    // 지도에 마커와 인포윈도우를 표시하는 함수입니다
+    function displayMarker(locPosition, message) {
+
+        // 마커를 생성합니다
+        var gpsMarker = new naver.maps.Marker({  
+            map: map, 
+            position: locPosition,
+            icon: {
+                url: '/img/example/ico_pin.jpg',
+                size: new naver.maps.Size(25, 34),
+                scaledSize: new naver.maps.Size(25, 34),
+                origin: new naver.maps.Point(0, 0),
+                anchor: new naver.maps.Point(12, 34)
+            }
+        }); 
+        
+        var iwContent = message, // 인포윈도우에 표시할 내용
+            iwRemoveable = true;
+            
+        // 인포윈도우를 생성합니다
+        var infowindow = new naver.maps.InfoWindow({
+            content : iwContent,
+            removable : iwRemoveable
+        });
+        
+        // 인포윈도우를 마커위에 표시합니다 
+        infowindow.open(map, gpsMarker);
+        
+        // 지도 중심좌표를 접속위치로 변경합니다
+        map.setCenter(locPosition);      
+    }    
+
 
 
     //---------------------------------------------------------//
