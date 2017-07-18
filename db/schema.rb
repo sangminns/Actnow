@@ -16,6 +16,8 @@ ActiveRecord::Schema.define(version: 20170717094932) do
   create_table "infos", force: :cascade do |t|
     t.string   "name"
     t.string   "address"
+    t.string   "region"
+    t.string   "game"
     t.float    "location_lat"
     t.float    "location_lng"
     t.datetime "created_at",   null: false

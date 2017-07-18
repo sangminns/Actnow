@@ -4,6 +4,8 @@ class CreateInfos < ActiveRecord::Migration
 
       t.string :name
       t.string :address
+      t.string :region
+      t.string :game
       t.float :location_lat
       t.float :location_lng
 

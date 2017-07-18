@@ -3,23 +3,46 @@
 <!-- 네비바 및 영상 제작 -->
     <%= render 'home/header' %>
 
-
+<hr color="red">
+<a href="/admin/new_create">데이터 추가하기 - admin만 접근 가능</a>
+<hr color="red">
 <!-- 지도 섹션-->
 <section>
-    <form action="" method="get">
+    <form action="/find" method="get">
         종목 : 
-        <select>
+        <select name="game">
             <option>볼링</option>
             <option>탁구</option>
             <option>골프</option>
             <option>야구</option>
         </select>
         지역 :
-        <select>
-            <option>강동구</option>
-            <option>강서구</option>
+        <select name="region">
             <option>강남구</option>
+            <option>강동구</option>
             <option>강북구</option>
+            <option>강서구</option>
+            <option>관악구</option>
+            <option>광진구</option>
+            <option>구로구</option>
+            <option>금천구</option>
+            <option>노원구</option>
+            <option>도봉구</option>
+            <option>동대문구</option>
+            <option>동작구</option>
+            <option>마포구</option>
+            <option>서대문구</option>
+            <option>서초구</option>
+            <option>성동구</option>
+            <option>성북구</option>
+            <option>송파구</option>
+            <option>양천구</option>
+            <option>영등포구</option>
+            <option>용산구</option>
+            <option>은평구</option>
+            <option>종로구</option>
+            <option>중구</option>
+            <option>중랑구</option>
         </select>
         <input type="button" value="찾기"/>
     </form>
@@ -48,57 +71,73 @@
 
 
 <script type="text/javascript">
-    var HOME_PATH = window.HOME_PATH || '.';
+    // var HOME_PATH = window.HOME_PATH || '.';
 
     var seoulCenter = new naver.maps.LatLng(37.5665350, 126.9779690); //서울 시청 좌표값(서울 한가운데)
+    
     var map = new naver.maps.Map('map', {
         center: seoulCenter,
-        zoom: 5
+        zoom: 5,
+        scaleControl: false,
+        logoControl: false,
+        mapDataControl: false,
+        zoomControl: true,
+        minZoom: 1,
+        zoomControlOptions: {
+            position: naver.maps.Position.TOP_RIGHT
+        }
     });
     
     //마커
+    var bowlings = new Array();
+    var marker = new Array();
     
-    var markerOptions = {
-        position: seoulCenter,
-        map: map,
-        icon: {
-            url: '/app/images/bowling.png', //마커 url
-            size: new naver.maps.Size(33, 44), // 마커 사이즈
-            origin: new naver.maps.Point(0, 0), // origin 기본값 (0, 0)
-            anchor: new naver.maps.Point(11, 35) // anchor속성은 이미지의 중앙 하단 포인터를 기본값으로 설정
-        }        
-    };
+    <% @storeInfo.each do |i| %>
+        bowlings[<%= i.id %>] = new naver.maps.LatLng(<%= i.location_lat %>, <%= i.location_lng %>);
+        
+        var markerOptions = {
+            position: bowlings[<%= i.id %>],
+            map: map,
+            icon: {
+                url: '<%= image_tag("bowling.png") %>', //마커 url
+                size: new naver.maps.Size(33, 44), // 마커 사이즈
+                origin: new naver.maps.Point(0, 0), // origin 기본값 (0, 0)
+                anchor: new naver.maps.Point(11, 35) // anchor속성은 이미지의 중앙 하단 포인터를 기본값으로 설정
+            }        
+        };
+        
+       marker[<%= i.id %>] = new naver.maps.Marker(markerOptions);
+        
+        //마커 안에 정보 넣기 
+        var contentString = [
+            '<div class="iw_inner">',
+            '   <h4>서울특별시청</h4>',
+            '   <p>서울특별시 중구 태평로1가 31 | 서울특별시 중구 세종대로 110 서울특별시청<br />',
+            '       <img src= "" width="20" height="20" alt="서울시청" class="thumb" /><br />',
+            '       02-120 | 공공,사회기관 &gt; 특별,광역시청<br />',
+            '       <a href="http://www.seoul.go.kr" target="_blank">www.seoul.go.kr/</a>',
+            '   </p>',
+            '</div>'
+        ].join('');
     
-    var marker0 = new naver.maps.Marker(markerOptions);
+        var infowindow = new naver.maps.InfoWindow({
+            content: contentString
+        });
+    
+        naver.maps.Event.addListener(marker[<%= i.id %>], "click", function(e) {
+            if (infowindow.getMap()) {
+                infowindow.close();
+            } else {
+                infowindow.open(map, marker[<%= i.id %>]);
+            }
+        });
+    <% end %>
+    
     
     // var marker0 = new naver.maps.Marker({
     //     position: seoulCenter,
     //     map: map
     // });
-
-    //마커 안에 정보 넣기 
-    var contentString = [
-        '<div class="iw_inner">',
-        '   <h4>서울특별시청</h4>',
-        '   <p>서울특별시 중구 태평로1가 31 | 서울특별시 중구 세종대로 110 서울특별시청<br />',
-        '       <img src="'+ HOME_PATH +'images/bowlings.png" width="20" height="20" alt="서울시청" class="thumb" /><br />',
-        '       02-120 | 공공,사회기관 &gt; 특별,광역시청<br />',
-        '       <a href="http://www.seoul.go.kr" target="_blank">www.seoul.go.kr/</a>',
-        '   </p>',
-        '</div>'
-    ].join('');
-
-    var infowindow = new naver.maps.InfoWindow({
-        content: contentString
-    });
-
-    naver.maps.Event.addListener(marker0, "click", function(e) {
-        if (infowindow.getMap()) {
-            infowindow.close();
-        } else {
-            infowindow.open(map, marker0);
-        }
-    });
 
     //---------------------------------------------------------//
 
