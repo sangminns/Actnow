@@ -1,74 +1,90 @@
 <!--<h1 align="center">엑서(Activity Search)</h1>-->
 
-<!-- 네비바 및 영상 제작 -->
+<!-- 네비바 -->
     <%= render 'home/header' %>
 
-<hr color="red">
+<!-- 관리자 페이지로 이동 -->
+<hr>
 <a href="/admin/new_create">데이터 추가하기 - admin만 접근 가능</a>
-<hr color="red">
-<!-- 지도 섹션-->
-<section id="activity">
-    <form action="/find" method="get">
-        종목 : 
-        <select name="game">
-            <option>볼링</option>
-            <option>탁구</option>
-            <option>골프</option>
-            <option>야구</option>
-            <option>요가</option>
-        </select>
-        지역 :
-        <select name="region">
-            <option>강남구</option>
-            <option>강동구</option>
-            <option>강북구</option>
-            <option>강서구</option>
-            <option>관악구</option>
-            <option>광진구</option>
-            <option>구로구</option>
-            <option>금천구</option>
-            <option>노원구</option>
-            <option>도봉구</option>
-            <option>동대문구</option>
-            <option>동작구</option>
-            <option>마포구</option>
-            <option>서대문구</option>
-            <option>서초구</option>
-            <option>성동구</option>
-            <option>성북구</option>
-            <option>송파구</option>
-            <option>양천구</option>
-            <option>영등포구</option>
-            <option>용산구</option>
-            <option>은평구</option>
-            <option>종로구</option>
-            <option>중구</option>
-            <option>중랑구</option>
-        </select>
-        <input type="button" value="찾기"/>
-    </form>
-    
-    <div id="map" style="width:100%;height:400px;"></div>
-</section>
 
-<!-- 이벤트 섹션-->
-<section id="event">
-    
-</section>
+<!-- 영상 제작 -->
+<header>
+    <hr>
+    로그인을 하면 더 많은 서비스를 이용할 수 있습니다. 
+    <h3>마!! 운동 자신있나!! 난 있는데!? </h3>
+</header>
 
-<!-- 소모임(고객참여게시판) 섹션-->
-<section id="client">
+<div class="container">
+    <!-- 지도 섹션-->
+    <section id="activity">
+        <hr>
+        <form action="/find" method="get">
+            종목 : 
+            <select name="game">
+                <option>볼링</option>
+                <option>탁구</option>
+                <option>골프</option>
+                <option>야구</option>
+                <option>요가</option>
+            </select>
+            지역 :
+            <select name="region">
+                <option>강남구</option>
+                <option>강동구</option>
+                <option>강북구</option>
+                <option>강서구</option>
+                <option>관악구</option>
+                <option>광진구</option>
+                <option>구로구</option>
+                <option>금천구</option>
+                <option>노원구</option>
+                <option>도봉구</option>
+                <option>동대문구</option>
+                <option>동작구</option>
+                <option>마포구</option>
+                <option>서대문구</option>
+                <option>서초구</option>
+                <option>성동구</option>
+                <option>성북구</option>
+                <option>송파구</option>
+                <option>양천구</option>
+                <option>영등포구</option>
+                <option>용산구</option>
+                <option>은평구</option>
+                <option>종로구</option>
+                <option>중구</option>
+                <option>중랑구</option>
+            </select>
+            <input type="button" value="찾기"/>
+        </form>
+        <div id="map"></div>
+        
+    </section>
     
-</section>
-
-<!-- 캐스트 섹션 -->
-<section id="cast">
+    <!-- 이벤트 섹션-->
+    <section id="event">
+        <hr>
+        여러가지 이벤트
+    </section>
     
-</section>
+    <!-- 소모임(고객참여게시판) 섹션-->
+    <section id="client">
+        <hr>
+        고객이 직접 Activity를 추가할 수 있습니다.<br>
+        <a href="#">추가하러가기</a>
+    </section>
+    
+    <!-- 캐스트 섹션 -->
+    <section id="cast">
+        <hr>
+        cast정보
+    </section>
+</div>
 
 <!-- likelion -->
 <footer>
-
+    <hr>
+    Copyright &copy; Likelion 2017
 </footer>
 
 
@@ -100,15 +116,15 @@
     customControl.setMap(map);
     
     //마커
-    var bowlings = new Array();
+    var games = new Array();
     var marker = new Array();
     var contentString;
     
     <% @storeInfo.each do |i| %>
-        bowlings[<%= i.id %>] = new naver.maps.LatLng(<%= i.location_lat %>, <%= i.location_lng %>);
+        games[<%= i.id %>] = new naver.maps.LatLng(<%= i.location_lat %>, <%= i.location_lng %>);
         
         var markerOptions = {
-            position: bowlings[<%= i.id %>],
+            position: games[<%= i.id %>],
             map: map,
             icon: {
                 url: '<%= image_tag("bowling.png") %>', //마커 url
@@ -181,7 +197,7 @@
             map: map, 
             position: locPosition,
             icon: {
-                url: '/img/example/ico_pin.jpg',
+                url: 'https://pbs.twimg.com/profile_images/565254803643592704/KaVxRt4p.png',
                 size: new naver.maps.Size(25, 34),
                 scaledSize: new naver.maps.Size(25, 34),
                 origin: new naver.maps.Point(0, 0),
