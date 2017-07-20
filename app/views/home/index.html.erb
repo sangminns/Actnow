@@ -19,6 +19,8 @@
     <section id="activity">
         <hr>
         <form action="/find" method="get">
+        <%#= form_tag('/find', method: 'post') do %>
+        
             종목 : 
             <select name="game">
                 <option>볼링</option>
@@ -27,6 +29,10 @@
                 <option>야구</option>
                 <option>요가</option>
             </select>
+            <%#= select_tag(:game, options_for_select([
+            ['볼링', nil], ['탁구', nil], ['골프', nil], ['야구', nil], ['요가', nil]
+            ])) %>
+            
             지역 :
             <select name="region">
                 <option>강남구</option>
@@ -55,8 +61,22 @@
                 <option>중구</option>
                 <option>중랑구</option>
             </select>
-            <input type="button" value="찾기"/>
+            <%#= select_tag(:region, options_for_select([
+            ['강남구', nil], ['강동구', nil], ['강북구', nil], ['강서구', nil], ['관악구', nil],
+            ['광진구', nil], ['구로구', nil], ['금천구', nil], ['노원구', nil], ['도봉구', nil],
+            ['동대문구', nil], ['동작구', nil], ['마포구', nil], ['서대문구', nil], ['서초구', nil],
+            ['성동구', nil], ['성북구', nil], ['송파구', nil], ['양천구', nil], ['영등포구', nil],
+            ['용산구', nil], ['은평구', nil], ['종로구', nil], ['중구', nil], ['중랑구', nil]
+            ])) %>
+            <input type="submit" value="찾기"/>
+            <%#= submit_tag('찾기') %>
         </form>
+        <%# end %>
+        
+        <div class="search">
+                <input id="address" type="text" placeholder="검색할 주소">
+                <input id="submit" type="button" value="주소 검색">
+        </div>
         <div id="map"></div>
         
     </section>
@@ -78,6 +98,7 @@
     <section id="cast">
         <hr>
         cast정보
+        
     </section>
 </div>
 
@@ -93,13 +114,14 @@
 
     var seoulCenter = new naver.maps.LatLng(37.5665350, 126.9779690); //서울 시청 좌표값(서울 한가운데)
     
-    // 지도 기본 위치
+// 지도 기본 위치
     var map = new naver.maps.Map('map', {
         center: seoulCenter,
         zoom: 6,
         scaleControl: false,
         logoControl: false,
         mapDataControl: false,
+        mapTypeControl: true,
         zoomControl: true,
         minZoom: 1,
         zoomControlOptions: {
@@ -115,7 +137,7 @@
     });
     customControl.setMap(map);
     
-    //마커
+//마커
     var games = new Array();
     var marker = new Array();
     var contentString;
@@ -150,7 +172,7 @@
             '</div>'
         ].join('');
     
-        infowindow = new naver.maps.InfoWindow({
+        var infowindow = new naver.maps.InfoWindow({
             content: contentString
         });
     
@@ -209,18 +231,17 @@
             iwRemoveable = true;
             
         // 인포윈도우를 생성합니다
-        var infowindow = new naver.maps.InfoWindow({
+        var geoinfowindow = new naver.maps.InfoWindow({
             content : iwContent,
             removable : iwRemoveable
         });
         
         // 인포윈도우를 마커위에 표시합니다 
-        infowindow.open(map, gpsMarker);
+        geoinfowindow.open(map, gpsMarker);
         
         // 지도 중심좌표를 접속위치로 변경합니다
         map.setCenter(locPosition);      
     }    
-
 
 
     //---------------------------------------------------------//

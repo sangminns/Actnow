@@ -1,7 +1,11 @@
 <h2>관리자 페이지 - 데이터 추가</h2>
-<a href="/">Home으로 돌아가기</a><hr>ㅊ
+<a href="/">Home으로 돌아가기</a><hr>
 <form action="/admin/create" method="post">
+<%#= form_tag('/admin/create', method: 'post') do %>
+
     가게 이름 : <input type="text" name="name"><br>
+    <%#= text_field('name', nil) %>
+    
     가게 종목 : 
     <select name="game">
         <option>볼링</option>
@@ -11,6 +15,10 @@
         <option>수영</option>
         <option>요가</option>
     </select><br>
+    <%#= select_tag(:game, options_for_select([
+        ['볼링', nil], ['탁구', nil], ['골프', nil], ['야구', nil], ['요가', nil]
+    ])) %>
+    
     가게 지역 :
     <select name="region">
         <option>강남구</option>
@@ -39,11 +47,26 @@
         <option>중구</option>
         <option>중랑구</option>
     </select><br>
+    <%#= select_tag(:region, options_for_select([
+        ['강남구', nil], ['강동구', nil], ['강북구', nil], ['강서구', nil], ['관악구', nil],
+        ['광진구', nil], ['구로구', nil], ['금천구', nil], ['노원구', nil], ['도봉구', nil],
+        ['동대문구', nil], ['동작구', nil], ['마포구', nil], ['서대문구', nil], ['서초구', nil],
+        ['성동구', nil], ['성북구', nil], ['송파구', nil], ['양천구', nil], ['영등포구', nil],
+        ['용산구', nil], ['은평구', nil], ['종로구', nil], ['중구', nil], ['중랑구', nil]
+    ])) %>
+    
     가게 상세 주소 : <input type="text" name="address"><br>
+    <%#= text_field('address', nil) %>
+    
     가게 위도(latitude)(float타입으로 입력) : <input type="text" name="location_lat"><br>
+    <%#= text_field('location_lat', nil) %>
     가게 경도(longitude)(float타입으로 입력) : <input type="text" name="location_lng"><br>
+    <%#= text_field('location_lng', nil) %>
+    
     <input type="submit" value="데이터생성"/>
+    <%#= submit_tag('데이터 생성') %>
 </form>
+<%# end %>
 
 <h2>현재 추가한 데이터 리스트</h2>
 <% @storeInfo.each do |i| %>
