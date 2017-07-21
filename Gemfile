@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 
+# 주소 입력시 좌표로 변환해주는 gem
+gem 'geocoder'
+
 gem 'devise'
 gem 'devise-i18n'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

@@ -1,11 +1,14 @@
+require 'geocoder'
+
 class AdminController < ApplicationController
     
   def new_create
-    @storeInfo = Info.all
+     @storeInfo = Info.all
   end
   
   def create
     
+
     newStore = Info.new
     newStore.name = params[:name]
     newStore.game = params[:game]
@@ -24,4 +27,15 @@ class AdminController < ApplicationController
     
     redirect_to :back
   end
+  
+  def location
+   
+    @location = Geocoder.coordinates(params[:location_change])
+    
+    
+    redirect_to :back
+    
+  end
+  
+  
 end

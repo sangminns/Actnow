@@ -1,5 +1,18 @@
 <h2>관리자 페이지 - 데이터 추가</h2>
 <a href="/">Home으로 돌아가기</a><hr>
+
+<form action="/admin/location" method="get">
+    <p>정확한 주소를 입력해주세요.</p>
+    <input type="text" name="location_change">
+    <input type="submit" value="좌표변환">
+</form>
+
+<p>
+    좌표 : <%= @location %>
+
+</p>
+<hr>
+
 <form action="/admin/create" method="post">
 <%#= form_tag('/admin/create', method: 'post') do %>
 
