@@ -4,6 +4,8 @@ class AdminController < ApplicationController
     
   def new_create
      @storeInfo = Info.all
+     @location = Geocoder.coordinates(params[:location_change])
+     
   end
   
   def create
@@ -27,15 +29,5 @@ class AdminController < ApplicationController
     
     redirect_to :back
   end
-  
-  def location
-   
-    @location = Geocoder.coordinates(params[:location_change])
-    
-    
-    redirect_to :back
-    
-  end
-  
   
 end
