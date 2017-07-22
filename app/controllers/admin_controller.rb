@@ -3,14 +3,14 @@ require 'geocoder'
 class AdminController < ApplicationController
     
   def new_create
-     @storeInfo = Info.all
-     @location = Geocoder.coordinates(params[:location_change])
-     
+    @storeInfo = Info.all
+    @location = Geocoder.coordinates(params[:location_change])
+    @lat = @location
+    @lng = @location
   end
   
   def create
     
-
     newStore = Info.new
     newStore.name = params[:name]
     newStore.game = params[:game]

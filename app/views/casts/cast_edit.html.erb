@@ -1,0 +1,5 @@
+<%= form_tag cast_path, method: 'patch' do %>
+    <%= text_field_tag 'castTitle', @cast.castTitle %>
+    <%= text_area_tag 'castContent', @cast.castContent %>
+    <%= submit_tag 'submit!' %>
+<% end %>

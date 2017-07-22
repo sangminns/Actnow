@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   
   devise_for :users
+  
   root 'home#index'
   
   get 'admin/new_create'
@@ -8,6 +9,23 @@ Rails.application.routes.draw do
   get 'destroy/:info_id' => 'admin#destroy'
   
   get 'admin/geocoding' => 'admin#new_create'
+  
+  
+  #---cast 해당 routes---------------------------------
+  
+  
+  get '/casts' => 'casts#cast_index' 
+  post '/casts' => 'casts#cast_create' 
+  get '/casts/cast_new' => 'casts#cast_new' 
+ 
+  get '/casts/:id/edit' => 'casts#cast_edit', as: "edit_cast" 
+  get '/casts/:id' => 'casts#cast_show', as: "cast" 
+
+  patch '/casts/:id' => 'casts#cast_update' 
+
+  delete '/casts/:id' => 'casts#cast_destroy' 
+  
+  
   
   
 

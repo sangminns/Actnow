@@ -1,0 +1,13 @@
+<% @casts.each do |cast| %>
+    <div>
+        <%= cast.id %>
+        <%= cast.castTitle %>
+        <%= cast.castContent %>
+        <%= link_to '이 글 보기', cast_path(cast.id) %>
+        <%= link_to '이 글 수정', edit_cast_path(cast.id) %>
+        <%= link_to '이 글 삭제', cast_path(cast.id) , method: 'delete', data: {confirm: "정말 삭제하실 건가요?"} %> 
+    </div>
+<% end %>
+
+<%= link_to '새 글쓰기' , '/casts/cast_new'  %><br>
+<%= link_to 'Home', '/' %>
