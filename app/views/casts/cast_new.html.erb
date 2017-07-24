@@ -1,6 +1,7 @@
-<%= form_tag casts_path, method: 'post' do %> <!-- , enctype: "multipart/form-data" -->
+<%= form_tag casts_path, method: 'post', enctype: "multipart/form-data" do %> <!-- , enctype: "multipart/form-data" -->
     <%= text_field_tag 'castTitle' %>
     <%= text_area_tag 'castContent' %>
+    <%= file_field_tag 'castImage',accept: "image/*" %>
     <%#= form.file_field :model_names, multiple: true %>
     <!--<input type="file" name="inputImage" accept="image/*">-->
     <%= submit_tag 'submit!' %>

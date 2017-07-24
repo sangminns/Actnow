@@ -5,8 +5,8 @@ class AdminController < ApplicationController
   def new_create
     @storeInfo = Info.all
     @location = Geocoder.coordinates(params[:location_change])
-    @lat = @location
-    @lng = @location
+    @lat = @location[0]
+    @lng = @location[1]
   end
   
   def create

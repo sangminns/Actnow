@@ -2,6 +2,10 @@ source 'https://rubygems.org'
 
 # 주소 입력시 좌표로 변환해주는 gem
 gem 'geocoder'
+# rails db보는 gem
+gem 'rails_db'
+# carrierwave 이미지 첨부 gem
+gem 'carrierwave'
 
 gem 'devise'
 gem 'devise-i18n'
