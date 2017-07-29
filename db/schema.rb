@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20170721160501) do
   create_table "casts", force: :cascade do |t|
     t.string   "castTitle"
     t.text     "castContent"
-    t.text     "cast_image_url", default: " "
+    t.string   "cast_image_url", default: " "
     t.string   "casts"
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false

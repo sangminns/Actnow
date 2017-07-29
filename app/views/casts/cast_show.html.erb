@@ -3,9 +3,10 @@
 <%= @cast.castTitle %>
 </p>
 <P>
-<%= @cast.castContent %>
-</P>
-<img src='<%= @cast.cast_image_url %>'>
+<%= @cast.castContent %> 
+</P><br>
+<!--<img src='<%#= @cast.cast_image_url %>'>-->
+<%= image_tag @cast.cast_image_url.url %>
 <br>
 
 <%= link_to "Back", :back %>

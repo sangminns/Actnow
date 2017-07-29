@@ -1,8 +1,16 @@
-<%= form_tag casts_path, method: 'post', enctype: "multipart/form-data" do %> <!-- , enctype: "multipart/form-data" -->
-    <%= text_field_tag 'castTitle' %>
-    <%= text_area_tag 'castContent' %>
-    <%= file_field_tag 'castImage',accept: "image/*" %>
-    <%#= form.file_field :model_names, multiple: true %>
-    <!--<input type="file" name="inputImage" accept="image/*">-->
-    <%= submit_tag 'submit!' %>
-<% end %>
+<div class="panel-body cast-body">
+    <%= form_tag casts_path, method: 'post', enctype: "multipart/form-data" do %> <!-- , enctype: "multipart/form-data" -->
+        <div class="form-group">
+            <%= text_field_tag 'castTitle' %>
+        </div>
+        <div class="form-group">
+            <%= text_area_tag 'castContent' %>
+        </div>
+        <div class="form-group">
+            <%= file_field_tag 'castImage' %> <!-- ,accept: "image/*" -->
+        </div>
+        <%#= form.file_field :model_names, multiple: true %>
+        <!--<input type="file" name="inputImage" accept="image/*">-->
+        <%= submit_tag 'submit!' %>
+    <% end %>
+</div>

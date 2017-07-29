@@ -5,10 +5,10 @@ Rails.application.routes.draw do
   root 'home#index'
   
   get 'admin/new_create'
-  post 'admin/create'
+  get 'admin/create'
   get 'destroy/:info_id' => 'admin#destroy'
   
-  get 'admin/geocoding' => 'admin#new_create'
+  post 'admin/geocoding' => 'admin#geocoding'
   
   
   #---cast 해당 routes---------------------------------

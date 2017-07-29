@@ -1,4 +1,4 @@
 class Cast < ActiveRecord::Base
-    mount_uploader :casts, UpcastUploader
+    mount_uploader :cast_image_url, UpcastUploader
     
 end

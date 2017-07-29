@@ -1,13 +1,20 @@
-<div class="navbar navbar-fixed-top ">
+
+<div class="navbar navbar-default navbar-fixed-top ">
   <div class="container">
-    <h1 id="">Activity Search</h1>
+    <div class="navbar-header">
+      <%= link_to 'Activity-Search', root_path, id: 'logo'%> <!--<%#= link_to 'Activity-Search', root_path, class: 'navbar-brand' %>-->
+    </div>
     <nav>
       <ul class="nav navbar-nav navbar-right">
-        <!--<li><a href="/">Home</a></li>-->
-        <li>Home   </li>
-        <li>New Memo</li>
-        <li><a href="/users/sign_in">로그인</a></li>
+        
+        <li><%= link_to 'Admin Data','/admin/new_create', id: 'header_add' %></li>
+        <li><%= link_to 'Events', '/', id: 'header_add'%></li>
+        <li><%= link_to 'Casts', '/casts', id: 'header_add' %></li>
+        <li><%= link_to '소모임', '/', id: 'header_add' %></li>
+        <li><%= link_to 'Log in', new_user_session_path, id: 'header_add' %></li>
+        
      </ul>
     </nav>
   </div>
 </div>
+

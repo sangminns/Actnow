@@ -1,77 +1,51 @@
 <!--<h1 align="center">엑서(Activity Search)</h1>-->
 
 <!-- 네비바 -->
-    <%= render 'home/header' %>
+    
 
 <!-- 관리자 페이지로 이동 -->
-<hr>
-<a href="/admin/new_create">데이터 추가하기 - admin만 접근 가능</a>
+<!--<hr>-->
+<!--<a href="/admin/new_create">데이터 추가하기 - admin만 접근 가능</a>-->
 
 <!-- 영상 제작 -->
 <header>
-    <hr>
-    로그인을 하면 더 많은 서비스를 이용할 수 있습니다. 
-    <h3>마!! 운동 자신있나!! 난 있는데!? </h3>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br>
+    <h2> 오늘 뭐 하지? </h2>
+    <br>
+    <img src="<%= image_url('basketball.png') %>" class="img-rounded" alt="Cinque Terre"  height="100">
+    <img src="<%= image_url('pingpong.png') %>" class="img-rounded" alt="Cinque Terre"  height="100">
+    <img src="<%= image_url('bowling.png') %>" class="img-rounded" alt="Cinque Terre"  height="100">
+    <img src="<%= image_url('yoga.png') %>" class="img-rounded" alt="Cinque Terre"  height="100">
+    <img src="<%= image_url('baseball.png') %>" class="img-rounded" alt="Cinque Terre"  height="100">
+    <img src="<%= image_url('swimming.png') %>" class="img-rounded" alt="Cinque Terre"  height="100">
+    
+    <p>로그인을 하면 더 많은 서비스를 이용할 수 있습니다.</p> 
 </header>
 
 <div class="container">
     <!-- 지도 섹션-->
     <section id="activity">
         <hr>
-        <form action="/find" method="get">
-        <%#= form_tag('/find', method: 'post') do %>
+        <%= form_tag('/find', method: 'get') do %>
         
             종목 : 
-            <select name="game">
-                <option>볼링</option>
-                <option>탁구</option>
-                <option>골프</option>
-                <option>야구</option>
-                <option>요가</option>
-            </select>
-            <%#= select_tag(:game, options_for_select([
-            ['볼링', nil], ['탁구', nil], ['골프', nil], ['야구', nil], ['요가', nil]
+            <%= select_tag(:game, options_for_select([
+            ['볼링'], ['탁구'], ['골프'], ['야구'], ['요가']
             ])) %>
             
             지역 :
-            <select name="region">
-                <option>강남구</option>
-                <option>강동구</option>
-                <option>강북구</option>
-                <option>강서구</option>
-                <option>관악구</option>
-                <option>광진구</option>
-                <option>구로구</option>
-                <option>금천구</option>
-                <option>노원구</option>
-                <option>도봉구</option>
-                <option>동대문구</option>
-                <option>동작구</option>
-                <option>마포구</option>
-                <option>서대문구</option>
-                <option>서초구</option>
-                <option>성동구</option>
-                <option>성북구</option>
-                <option>송파구</option>
-                <option>양천구</option>
-                <option>영등포구</option>
-                <option>용산구</option>
-                <option>은평구</option>
-                <option>종로구</option>
-                <option>중구</option>
-                <option>중랑구</option>
-            </select>
-            <%#= select_tag(:region, options_for_select([
-            ['강남구', nil], ['강동구', nil], ['강북구', nil], ['강서구', nil], ['관악구', nil],
-            ['광진구', nil], ['구로구', nil], ['금천구', nil], ['노원구', nil], ['도봉구', nil],
-            ['동대문구', nil], ['동작구', nil], ['마포구', nil], ['서대문구', nil], ['서초구', nil],
-            ['성동구', nil], ['성북구', nil], ['송파구', nil], ['양천구', nil], ['영등포구', nil],
-            ['용산구', nil], ['은평구', nil], ['종로구', nil], ['중구', nil], ['중랑구', nil]
+            <%= select_tag(:region, options_for_select([
+            ['강남구'], ['강동구'], ['강북구'], ['강서구'], ['관악구'],
+            ['광진구'], ['구로구'], ['금천구'], ['노원구'], ['도봉구'],
+            ['동대문구'], ['동작구'], ['마포구'], ['서대문구'], ['서초구'],
+            ['성동구'], ['성북구'], ['송파구'], ['양천구'], ['영등포구'],
+            ['용산구'], ['은평구'], ['종로구'], ['중구'], ['중랑구']
             ])) %>
-            <input type="submit" value="찾기"/>
-            <%#= submit_tag('찾기') %>
-        </form>
-        <%# end %>
+            
+            <%= submit_tag('찾기') %>
+        
+        <% end %>
         
         <div class="search">
                 <input id="address" type="text" placeholder="검색할 주소">
@@ -98,7 +72,12 @@
     <section id="cast">
         <hr>
         cast정보 <br>
-        <%= link_to '캐스트 더 보기', '/casts' %>
+        <%= link_to '캐스트 더 보기', '/casts' %><br>
+        
+        <% @casts.sample(3).each do |k| %>
+            <%= link_to image_tag(k.cast_image_url.thumb.url), cast_path(k.id) %></a>
+            
+        <% end %>
     </section>
 </div>
 
@@ -107,6 +86,8 @@
     <hr>
     Copyright &copy; Likelion 2017
 </footer>
+
+
 
 <script type="text/javascript">
     // var HOME_PATH = window.HOME_PATH || '.';
@@ -128,10 +109,9 @@
         }
     });
     
-    // GPS
-    // var locationBtnHtml = '<a href="#" class="btn_mylct"><span class="spr_trff spr_ico_mylct">NAVER 그린팩토리</span></a>';
-    // GPS 이미지 파일 넣는 곳
-    var locationBtnHtml = '<img src="https://pbs.twimg.com/profile_images/565254803643592704/KaVxRt4p.png" style="width: 50px" onclick="getLocation()">';
+// GPS
+    // GPS 이미지 파일 넣는 곳 /https://pbs.twimg.com/profile_images/565254803643592704/KaVxRt4p.png
+    var locationBtnHtml = '<img src="<%= image_url('gps.png') %>" style="width: 40px; margin: 5px; border: groove" onclick="getLocation()">';
     var customControl = new naver.maps.CustomControl(locationBtnHtml, {
         position: naver.maps.Position.TOP_LEFT
     });
@@ -140,7 +120,7 @@
 //마커
     var games = new Array();
     var marker = new Array();
-    var contentString;
+    var contentString = new Array();
     
     <% @storeInfo.each do |i| %>
         games[<%= i.id %>] = new naver.maps.LatLng(<%= i.location_lat %>, <%= i.location_lng %>);
@@ -148,32 +128,46 @@
         var markerOptions = {
             position: games[<%= i.id %>],
             map: map,
+            zIndex: 100,
             icon: {
-                url: '<%= image_tag("bowling.png") %>', //마커 url, 마커 이미지 url
-                size: new naver.maps.Size(33, 44), // 마커 사이즈
+                //마커 url, 마커 이미지 url
+                <% if i.game == '볼링' %>
+                    url: '<%= image_url("bowling.png") %>', 
+                <% elsif i.game == '탁구' %>  
+                    url: '<%= image_url("pingpong.png") %>', 
+                <% elsif i.game == '야구' %>
+                    url: '<%= image_url("baseball.png") %>',
+                <% elsif i.game == '요가' %>
+                    url: '<%= image_url("yoga.png") %>', 
+                <% elsif i.game == '수영' %>
+                    url: '<%= image_url("swimming.png") %>', 
+                <% elsif i.game == '농구' %>
+                    url: '<%= image_url("basketball.png") %>', 
+                <% end %>
+                size: new naver.maps.Size(100,100),// 마커 사이즈
+                scaledSize: new naver.maps.Size(30,38),
                 origin: new naver.maps.Point(0, 0), // origin 기본값 (0, 0)
                 anchor: new naver.maps.Point(11, 35) // anchor속성은 이미지의 중앙 하단 포인터를 기본값으로 설정
-            },       
-            zIndex: 100
+                
+            }     
         };
         
         marker[<%= i.id %>] = new naver.maps.Marker(markerOptions);
         
         // 마커 안에 정보 넣기 
         // db에 있는 정보 불러내기 아직 구현 못함
-        contentString= [
+        contentString[<%= i.id %>] = [
             '<div class="iw_inner">',
-            '   <h4><%#= i.name %></h4>',
-            '   <p><%#= i.region %> | <%#= i.address %><br />',
-            '       <img src= "" width="20" height="20" alt="서울시청" class="thumb" /><br />',
-            '       02-120 | <%#= i.game %> &gt; 특별,광역시청<br />',
-            '       <a href="http://www.seoul.go.kr" target="_blank">www.seoul.go.kr/</a>',
+            '   <h4><%= i.name %></h4>',
+            '   <p><%= i.region %> | <%= i.address %><br />',
+            '       <img src= "" width="20" height="20" class="thumb" /><br />',
+            '       <%= i.game %> &gt; 특별,광역시청<br />',
             '   </p>',
             '</div>'
         ].join('');
     
         var infowindow = new naver.maps.InfoWindow({
-            content: contentString
+            content: contentString[<%= i.id %>]
         });
     
         naver.maps.Event.addListener(marker[<%= i.id %>], "click", function(e) {
@@ -181,12 +175,13 @@
                 infowindow.close();
             } else {
                 infowindow.open(map, marker[<%= i.id %>]);
+                map.setCenter(games[<%= i.id %>]);
             }
         });
+        
     <% end %>
 
 // GPS이용하기
-
     // HTML5의 geolocation으로 사용할 수 있는지 확인합니다 
     function getLocation() {
         if (navigator.geolocation) {
@@ -242,5 +237,4 @@
         // 지도 중심좌표를 접속위치로 변경합니다
         map.setCenter(locPosition);      
     }    
-    //---------------------------------------------------------//
 </script>

@@ -1,8 +1,77 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+// 슬라이드 쇼 - https://v4-alpha.getbootstrap.com/components/carousel/
+
+header {
+    height: 950px;
+    background-image: url("background_yoga1.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: bottom; 
+    padding-bottom: 200px;
+    
+}
+
+
+
+header h2, header p {
+    color: #595958;
+}
+
+header h3,header h5 {
+    color: white;
+}
+
+header img {
+    margin: 0px 10px;
+}
+
+
 
 .navbar {
-background-color: #90caf9;
+    font-family: 'Concert One', cursive;
+    background-color: transparent;
+    border: transparent;
+
 }
 
-body {
-    padding-top : 130px;
+#logo {
+  float: left;
+  margin-right: 10px;
+  font-size: 3em;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  padding-top: 9px;
+  font-weight: bold;
+  &:hover {
+    color: #a5a5a4;
+    text-decoration: none;
+  }
 }
+
+#header_add {
+    
+    font-size: 1.5em;
+    margin-top: 9px;
+    color: white;
+    &:hover {
+    color: #a5a5a4;
+    text-decoration: none;
+  }
+}
+// ------- section cast에 해당하는 css ------------------
+#cast {
+    background-color: black;
+}
+
+
+.cast-body {
+    margin-top: 100px;
+}
+
+
+
+
+// --------------------------------------------------------

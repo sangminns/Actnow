@@ -14,17 +14,17 @@ class CastsController < ApplicationController
 
   def cast_create
     
-    require 'carrierwave/orm/activerecord'
+    # require 'carrierwave/orm/activerecord'
     
     @makeCast = Cast.new
     @makeCast.castTitle = params[:castTitle]
     @makeCast.castContent = params[:castContent]
-    @makeCast.casts = params[:file]
+    # @makeCast.casts = params[:file]
     # @makeCast.user = current_user
     
-    u = UpcastUploader.new
-    u.store!(params[:castImage])
-    @makeCast.cast_image_url = u
+    # u = UpcastUploader.new
+    # u.store!(params[:castImage])
+    @makeCast.cast_image_url = params[:castImage]
     # @makeCast.upcast_identifier
     @makeCast.save
 
@@ -47,12 +47,12 @@ class CastsController < ApplicationController
     make_cast = Cast.find(params[:id])
     make_cast.castTitle = params[:castTitle]
     make_cast.castContent = params[:castContent]
-    make_Cast.casts = params[:file]
+    # make_Cast.casts = params[:file]
     # @makeCast.user = current_user
     
-    a = UpcastUploader.new
-    a.store!(params[:castImage])
-    @makeCast.cast_image_url = a
+    # a = UpcastUploader.new
+    # a.store!(params[:castImage])
+    @makeCast.cast_image_url = params[:castImage]
     # @makeCast.upcast_identifier
     @makeCast.save
     redirect_to '/casts'
