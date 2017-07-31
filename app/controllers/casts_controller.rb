@@ -44,17 +44,17 @@ class CastsController < ApplicationController
     # @cast.update_attributes(castTitle: params[:castTitle], castContent: params[:castContent])
     # redirect_to '/casts'
     
-    make_cast = Cast.find(params[:id])
-    make_cast.castTitle = params[:castTitle]
-    make_cast.castContent = params[:castContent]
+    makeCast = Cast.find(params[:id])
+    makeCast.castTitle = params[:castTitle]
+    makeCast.castContent = params[:castContent]
     # make_Cast.casts = params[:file]
     # @makeCast.user = current_user
     
     # a = UpcastUploader.new
     # a.store!(params[:castImage])
-    @makeCast.cast_image_url = params[:castImage]
+    makeCast.cast_image_url = params[:castImage]
     # @makeCast.upcast_identifier
-    @makeCast.save
+    makeCast.save
     redirect_to '/casts'
     
     

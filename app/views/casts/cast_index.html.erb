@@ -1,3 +1,5 @@
+<div class="cast-body">
+
 <% @casts.each do |cast| %>
     <div>
         <%= cast.id %>
@@ -13,5 +15,7 @@
 <% end %>
 <hr>
 
+
 <%= link_to '새 글쓰기' , '/casts/cast_new'  %><br>
 <%= link_to 'Home', '/' %>
+</div>

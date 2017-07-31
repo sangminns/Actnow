@@ -4,10 +4,10 @@
     <%#= submit_tag 'submit!' %>
 <%# end %>
 
-<%= form_tag casts_path, method: 'patch', enctype: "multipart/form-data" do %> <!-- , enctype: "multipart/form-data" -->
+<%= form_tag cast_path, method: 'patch', enctype: "multipart/form-data" do %> <!-- , enctype: "multipart/form-data" -->
     <%= text_field_tag 'castTitle', @cast.castTitle %>
     <%= text_area_tag 'castContent',  @cast.castContent %>
-    <%= file_field_tag 'castImage', accept: "image/*" %>
+    <%= file_field_tag 'castImage' %>
     <%#= form.file_field :model_names, multiple: true %>
     <!--<input type="file" name="inputImage" accept="image/*">-->
     <%= submit_tag 'submit!' %>

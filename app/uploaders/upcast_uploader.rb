@@ -32,7 +32,7 @@ class UpcastUploader < CarrierWave::Uploader::Base
   
   # Create different versions of your uploaded files:
   version :thumb do
-    process resize_to_fit: [200, 200] #비율을 그대로 가져옴 절대적ㅇ인 것을 원할 때는 fit 대신 fill을 사용 
+    process resize_to_fill: [200, 200] #비율을 그대로 가져옴 절대적ㅇ인 것을 원할 때는 fit 대신 fill을 사용 
   end
 
   # Add a white list of extensions which are allowed to be uploaded.
