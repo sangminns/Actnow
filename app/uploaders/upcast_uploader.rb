@@ -34,6 +34,10 @@ class UpcastUploader < CarrierWave::Uploader::Base
   version :thumb do
     process resize_to_fill: [200, 200] #비율을 그대로 가져옴 절대적ㅇ인 것을 원할 때는 fit 대신 fill을 사용 
   end
+  
+  version :thumb2 do
+    process resize_to_fill: [500, 300] #비율을 그대로 가져옴 절대적ㅇ인 것을 원할 때는 fit 대신 fill을 사용 
+  end
 
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:

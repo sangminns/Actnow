@@ -1,3 +1,5 @@
+
+
 <%= @cast.id %>
 <p>
 <%= @cast.castTitle %>
@@ -9,4 +11,8 @@
 <%= image_tag @cast.cast_image_url.url %>
 <br>
 
+<%= link_to '수정', edit_cast_path(@cast.id) %> / 
+<%= link_to '삭제', cast_path(@cast.id) , method: 'delete', data: {confirm: "정말 삭제하실 건가요?"} %> 
+<br>
 <%= link_to "Back", :back %>
+

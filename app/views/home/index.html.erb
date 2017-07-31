@@ -53,7 +53,6 @@
         </div>
         
         <div id="map"></div>
-        '<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Large modal</button><div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"><div class="modal-dialog modal-lg" role="document"><div class="modal-content">...</div></div></div>
     </section>
     
     <!-- 이벤트 섹션-->
@@ -81,20 +80,18 @@
     <!-- 캐스트 섹션 -->
     <section id="cast">
         <hr>
-        <h1>Casts</h1>
+        <h1>Cast</h1><br>
         <div class="row">
             <% @casts.sample(4).each do |k| %>
-                <!--<div class="cast_each">-->
-                <div class="col-sm-3">
-                <div class="card" style="width: 20rem;">
-                    <%= link_to image_tag(k.cast_image_url.thumb.url), cast_path(k.id), class: 'cast_each' %>
-                      <div class="card-block">
-                        <h4 class="card-title">Card title</h4>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                      </div>
+                <div class="section-cast col-xs-6 col-sm-6 col-md-3 col-lg-3">
+                    <div class="card" >
+                        <%= link_to image_tag(k.cast_image_url.thumb.url), cast_path(k.id), class: 'cast_each' %>
+                        <div class="card-block">
+                          <h4 class="card-title"><%= k.castTitle %></h4>
+                          <p class="card-text"><%= k.castContent %></p>
+                        </div>
+                    </div>
                 </div>
-                </div>
-                
             <% end %>
         </div>
         <br>
