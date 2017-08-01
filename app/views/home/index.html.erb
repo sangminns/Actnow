@@ -9,18 +9,11 @@
 
 <!-- 영상 제작 -->
 <header>
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-    <br><br><br><br><br><br><br><br><br>
-    <h2> 오늘 뭐 하지? </h2>
-    <br>
-    <img src="<%= image_url('basketball.png') %>" class="img-rounded" alt="Cinque Terre"  height="100">
-    <img src="<%= image_url('pingpong.png') %>" class="img-rounded" alt="Cinque Terre"  height="100">
-    <img src="<%= image_url('bowling.png') %>" class="img-rounded" alt="Cinque Terre"  height="100">
-    <img src="<%= image_url('yoga.png') %>" class="img-rounded" alt="Cinque Terre"  height="100">
-    <img src="<%= image_url('baseball.png') %>" class="img-rounded" alt="Cinque Terre"  height="100">
-    <img src="<%= image_url('swimming.png') %>" class="img-rounded" alt="Cinque Terre"  height="100">
+    <%= render 'home/slideshow' %>
     
-    <p>로그인을 하면 더 많은 서비스를 이용할 수 있습니다.</p> 
+    <!--<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>-->
+    <!--<br><br><br><br><br><br><br><br><br>-->
+    
 </header>
 
 <div class="container">
@@ -53,6 +46,17 @@
         </div>
         
         <div id="map"></div>
+        
+        <!-- Large modal -->
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Large modal</button>
+        <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    ...
+                </div>
+            </div>
+        </div>
+        
     </section>
     
     <!-- 이벤트 섹션-->
@@ -141,6 +145,7 @@
     var marker = new Array();
     var contentString = new Array();
     var infowindow = new Array();
+    var modals = new Array();
     
     <% @storeInfo.each do |i| %>
         games[<%= i.id %>] = new naver.maps.LatLng(<%= i.location_lat %>, <%= i.location_lng %>);
@@ -174,6 +179,17 @@
         
         marker[<%= i.id %>] = new naver.maps.Marker(markerOptions);
         
+        modals[<%= i.id %>] = [
+            '<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal<%= i.id %>">상세 보기</button>',
+            '<div id="modal<%= i.id %>" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">',
+            '   <div class="modal-dialog modal-lg" role="document">',
+            '       <div class="modal-content">',
+            '           하하하',
+            '       </div>',
+            '   </div>',
+            '</div>'
+        ].join('');
+        
         // 마커 안에 정보 넣기 
         // db에 있는 정보 불러내기 아직 구현 못함
         contentString[<%= i.id %>] = [
@@ -183,19 +199,13 @@
             '       <img src= "" width="20" height="20" class="thumb" /><br>',
             '       <%= i.game %> &gt; 특별, 광역시청<br>',
             '   </p>',
-            '</div>',
-            '<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">상세 보기</button>',
-            '<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">',
-            '   <div class="modal-dialog modal-lg" role="document">',
-            '       <div class="modal-content">',
-            '           하하하',
-            '       </div>',
-            '   </div>',
             '</div>'
         ].join('');
     
+        
+    
         infowindow[<%= i.id %>] = new naver.maps.InfoWindow({
-            content: contentString[<%= i.id %>]
+            content: contentString[<%= i.id %>] + modals[<%= i.id %>]
         });
     
         naver.maps.Event.addListener(marker[<%= i.id %>], "click", function(e) {

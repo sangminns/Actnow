@@ -1,0 +1,59 @@
+
+<!--// 자동 슬라이드쇼 -->
+<h2 class="w3-center">Automatic Slideshow</h2>
+
+<div class="w3-content w3-section" style="max-width:500px">
+  <img class="mySlides" src="img_la.jpg" style="width:100%">
+  <img class="mySlides" src="img_ny.jpg" style="width:100%">
+  <img class="mySlides" src="img_chicago.jpg" style="width:100%">
+</div>
+
+<script>
+var myIndex = 0;
+carousel();
+
+function carousel() {
+    var i;
+    var x = document.getElementsByClassName("mySlides");
+    for (i = 0; i < x.length; i++) {
+       x[i].style.display = "none";  
+    }
+    myIndex++;
+    if (myIndex > x.length) {myIndex = 1}    
+    x[myIndex-1].style.display = "block";  
+    setTimeout(carousel, 2000); // Change image every 2 seconds
+}
+</script>
+
+
+<!--// fade in, fade out-->
+
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+
+<div class="w3-content w3-section" style="max-width:500px">
+  <p>The w3-animate-fading class animates an element in and out (takes about 10 seconds).</p>
+
+  <img class="mySlides w3-animate-fading" src="img_rr_01.jpg" style="width:100%">
+  <img class="mySlides w3-animate-fading" src="img_rr_02.jpg" style="width:100%">
+  <img class="mySlides w3-animate-fading" src="img_rr_03.jpg" style="width:100%">
+  <img class="mySlides w3-animate-fading" src="img_rr_04.jpg" style="width:100%">
+</div>
+
+<script>
+var myIndex = 0;
+carousel();
+
+function carousel() {
+    var i;
+    var x = document.getElementsByClassName("mySlides");
+    for (i = 0; i < x.length; i++) {
+       x[i].style.display = "none";  
+    }
+    myIndex++;
+    if (myIndex > x.length) {myIndex = 1}    
+    x[myIndex-1].style.display = "block";  
+    setTimeout(carousel, 100); 
+    
+}
+</script>

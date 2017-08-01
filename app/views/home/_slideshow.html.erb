@@ -1,0 +1,50 @@
+<div style="position: relative;">
+    <div style="position: absolute; top: 680px; width: 100%; text-align: center;">
+            
+        <div class="over_slideshow">
+            <h2> 오늘 뭐 하지? </h2>
+            <br>
+            <img src="<%= image_url('basketball.png') %>" class="img-rounded" alt="Cinque Terre"  height="100">
+            <img src="<%= image_url('pingpong.png') %>" class="img-rounded" alt="Cinque Terre"  height="100">
+            <img src="<%= image_url('bowling.png') %>" class="img-rounded" alt="Cinque Terre"  height="100">
+            <img src="<%= image_url('surfing.png') %>" class="img-rounded" alt="Cinque Terre"  height="100">
+            <img src="<%= image_url('yoga.png') %>" class="img-rounded" alt="Cinque Terre"  height="100">
+            <img src="<%= image_url('baseball.png') %>" class="img-rounded" alt="Cinque Terre"  height="100">
+            <img src="<%= image_url('swimming.png') %>" class="img-rounded" alt="Cinque Terre"  height="100">
+            
+            <p>로그인을 하면 더 많은 서비스를 이용할 수 있습니다.</p> 
+            </div>
+        </div>
+    </div>
+    <div style="position: absolute;">
+        <!--<div style="position: relative; top: 120px; left: 400px;"></img>-->
+        <!--</div>-->
+    </div>
+    <div class="w3-content w3-section">
+      <img class="mySlides w3-animate-fading img-responsive" src="<%= image_url("background_bowling3.jpg") %>" style="height: 950px;">
+      <img class="mySlides w3-animate-fading img-responsive" src="<%= image_url("background_bowling2.jpg") %>" style="height: 950px">
+      <img class="mySlides w3-animate-fading img-responsive" src="<%= image_url("background_yoga1.jpg") %>" style="height: 950px">
+      <img class="mySlides w3-animate-fading img-responsive" src="<%= image_url("background_yoga2.jpg") %>" style="height: 950px">
+    </div>
+</div>
+
+
+
+
+<script>
+var myIndex = 0;
+carousel();
+
+function carousel() {
+    var i;
+    var x = document.getElementsByClassName("mySlides");
+    for (i = 0; i < x.length; i++) {
+       x[i].style.display = "none";  
+    }
+    myIndex++;
+    if (myIndex > x.length) {myIndex = 1}    
+    x[myIndex-1].style.display = "block";  
+    setTimeout(carousel, 9000); 
+    
+}
+</script>
