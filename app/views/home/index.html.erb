@@ -1,18 +1,5 @@
-<!--<h1 align="center">엑서(Activity Search)</h1>-->
-
-<!-- 네비바 -->
-    
-
-<!-- 관리자 페이지로 이동 -->
-<!--<hr>-->
-<!--<a href="/admin/new_create">데이터 추가하기 - admin만 접근 가능</a>-->
-
-<!-- 영상 제작 -->
 <header>
     <%= render 'home/slideshow' %>
-    
-    <!--<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>-->
-    <!--<br><br><br><br><br><br><br><br><br>-->
     
 </header>
 
@@ -46,17 +33,7 @@
         </div>
         
         <div id="map"></div>
-        
-        <!-- Large modal -->
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Large modal</button>
-        <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
-            <div class="modal-dialog modal-lg" role="document">
-                <div class="modal-content">
-                    ...
-                </div>
-            </div>
-        </div>
-        
+
     </section>
     
     <!-- 이벤트 섹션-->
@@ -111,10 +88,11 @@
     <p>Copyright &copy; Likelion 2017</p>
 </footer>
 
-
+<div id="myModal"></div>
 
 <script type="text/javascript">
-    // var HOME_PATH = window.HOME_PATH || '.';
+
+   // $(".mapModals").on('shown.bs.modal', function() {
 
     var seoulCenter = new naver.maps.LatLng(37.5665350, 126.9779690); //서울 시청 좌표값(서울 한가운데)
 // 지도 기본 위치
@@ -145,8 +123,8 @@
     var marker = new Array();
     var contentString = new Array();
     var infowindow = new Array();
-    var modals = new Array();
-    
+    //var modals = new Array();
+   
     <% @storeInfo.each do |i| %>
         games[<%= i.id %>] = new naver.maps.LatLng(<%= i.location_lat %>, <%= i.location_lng %>);
         
@@ -179,31 +157,32 @@
         
         marker[<%= i.id %>] = new naver.maps.Marker(markerOptions);
         
-        modals[<%= i.id %>] = [
-            '<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal<%= i.id %>">상세 보기</button>',
-            '<div id="modal<%= i.id %>" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">',
-            '   <div class="modal-dialog modal-lg" role="document">',
-            '       <div class="modal-content">',
-            '           하하하',
-            '       </div>',
-            '   </div>',
-            '</div>'
-        ].join('');
-        
+        //modals[<%#= i.id %>] = '<button class="myBtn" id="modal-open<%= i.id %>">Open Modal</button>';
+            
         // 마커 안에 정보 넣기 
         // db에 있는 정보 불러내기 아직 구현 못함
         contentString[<%= i.id %>] = [
             '<div class="iw_inner">',
             '   <h4><%= i.name %></h4>',
             '   <p><%= i.region %> | <%= i.address %><br>',
-            '       <img src= "" width="20" height="20" class="thumb" /><br>',
+            '       <img src= "<%#= i.image_url %>" width="20" height="20" class="thumb" /><br>',
             '       <%= i.game %> &gt; 특별, 광역시청<br>',
             '   </p>',
-            '</div>'
+            '    <a class="btn btn-primary "href="#popup<%= i.id %>">상세보기</a>',
+            '</div>',
+            '<div id="popup<%= i.id %>" class="overlay">',
+            '	<div class="popup">',
+            '		<h2>Info box</h2>',
+            '		<a class="close" href="#">&times;</a>',
+            '		<div class="content">',
+            '			<p>This is done totally without JavaScript. Just HTML and CSS.</p>',
+            '		</div>',
+            '	</div>',
+            '</div>',
         ].join('');
-    
+        
         infowindow[<%= i.id %>] = new naver.maps.InfoWindow({
-            content: contentString[<%= i.id %>] + modals[<%= i.id %>]
+            content: contentString[<%= i.id %>]
         });
     
         naver.maps.Event.addListener(marker[<%= i.id %>], "click", function(e) {
@@ -214,11 +193,13 @@
                 map.setCenter(games[<%= i.id %>]);
             }
         });
-        
+       
     <% end %>
-
+     
+    
+     
 // GPS이용하기
-    // HTML5의 geolocation으로 사용할 수 있는지 확인합니다 
+    // HTML5의 geolocation으로 사용할 수 있는지 확인합니다  x
     function getLocation() {
         if (navigator.geolocation) {
             
@@ -232,6 +213,7 @@
                     message = '<div style="padding:5px;">여기에 계신가요?!</div>'; // 인포윈도우에 표시될 내용입니다
                 
                 // 마커와 인포윈도우를 표시합니다
+                
                 displayMarker(locPosition, message);
               });
         } else { // HTML5의 GeoLocation을 사용할 수 없을때 마커 표시 위치와 인포윈도우 내용을 설정합니다
@@ -268,16 +250,12 @@
         });
         
         // 인포윈도우를 마커위에 표시합니다 
-        if (geoinfowindow.getMap()) {
-            geoinfowindow.close();
-        } else {
-            geoinfowindow.open(map, gpsMarker);
-            map.setCenter(locPosition);
-        }
-        
-        // geoinfowindow.open(map, gpsMarker);
+        geoinfowindow.open(map, gpsMarker);
         
         // 지도 중심좌표를 접속위치로 변경합니다
-        // map.setCenter(locPosition);      
+        map.setCenter(locPosition);      
     }    
+
+   
+  // });
 </script>

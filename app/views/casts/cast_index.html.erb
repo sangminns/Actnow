@@ -7,54 +7,54 @@
         <br><br><br>
         
         <div class="row">
-            <% @casts.each do |cast| %>
+            <% @casts.each do |i| %>
                 <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                     <div class="card" style="border-style: solid; width: 100%;">
-                        <%= image_tag(cast.cast_image_url.thumb2.url) %>
+                        <%= image_tag(i.cast_image_url.thumb2.url) %>
                         <%#= link_to image_tag(cast.cast_image_url.thumb2.url), cast_path(cast.id) %>
                         <!--image_tag("/icons/icon.gif", height: '32', width: '32')-->
                         <br>
                         <%#= cast.id %>
                         <div class="card-block">
-                           <h4 class="card-title"><%= cast.castTitle %></h4>
+                           <h4 class="card-title"><%= i.castTitle %></h4>
                            
                         </div>
                         <%#= image_tag cast.cast_image_url.thumb.url %>
                         
                         <%#= link_to '보기', cast_path(cast.id) %> 
                         <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModalLong">
-                              캐스트 보기
-                            </button>
+                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModalLong">
+                          캐스트 보기
+                        </button>
                             
                             <!-- Modal -->
-                            <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-                              <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                  <div class="modal-header">
-                                    <h2 class="modal-title" id="exampleModalLongTitle"><%= cast.castTitle %></h2>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                      <span aria-hidden="true">&times;</span>
-                                    </button>
-                                  </div>
-                                      <div class="modal-body">
-                                        <%#= cast.id %>
-                                        <p>
-                                        <%#= cast.castTitle %>
-                                        </p>
-                                        <P>
-                                        <%= cast.castContent %> 
-                                        </P><br>
-                                        <!--<img src='<%#= @cast.cast_image_url %>'>-->
-                                        <%= image_tag cast.cast_image_url.url %>
-                                        <br>
-                                      </div>
-                                  <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                  </div>
-                                </div>
+                        <div class="modal fade" id="exampleModalLong" tabindex="1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h2 class="modal-title" id="exampleModalLongTitle"><%= i.castTitle %></h2>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
                               </div>
-                            </div>    
+                              <div class="modal-body">
+                                <%= i.id %>
+                                <p>
+                                <%= i.castTitle %>
+                                </p>
+                                <P>
+                                <%= i.castContent %> 
+                                </P><br>
+                                <!--<img src='<%#= @cast.cast_image_url %>'>-->
+                                <%= image_tag i.cast_image_url.url %>
+                                <br>
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>    
                     </div>
                 </div>
             <% end %>

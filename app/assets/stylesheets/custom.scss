@@ -129,7 +129,7 @@
 
 header {
     top: -50px;
-    height: 950px;
+    height: 900px;
     font-family: 'Hanna', serif;
     // background-image: url("background_yoga1.jpg");
     // background-size: cover;
@@ -143,7 +143,7 @@ header {
 
 
 header h2, header p {
-    color: #595958;
+    color: white;
 }
 
 header h3,header h5 {
@@ -178,18 +178,34 @@ header img {
 }
 
 .w3-animate-fading{
-  animation:fading 7s infinite}@keyframes fading{0%{opacity:0}50%{opacity:1}100%{opacity:0}
+  animation:fading 7s infinite
+}
+  
+@keyframes fading {
+  0%{opacity: 0.3}15%{opacity: 0.99}80%{opacity: 0.99}100%{opacity: 0.1}
 }
 
+.w3-animate-top{position:relative;animation:animatetop 3s}@keyframes animatetop{from{top:-400px;opacity:0.1} to{top:0;opacity:1}}
+.w3-animate-left{position:relative;animation:animateleft 3s}@keyframes animateleft{from{left:-400px;opacity:0.1} to{left:0;opacity:1}}
+.w3-animate-right {position:relative;animation:animateright 3s}@keyframes animateright{from{right:-400px;opacity:0.1} to{right:0;opacity:1}}
+.w3-animate-bottom{position:relative;animation:animatebottom 3s}@keyframes animatebottom{from{bottom:-400px;opacity:0.1} to{bottom:0;opacity:1}}
+
 .w3-content .w3-section img {
+  
   position: relative;
-  z-index: 2;
+  z-index: -1;
   
 }
 
 .over_slideshow {
+  background-color: rgba(0, 0, 0, 0.1);
+  border-spacing: 10px 50px;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  color: white;
   position: relative;
-  z-index: 1;
+  z-index: 0;
+  opacity: 1;
 }
 
 
@@ -208,6 +224,8 @@ header img {
 
 // ------- section cast에 해당하는 css ------------------
 #cast {
+    position : relative;
+    z-index: -1;
     font-family: 'Concert One', cursive;
     background-color: white;
     border-top: solid;
@@ -274,4 +292,75 @@ footer p{
     color: red;
 }
 
+//modal
 
+.overlay {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0,0,0,0.5);
+	transition: opacity 200ms;
+  visibility: hidden;
+	opacity: 0;
+	z-index: 1000;
+	&.light {
+    background: rgba(255,255,255,0.5);
+  }
+  .cancel {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    cursor: default;
+  }
+  &:target {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+.popup {
+	margin: 75px auto;
+	padding: 250px;
+	background: #fff;
+	border: 1px solid #666;
+	width: 700px;
+	box-shadow: 0 0 50px rgba(0,0,0,0.5);
+	position: relative;
+  .light & {
+    border-color: #aaa;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.25);
+  }
+  h2 {
+    margin-top: 0;
+    color: #666;
+    font-family: "Trebuchet MS", Tahoma, Arial, sans-serif;
+  }
+  .close {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 20px;
+    right: 20px;
+    opacity: 0.8;
+    transition: all 200ms;
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #666;
+    &:hover {
+      opacity: 1;
+    }
+  }
+  .content {
+    max-height: 400px;
+    overflow: auto;
+  }
+  p {
+    margin: 0 0 1em;
+    &:last-child {
+      margin: 0;
+    }
+  }
+}
