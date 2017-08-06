@@ -26,6 +26,19 @@ Rails.application.routes.draw do
   delete '/casts/:id' => 'casts#cast_destroy' 
   
   
+  #---club 해당 routes---------------------------------
+    
+  get '/clubs' => 'clubs#index' 
+  post '/clubs' => 'clubs#create' 
+  get '/clubs/new' => 'clubs#new' 
+ 
+  get '/clubs/:id/edit' => 'clubs#edit', as: "edit_club" 
+  get '/clubs/:id' => 'clubs#show', as: "club" 
+
+  patch '/clubs/:id' => 'clubs#update' 
+
+  delete '/clubs/:id' => 'clubs#destroy' 
+  
   
   
 

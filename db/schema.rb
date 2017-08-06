@@ -11,7 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170721160501) do
+ActiveRecord::Schema.define(version: 20170806130234) do
+
+  create_table "applies", force: :cascade do |t|
+    t.integer  "club_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "casts", force: :cascade do |t|
     t.string   "castTitle"
@@ -22,15 +29,34 @@ ActiveRecord::Schema.define(version: 20170721160501) do
     t.datetime "updated_at",                   null: false
   end
 
+  create_table "clubs", force: :cascade do |t|
+    t.string   "clubTitle"
+    t.text     "clubContent"
+    t.string   "clubGame"
+    t.string   "clubRegion"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
   create_table "infos", force: :cascade do |t|
-    t.string   "name"
+    t.string   "infoTitle"
     t.string   "address"
     t.string   "region"
     t.string   "game"
+    t.string   "info_image_url"
     t.float    "location_lat"
     t.float    "location_lng"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  create_table "modalinfos", force: :cascade do |t|
+    t.integer  "info_id"
+    t.string   "modalTitle"
+    t.string   "modalContent"
+    t.string   "modal_image_url"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
   create_table "users", force: :cascade do |t|

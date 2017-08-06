@@ -11,7 +11,7 @@
         
             종목 : 
             <%= select_tag(:game, options_for_select([
-            ['볼링'], ['탁구'], ['골프'], ['야구'], ['요가']
+            ['볼링'], ['탁구'], ['골프'], ['야구'], ['요가'], ['서핑']
             ])) %>
             
             지역 :
@@ -32,8 +32,19 @@
                 <input id="submit" type="button" value="주소 검색">
         </div>
         
-        <div id="map"></div>
-
+        <div id="map">
+            <% @storeInfo.each do |i| %>
+                <div id="popup<%= i.id %>" class="overlay">
+                	<div class="popup">
+                		<h2>Info box</h2>
+                		<a class="close cancel" href="#">&times;</a>
+                		<div class="content">
+                			<p>This is done totally without JavaScript. Just HTML and CSS.</p>
+                		</div>
+                	</div>
+                </div>
+            <% end %>
+        </div>
     </section>
     
     <!-- 이벤트 섹션-->
@@ -62,7 +73,7 @@
     <section id="cast">
         <hr>
         <h1>Cast</h1><br>
-        <div class="row">
+        <div class="row" style="z-index: 1;">
             <% @casts.sample(4).each do |k| %>
                 <div class="section-cast col-xs-6 col-sm-6 col-md-3 col-lg-3">
                     <div class="card" >
@@ -88,11 +99,7 @@
     <p>Copyright &copy; Likelion 2017</p>
 </footer>
 
-<div id="myModal"></div>
-
-<script type="text/javascript">
-
-   // $(".mapModals").on('shown.bs.modal', function() {
+<script>
 
     var seoulCenter = new naver.maps.LatLng(37.5665350, 126.9779690); //서울 시청 좌표값(서울 한가운데)
 // 지도 기본 위치
@@ -110,11 +117,11 @@
         }
     });
     
-// GPS
-    // GPS 이미지 파일 넣는 곳 /https://pbs.twimg.com/profile_images/565254803643592704/KaVxRt4p.png
-    var locationBtnHtml = '<img src="<%= image_url('gps.png') %>" style="width: 40px; margin: 5px; border: groove" onclick="getLocation()">';
+    // GPS 이미지 파일 넣는 곳
+    var locationBtnHtml = '<img src="<%= image_url('gps.png') %>" class="gpsImg" onclick="getLocation()">';
     var customControl = new naver.maps.CustomControl(locationBtnHtml, {
-        position: naver.maps.Position.TOP_LEFT
+        position: naver.maps.Position.TOP_LEFT,
+        zIndex: 1
     });
     customControl.setMap(map);
     
@@ -123,7 +130,6 @@
     var marker = new Array();
     var contentString = new Array();
     var infowindow = new Array();
-    //var modals = new Array();
    
     <% @storeInfo.each do |i| %>
         games[<%= i.id %>] = new naver.maps.LatLng(<%= i.location_lat %>, <%= i.location_lng %>);
@@ -131,7 +137,7 @@
         var markerOptions = {
             position: games[<%= i.id %>],
             map: map,
-            zIndex: 100,
+            zIndex: 1,
             icon: {
                 //마커 url, 마커 이미지 url
                 <% if i.game == '볼링' %>
@@ -146,39 +152,30 @@
                     url: '<%= image_url("swimming.png") %>', 
                 <% elsif i.game == '농구' %>
                     url: '<%= image_url("basketball.png") %>', 
+                <% elsif i.game == '서핑' %>
+                    url: '<%= image_url("surfing.png") %>', 
                 <% end %>
                 size: new naver.maps.Size(30,38),// 마커 사이즈
                 scaledSize: new naver.maps.Size(30,38),
                 origin: new naver.maps.Point(0, 0), // origin 기본값 (0, 0)
-                anchor: new naver.maps.Point(13, 35) // anchor속성은 이미지의 중앙 하단 포인터를 기본값으로 설정
+                anchor: new naver.maps.Point(14, 35) // anchor속성은 이미지의 중앙 하단 포인터를 기본값으로 설정
                 
             }     
         };
         
         marker[<%= i.id %>] = new naver.maps.Marker(markerOptions);
-        
-        //modals[<%#= i.id %>] = '<button class="myBtn" id="modal-open<%= i.id %>">Open Modal</button>';
             
         // 마커 안에 정보 넣기 
         // db에 있는 정보 불러내기 아직 구현 못함
         contentString[<%= i.id %>] = [
             '<div class="iw_inner">',
-            '   <h4><%= i.name %></h4>',
+            '   <h4><%= i.infoTitle %></h4>',
             '   <p><%= i.region %> | <%= i.address %><br>',
             '       <img src= "<%#= i.image_url %>" width="20" height="20" class="thumb" /><br>',
             '       <%= i.game %> &gt; 특별, 광역시청<br>',
             '   </p>',
             '    <a class="btn btn-primary "href="#popup<%= i.id %>">상세보기</a>',
-            '</div>',
-            '<div id="popup<%= i.id %>" class="overlay">',
-            '	<div class="popup">',
-            '		<h2>Info box</h2>',
-            '		<a class="close" href="#">&times;</a>',
-            '		<div class="content">',
-            '			<p>This is done totally without JavaScript. Just HTML and CSS.</p>',
-            '		</div>',
-            '	</div>',
-            '</div>',
+            '</div>'
         ].join('');
         
         infowindow[<%= i.id %>] = new naver.maps.InfoWindow({
@@ -194,11 +191,13 @@
             }
         });
        
+        // $('.close').click(function(e){
+        //     e.preventDefault();
+        // })
+       
     <% end %>
-     
-    
-     
-// GPS이용하기
+ 
+    // GPS이용하기
     // HTML5의 geolocation으로 사용할 수 있는지 확인합니다  x
     function getLocation() {
         if (navigator.geolocation) {
@@ -215,6 +214,7 @@
                 // 마커와 인포윈도우를 표시합니다
                 
                 displayMarker(locPosition, message);
+        
               });
         } else { // HTML5의 GeoLocation을 사용할 수 없을때 마커 표시 위치와 인포윈도우 내용을 설정합니다
         
@@ -226,7 +226,7 @@
     }
     // 지도에 마커와 인포윈도우를 표시하는 함수입니다
     function displayMarker(locPosition, message) {
-
+    
         // 마커를 생성합니다
         var gpsMarker = new naver.maps.Marker({  
             map: map, 
@@ -255,7 +255,10 @@
         // 지도 중심좌표를 접속위치로 변경합니다
         map.setCenter(locPosition);      
     }    
-
-   
-  // });
+    
+    
+    // $(".mapModals").on('shown.bs.modal', function() {
+     
+    
+    // });
 </script>

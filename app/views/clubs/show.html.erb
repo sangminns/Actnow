@@ -1,0 +1,22 @@
+
+<%= @club.id %>
+<p>
+<%= @club.clubTitle %>
+</p>
+<P>
+<%= @club.clubContent %> 
+</P>
+<%= @club.clubGame %> 
+<%= @club.clubRegion %> 
+
+
+
+<a id="btn-apply" class="btn btn-secondary apply-status-none btn-complete ml-2 ml-md-3 ml-lg-4" data-remote="true" rel="nofollow" data-method="post" href="/clubs/3/applies">
+<i id="apply-status" class="fa fa-pencil-square-o" aria-hidden="true"></i>&emsp;<span id="apply-status-text">가입 요청</span>
+</a>
+
+<%= link_to '수정', edit_club_path(@club.id) %> / 
+<%= link_to '삭제', club_path(@club.id) , method: 'delete', data: {confirm: "정말 삭제하실 건가요?"} %> 
+<br>
+<%= link_to "Back", :back %>
+

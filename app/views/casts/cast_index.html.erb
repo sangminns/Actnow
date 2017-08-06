@@ -23,12 +23,12 @@
                         
                         <%#= link_to '보기', cast_path(cast.id) %> 
                         <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModalLong">
+                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#castModal<%= i.id %>">
                           캐스트 보기
                         </button>
                             
                             <!-- Modal -->
-                        <div class="modal fade" id="exampleModalLong" tabindex="1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                        <div class="modal fade" id="castModal<%= i.id %>" tabindex="1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
                           <div class="modal-dialog" role="document">
                             <div class="modal-content">
                               <div class="modal-header">

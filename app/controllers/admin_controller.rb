@@ -11,7 +11,7 @@ class AdminController < ApplicationController
   def create
     
     newStore = Info.new
-    newStore.name = params[:name]
+    newStore.infoTitle = params[:infoTitle]
     newStore.game = params[:game]
     newStore.region = params[:region]
     newStore.address = params[:address]

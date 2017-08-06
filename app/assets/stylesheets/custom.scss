@@ -4,8 +4,6 @@
 @import url(https://fonts.googleapis.com/earlyaccess/hanna.css);
 // 슬라이드 쇼 - https://v4-alpha.getbootstrap.com/components/carousel/
 
-
-
 .navbar-default {
     font-family: 'Concert One' , cursive;
     background-color: transparent;
@@ -193,7 +191,7 @@ header img {
 .w3-content .w3-section img {
   
   position: relative;
-  z-index: -1;
+  // z-index: -1;
   
 }
 
@@ -204,7 +202,7 @@ header img {
   border-radius: 10px;
   color: white;
   position: relative;
-  z-index: 0;
+  // z-index: 0;
   opacity: 1;
 }
 
@@ -224,8 +222,6 @@ header img {
 
 // ------- section cast에 해당하는 css ------------------
 #cast {
-    position : relative;
-    z-index: -1;
     font-family: 'Concert One', cursive;
     background-color: white;
     border-top: solid;
@@ -241,8 +237,10 @@ header img {
 }
 
 #cast .card img{
-    width: 100%;
-    padding: 0px;
+  position: relative;
+  width: 100%;
+  padding: 0px;
+  z-index: 1;
 }
 
 
@@ -292,6 +290,12 @@ footer p{
     color: red;
 }
 
+.gpsImg {
+  width: 40px;
+  margin: 5px; 
+  border: groove;
+}
+
 //modal
 
 .overlay {
@@ -304,7 +308,7 @@ footer p{
 	transition: opacity 200ms;
   visibility: hidden;
 	opacity: 0;
-	z-index: 1000;
+	z-index: 101;
 	&.light {
     background: rgba(255,255,255,0.5);
   }
