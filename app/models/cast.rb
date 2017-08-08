@@ -1,4 +1,6 @@
 class Cast < ActiveRecord::Base
-    mount_uploader :cast_image_url, UpcastUploader
+
+    has_many :cast_attachments
+    accepts_nested_attributes_for :cast_attachments
     
 end

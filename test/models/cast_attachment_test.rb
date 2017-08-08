@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class ModalinfoTest < ActiveSupport::TestCase
+class CastAttachmentTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

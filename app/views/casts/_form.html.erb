@@ -1,0 +1,22 @@
+<%= form_for(@cast, :html => { :multipart => true }) do |f| %>
+   <div class="field">
+     <%= f.label :castTitle %><br>
+     <%= f.text_field :castTitle %>
+   </div>
+   
+   <div class="field">
+     <%= f.label :castContent %><br>
+     <%= f.text_field :castContent %>
+   </div>
+
+  <%= f.fields_for :cast_attachments do |p| %>
+    <div class="field">
+      <%= p.label :upcast %><br>
+      <%= p.file_field :upcast, :multiple => true, name: "cast_attachments[upcast][]" %>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

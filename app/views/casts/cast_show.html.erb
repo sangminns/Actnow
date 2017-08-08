@@ -1,18 +1,34 @@
 
 
-<%= @cast.id %>
+<%#= @cast.id %>
 <p>
-<%= @cast.castTitle %>
+<%#= @cast.castTitle %>
 </p>
 <P>
-<%= @cast.castContent %> 
+<%#= @cast.castContent %> 
 </P><br>
 <!--<img src='<%#= @cast.cast_image_url %>'>-->
-<%= image_tag @cast.cast_image_url.url %>
+<%#= image_tag @cast.cast_image_url.url %>
+<%#= image_tag @cast.cast_image_url.url %>
 <br>
 
-<%= link_to '수정', edit_cast_path(@cast.id) %> / 
-<%= link_to '삭제', cast_path(@cast.id) , method: 'delete', data: {confirm: "정말 삭제하실 건가요?"} %> 
+<%#= link_to '수정', edit_cast_path(@cast.id) %> / 
+<%#= link_to '삭제', cast_path(@cast.id) , method: 'delete', data: {confirm: "정말 삭제하실 건가요?"} %> 
 <br>
-<%= link_to "Back", :back %>
+<%#= link_to "Back", :back %>
 
+
+ 
+<p>
+ 
+  <%= @cast.castTitle %>
+  <%= @cast.castContent %>
+</p>
+
+<% @cast_attachments.each do |p| %>
+  <%= image_tag p.upcast %>
+  <%#= link_to "Edit Attachment", edit_cast_attachment_path(p) %>
+<% end %>
+
+<%= link_to 'Edit', edit_cast_path(@cast) %> |
+<%= link_to 'Back', casts_path %>

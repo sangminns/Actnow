@@ -1,3 +1,6 @@
 class Info < ActiveRecord::Base
-    has_one :modalinfo
+    has_many :comments
+    mount_uploader :info_image_url, UpcastUploader
+    
+    ratyrate_rateable 'infostar'
 end

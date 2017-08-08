@@ -4,8 +4,8 @@ class CreateCasts < ActiveRecord::Migration
       
       t.string :castTitle
       t.text :castContent
-      t.string :cast_image_url, default: " "
-      t.string :casts
+      # t.string :cast_image_url, array: true, default: []
+      # t.string :casts
       # t.integer :user_id
       
       t.timestamps null: false

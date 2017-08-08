@@ -1,7 +1,7 @@
 <h2>관리자 페이지 - 데이터 추가</h2>
 <a href="/">Home으로 돌아가기</a><hr>
 
-<%= form_tag('/admin/create', method: 'get') do %>
+<%= form_tag('/admin/create', method: 'post', multipart: true) do %>
 
     가게 이름 : 
     <%= text_field_tag(:infoTitle) %><br>
@@ -21,31 +21,14 @@
     ])) %><br>
     
     
-    <%= text_field_tag(:address) %><br>
+    가게 주소(자동 좌표 변환) : <%= text_field_tag(:address) %><br>
 
-    가게 위도(latitude)(float타입으로 입력) :
-    <%= text_field_tag(:location_lat, id: 'location_lat') %><br>
-    가게 경도(longitude)(float타입으로 입력) : 
-    <%= text_field_tag(:location_lng, id: 'location_lng') %><br>
+    대표 사진 등록
+    <%= file_field_tag :info_image_url %>
     
     <%= submit_tag('데이터 생성') %>
 <% end %>
 <hr>
-
-<!-- 
-가게 상세 주소 : 
-<form action="geocoding" method="GET">
-    <input type="text" name="location_change" >
-    <input type="submit" value="좌표변환">
-</form>
-<hr>
--->
-
-<!-- 아 어렵네.. 이건 좀 나중에 진행해야될 듯 싶다..여기서 막혀있는거 같음.. -->
-가게 상세 주소 : 
-<input type="text" name="location_change" id="location_change"><br>
-<input type="hidden" name="locate_name" id="locate_name" value="<%=@location%>">
-<button class="location_submit" type="submit" name="action">좌표변환</button><br>
 
 <h4><%= @location %></h4>
 
@@ -57,32 +40,6 @@
     주소 : <%= i.address %><br>
     위도 : <%= i.location_lat %><br>
     경도 : <%= i.location_lng %><br>
+    사진 : <%= image_tag i.info_image_url.thumb1.url %><br>
     <a href="/destroy/<%= i.id %>">[삭제]</a><hr> 
 <% end %>
-
-<script>
-$(function() { 
-    $(".location_submit").click(function() { 
-        locate = $("#location_change").val();
-        locate2 = $("#locate_name").val();
-        alert(locate);
-        // postContent = $("#comment_" + postId).val();
-        // postUser = $("#user_" + postId).text();
-        // destroyId = $("#commentDestroy").val(); //<#%= c.id %>
-        $.ajax({
-          method: "POST",
-          url: "/admin/geocoding",
-          data: { location_change: locate },
-            success: function() {
-               alert( "좌표가 작성되었습니다.");
-                // $("#reply_" + postId).append(postUser);
-                $("#location_lat").val(locate);
-                $("#location_lng").val(locate2);
-            },
-            error: function() {
-                alert( "좌표가 작성되지 않았습니다.");
-            }
-        })
-    });
-});    
-</script>

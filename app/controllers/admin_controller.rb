@@ -3,30 +3,23 @@ require 'geocoder'
 class AdminController < ApplicationController
     
   def new_create
-    @storeInfo = Info.all
+    @storeInfo = Info.all.reverse
   
-    # @locate = [@location[0], @location[1]]
   end
   
   def create
     
-    newStore = Info.new
-    newStore.infoTitle = params[:infoTitle]
-    newStore.game = params[:game]
-    newStore.region = params[:region]
-    newStore.address = params[:address]
-    newStore.location_lat = params[:location_lat]
-    newStore.location_lng = params[:location_lng]
-    newStore.save
-    
-    redirect_to :back
-  end
+    newInfo = Info.new
+    newInfo.infoTitle = params[:infoTitle]
+    newInfo.game = params[:game]
+    newInfo.region = params[:region]
+    newInfo.address = params[:address]
+    @locate_change = Geocoder.coordinates(params[:address])
+    newInfo.location_lat = @locate_change[0]
+    newInfo.location_lng = @locate_change[1]
+    newInfo.info_image_url = params[:info_image_url]
+    newInfo.save
   
-  def geocoding
-    @locate = params[:location_change]
-    @location = Geocoder.coordinates(@locate)
-    
-   
     redirect_to :back
   end
   

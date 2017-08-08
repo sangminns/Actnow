@@ -1,15 +1,19 @@
 Rails.application.routes.draw do
   
+  post '/rate' => 'rater#create', :as => 'rate'
+  
   devise_for :users
   
   root 'home#index'
   
   get 'admin/new_create'
-  get 'admin/create'
+  post 'admin/create'
   get 'destroy/:info_id' => 'admin#destroy'
   
-  post 'admin/geocoding' => 'admin#geocoding'
+  #---comment 해당 routes---------------------------------
   
+  post 'comment' => 'comment#comment_create'
+  get 'comment_destroy/:comment_id' => 'comment#comment_destroy'
   
   #---cast 해당 routes---------------------------------
   

@@ -15,20 +15,30 @@
 <!--    <%# end %>-->
 <!--</div>-->
 
-<div class="panel-body cast-body">
-    <%= form_tag casts_path, method: 'post', enctype: "multipart/form-data" do %> <!-- , enctype: "multipart/form-data" -->
-        <div class="form-group">
-            <%= text_field_tag 'castTitle' %>
-        </div>
-        <div class="form-group">
-            <%= text_area_tag 'castContent' %>
-        </div>
-        <div class="form-group">
-            <%= file_field_tag 'castImage', multiple: true %> <!-- ,accept: "image/*" -->
-            
-        </div>
+<!--<div class="panel-body cast-body">-->
+<!--    <%#= form_tag casts_path, method: 'post', enctype: "multipart/form-data" do %> <!-- , enctype: "multipart/form-data" -->-->
+<!--        <div class="form-group">-->
+<!--            <%#= text_field_tag 'castTitle' %>-->
+<!--        </div>-->
+<!--        <div class="form-group">-->
+<!--            <%#= text_area_tag 'castContent' %>-->
+<!--        </div>-->
+<!--        <div class="form-group">-->
+<!--            <%#= file_field_tag :cast_attachments do |p| %>-->
+            <!-- ,accept: "image/*" -->
+<!--                <div class="field">-->
+<!--                    <%#= p.file_field :castImage, :multiple => true, name: "cast_attachments[]" %>-->
+<!--                </div>-->
+<!--            <#% end %>-->
+<!--        </div>-->
         <%#= form.file_field :model_names, multiple: true %>
         <!--<input type="file" name="inputImage" accept="image/*">-->
-        <%= submit_tag 'submit!' %>
-    <% end %>
-</div>
+<!--        <%#= submit_tag 'submit!' %>-->
+<!--    <%# end %>-->
+<!--</div>-->
+
+<h1>New cast</h1>
+
+<%= render 'form' %>
+
+<%= link_to 'Back', casts_path %>
