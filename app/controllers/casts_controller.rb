@@ -1,10 +1,12 @@
-# params.require(:cast).permit(:castTitle, :castContent,{cast_imgae_url: []})
-
 class CastsController < ApplicationController
-   before_action :set_cast, only: [:cast_show, :cast_edit, :cast_update, :cast_destroy]
+   before_action :set_cast, only: [ :cast_show, :cast_edit, :cast_update, :cast_destroy]
   
   def cast_index
     @casts = Cast.all
+    @cast_attachment = CastAttachment.all
+    
+    # @casts_attachment = @casts.id.cast_attachments.all
+    # @cast_attachments = @cast.cast_attachments.all
   end
 
   def cast_new
@@ -85,8 +87,7 @@ class CastsController < ApplicationController
   end
 
   def cast_destroy
-    
-    @post.destroy
+    @cast.destroy
     redirect_to '/casts'
   end
   
@@ -100,4 +101,8 @@ class CastsController < ApplicationController
     def cast_params
       params.require(:cast).permit(:castTitle, :castContent)
     end
+    
+    # def cast_attachment_params
+    #   params.require(:cast_attachment).permit(:cast_id, :upcast)
+    # end
 end

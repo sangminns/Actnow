@@ -44,7 +44,12 @@
                     <div role="tabpanel" class="tab-pane active" id="info<%= i.id%>">...</div>
                     <div role="tabpanel" class="tab-pane" id="review<%= i.id%>">
                         <h6>별점</h6>
-                        <%= rating_for i, 'infostar' %>
+                        <%# if current_user %>
+                            <%= imdb_style_rating_for i, current_user%>
+                            <%= rating_for i, 'all'%>
+                            <%= rating_for i, "all", path: 'star_icons' %>
+                        <%# end %>
+                        <hr>
                         <h6>댓글</h6>  
                         <input class="validate" type="text" name="comment" id="comment_<%= i.id%>"><br><br>
                         <button value="<%= i.id %>" style="text-align: center" class="btn reply_submit">
@@ -53,7 +58,7 @@
                         <hr>
                         <div id="commentshow_<%= i.id %>">
                             <% i.comments.each do |c| %>
-                               <span id="user_<%= i.id%>"><%= current_user.email %></span>  : 
+                               <span id="user_<%= i.id%>"><%#= current_user.email %></span>  : 
                                <%= c.comment %>
                                <a href="/comment_destroy/<%= c.id %>">[댓글삭제]</a><br>
                                <input id="commentDestroy" type="hidden" value="<%=c.id %>">
@@ -222,29 +227,29 @@
     }    
     
 //댓글 작성
-$(function() { 
-    $(".reply_submit").click(function() { 
-        modalInfoId = this.value;
-        modalComment = $("#comment_" + modalInfoId).val();
-        userName = $("#user_" + modalInfoId).text();
-        destroyId = $("#commentDestroy").val(); //<#%= c.id %>
-        
-        $.ajax({
-          method: "POST",
-          url: "/comment",
-          data: { info_id: modalInfoId, comment: modalComment, current_user: userName},
-            success: function() {
-                alert( "댓글이 작성되었습니다.");
-                $("#commentshow_" + modalInfoId).append(userName +  " : " + modalComment + "<a href=/comment_destroy/"+ destroyId + ">[댓글삭제]</a>" + "<br>");
-                $("#comment_" + modalInfoId).val('');
-            },
-            error: function() {
-                alert( "댓글이 작성되지 않았습니다. 로그인을 해주세요");
-            } 
-        })
-        //   .done(function( msg ) {
-        //     alert( "댓글이 작성되었습니다.");
-        //   });
-    });
-});   
+    $(function() { 
+        $(".reply_submit").click(function() { 
+            modalInfoId = this.value;
+            modalComment = $("#comment_" + modalInfoId).val();
+            userName = $("#user_" + modalInfoId).text();
+            destroyId = $("#commentDestroy").val(); //<#%= c.id %>
+            
+            $.ajax({
+              method: "POST",
+              url: "/comment",
+              data: { info_id: modalInfoId, comment: modalComment, current_user: userName},
+                success: function() {
+                    alert( "댓글이 작성되었습니다.");
+                    $("#commentshow_" + modalInfoId).append(userName +  " : " + modalComment + "<a href=/comment_destroy/"+ destroyId + ">[댓글삭제]</a>" + "<br>");
+                    $("#comment_" + modalInfoId).val('');
+                },
+                error: function() {
+                    alert( "댓글이 작성되지 않았습니다. 로그인을 해주세요");
+                } 
+            })
+            //   .done(function( msg ) {
+            //     alert( "댓글이 작성되었습니다.");
+            //   });
+        });
+    });   
 </script>
