@@ -1,5 +1,6 @@
 <h2>클럽 소개</h2>
 <% @clubs.each do |i| %>
+    대표 : <%= i.clubUser %><br>
     이름 : <%= i.clubTitle %><br>
     소개 : <%= i.clubContent %><br>
     종목 : <%= i.clubGame %><br>

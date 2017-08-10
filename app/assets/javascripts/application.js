@@ -14,6 +14,7 @@
 //= require bootstrap-sprockets
 //= require jquery_ujs
 //= require custom
-//= require_tree .
 //= require jquery.raty
 //= require ratyrate
+//= require_tree .
+

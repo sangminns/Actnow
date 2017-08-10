@@ -1,7 +1,8 @@
 class CreateClubs < ActiveRecord::Migration
   def change
     create_table :clubs do |t|
-
+      
+      t.string :clubUser
       t.string :clubTitle
       t.text :clubContent
       t.string :clubGame

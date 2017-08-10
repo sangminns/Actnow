@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 20170808063929) do
   end
 
   create_table "clubs", force: :cascade do |t|
+    t.string   "clubUser"
     t.string   "clubTitle"
     t.text     "clubContent"
     t.string   "clubGame"
@@ -54,6 +55,7 @@ ActiveRecord::Schema.define(version: 20170808063929) do
 
   create_table "comments", force: :cascade do |t|
     t.text     "comment"
+    t.string   "userName"
     t.integer  "user_id"
     t.integer  "info_id"
     t.datetime "created_at", null: false

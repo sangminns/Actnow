@@ -2,7 +2,7 @@ class CommentController < ApplicationController
   def comment_create
     @comment = Comment.new(info_id: params[:info_id],
                             comment: params[:comment],
-                            user: current_user)
+                            userName: current_user.email)
     @comment.save
         
     redirect_to :back
