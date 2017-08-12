@@ -18,6 +18,7 @@ class ClubsController < ApplicationController
       @user = current_user.email
       
       @makeClub = Club.new
+      @makeClub.user_id = current_user.id
       @makeClub.clubUser = @user
       @makeClub.clubTitle = params[:clubTitle]
       @makeClub.clubContent = params[:clubContent]
@@ -60,16 +61,22 @@ class ClubsController < ApplicationController
   end
   
   def apply_create
+    @club = Club.find(params[:id])
     @users = current_user.id
     
     @clubs = []
+    
+    
     Apply.where('user_id = ?', current_user.id).each do |c|
       @clubs << Club.find(c.club_id)
     end
-  
-    #@users.clubs << @clubs 
-    if current_user.club_addition(@users, params[:id])
+    
+    if @club.users.ids.include?(@users)
+      redirect_to :back
+    else
+      current_user.club_addition(@users, params[:id])
       redirect_to :back
     end
+    
   end
 end

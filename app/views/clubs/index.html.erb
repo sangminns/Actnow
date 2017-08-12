@@ -1,14 +1,22 @@
-<h2>클럽 소개</h2>
-<% @clubs.each do |i| %>
-    대표 : <%= i.clubUser %><br>
-    이름 : <%= i.clubTitle %><br>
-    소개 : <%= i.clubContent %><br>
-    종목 : <%= i.clubGame %><br>
-    지역 : <%= i.clubRegion %><br>
-    <%= link_to '보기', club_path(i.id) %> 
-    <hr>
+<div class="cast-body">
+    <div class="container">
+        <h2>클럽 소개</h2>
+        <% @clubs.each do |i| %>
+            대표 : <%= i.clubUser %><br>
+            이름 : <%= i.clubTitle %><br>
+            소개 : <%= i.clubContent %><br>
+            종목 : <%= i.clubGame %><br>
+            지역 : <%= i.clubRegion %><br>
+            <%= link_to '보기', club_path(i.id) %> 
+            <hr>
+            
+        <% end %>
+        <hr>
+        
+        
+        <%= link_to '새 글쓰기' , clubs_new_path  %><br>
+        <%= link_to 'Home', '/' %>
     
-<% end %>
+    </div>
+</div>
 
-<%= link_to '새 글쓰기' , clubs_new_path  %><br>
-<%= link_to 'Home', '/' %>

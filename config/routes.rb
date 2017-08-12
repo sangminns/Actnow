@@ -43,6 +43,12 @@ Rails.application.routes.draw do
 
   delete '/clubs/:id' => 'clubs#destroy' 
   
+  #----------------- my_page -----------------
+  
+  get '/my_page/:id' => 'my_page#show'
+  
+  
+  
   
   
 

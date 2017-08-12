@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   has_many :applies
   has_many :comments
   has_many :clubs, through: :applies
+  has_many :requests
   
   def club_addition(user_id, club_id)
     Apply.create(user_id: user_id, club_id: club_id)

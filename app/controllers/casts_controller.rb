@@ -38,7 +38,6 @@ class CastsController < ApplicationController
      render action: 'new' 
     end
       
-
     # params.require(:cast).permit(:castTitle, :castContent, {castImage: []})
       # @makeCast.castTitle = params[:castTitle]
       # @makeCast.castContent = params[:castContent]

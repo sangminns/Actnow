@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170808063929) do
+ActiveRecord::Schema.define(version: 20170811104641) do
 
   create_table "applies", force: :cascade do |t|
     t.integer  "club_id"
@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 20170808063929) do
   end
 
   create_table "clubs", force: :cascade do |t|
+    t.string   "user_id"
     t.string   "clubUser"
     t.string   "clubTitle"
     t.text     "clubContent"
@@ -58,6 +59,13 @@ ActiveRecord::Schema.define(version: 20170808063929) do
     t.string   "userName"
     t.integer  "user_id"
     t.integer  "info_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "info_attachments", force: :cascade do |t|
+    t.integer  "info_id"
+    t.string   "upcast"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -106,6 +114,13 @@ ActiveRecord::Schema.define(version: 20170808063929) do
   end
 
   add_index "rating_caches", ["cacheable_id", "cacheable_type"], name: "index_rating_caches_on_cacheable_id_and_cacheable_type"
+
+  create_table "requests", force: :cascade do |t|
+    t.string   "user_id"
+    t.string   "club_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
