@@ -1,28 +1,12 @@
-
-<%= form_tag('/find', method: 'get') do %>
-
-    종목 : 
-    <%= select_tag(:game, options_for_select([
-    ['볼링'], ['탁구'], ['골프'], ['야구'], ['요가'], ['서핑']
-    ])) %>
-    
-    지역 :
-    <%= select_tag(:region, options_for_select([
-    ['강남구'], ['강동구'], ['강북구'], ['강서구'], ['관악구'],
-    ['광진구'], ['구로구'], ['금천구'], ['노원구'], ['도봉구'],
-    ['동대문구'], ['동작구'], ['마포구'], ['서대문구'], ['서초구'],
-    ['성동구'], ['성북구'], ['송파구'], ['양천구'], ['영등포구'],
-    ['용산구'], ['은평구'], ['종로구'], ['중구'], ['중랑구']
-    ])) %>
-    
-    <%= submit_tag('찾기') %>
-
-<% end %>
-
-<div class="search">
-        <input id="address" type="text" placeholder="검색할 주소">
-        <input id="submit" type="button" value="주소 검색">
-</div>
+<img src="<%= image_url('all.png') %>" class="img-rounded" alt="Cinque Terre" height="100" id="searchAll">
+<img src="<%= image_url('basketball.png') %>" class="img-rounded" alt="Cinque Terre" height="100" id="searchBasketball">
+<img src="<%= image_url('pingpong.png') %>" class="img-rounded" alt="Cinque Terre" height="100" id="searchPingpong">
+<img src="<%= image_url('bowling.png') %>" class="img-rounded" alt="Cinque Terre" height="100" id="searchBowling">
+<img src="<%= image_url('surfing.png') %>" class="img-rounded" alt="Cinque Terre" height="100" id="searchSurfing">
+<img src="<%= image_url('yoga.png') %>" class="img-rounded" alt="Cinque Terre" height="100" id="searchYoga">
+<img src="<%= image_url('baseball.png') %>" class="img-rounded" alt="Cinque Terre" height="100" id="searchBaseball">
+<img src="<%= image_url('swimming.png') %>" class="img-rounded" alt="Cinque Terre" height="100" id="searchSwimming">
+<hr>
 
 <div id="map">
     <% @storeInfo.each do |i| %>
@@ -43,7 +27,7 @@
                   <div class="tab-content">
                     <div role="tabpanel" class="tab-pane active" id="info<%= i.id%>">
                         평점 : <%= rating_for i, 'average', disable_after_rate: true, imdb_avg: true %>
-                        <%#= imdb_style_rating_for i, 'average', disable_after_rate: true, imdb_avg: true %>
+                        <%= imdb_style_rating_for i, 'average', disable_after_rate: true, imdb_avg: true %>
                         <%= i.rates("average").count %>
                         <%#= imdb_style_rating_for i, current_user%>
                     </div>
@@ -146,7 +130,7 @@
         };
         
         marker[<%= i.id %>] = new naver.maps.Marker(markerOptions);
-            
+
         // 마커 안에 정보 넣기 
         // db에 있는 정보 불러내기 아직 구현 못함
         contentString[<%= i.id %>] = [
@@ -169,10 +153,65 @@
                 infowindow[<%= i.id %>].close();
             } else {
                 infowindow[<%= i.id %>].open(map, marker[<%= i.id %>]);
-                //map.setCenter(games[<%= i.id %>]);
+                //map.setCenter(games[<%#= i.id %>]);
             }
         });
        
+       //search game 
+        $( "#searchAll" ).click(function() {
+            marker[<%= i.id %>].setMap(null);
+            marker[<%= i.id %>].setMap(map);
+        });
+       
+        $( "#searchBowling" ).click(function() {
+            marker[<%= i.id %>].setMap(null);
+            <% @bowling.each do |e| %>
+                marker[<%= e.id %>].setMap(map);   
+            <% end %>
+        });
+        
+        $( "#searchBaseball" ).click(function() {
+            marker[<%= i.id %>].setMap(null);
+            <% @baseball.each do |e| %>
+                marker[<%= e.id %>].setMap(map);   
+            <% end %>
+        });
+        
+        $( "#searchBasketball" ).click(function() {
+            marker[<%= i.id %>].setMap(null);
+            <% @basketball.each do |e| %>
+                marker[<%= e.id %>].setMap(map);   
+            <% end %>
+        });
+        
+        $( "#searchPingpong" ).click(function() {
+            marker[<%= i.id %>].setMap(null);
+            <% @pingpong.each do |e| %>
+                marker[<%= e.id %>].setMap(map);   
+            <% end %>
+        });
+        
+        $( "#searchSwimming" ).click(function() {
+            marker[<%= i.id %>].setMap(null);
+            <% @swimming.each do |e| %>
+                marker[<%= e.id %>].setMap(map);   
+            <% end %>
+        });
+        
+        $( "#searchSurfing" ).click(function() {
+            marker[<%= i.id %>].setMap(null);
+            <% @surfing.each do |e| %>
+                marker[<%= e.id %>].setMap(map);   
+            <% end %>
+        });
+        
+        $( "#searchYoga" ).click(function() {
+            marker[<%= i.id %>].setMap(null);
+            <% @yoga.each do |e| %>
+                marker[<%= e.id %>].setMap(map);   
+            <% end %>
+        });
+        
     <% end %>
  
 // GPS이용하기
@@ -239,7 +278,7 @@
         $(".reply_submit").click(function() { 
             modalInfoId = this.value;
             modalComment = $("#comment_" + modalInfoId).val();
-            modalName = $("#user_" + modalInfoId).text();
+            modalName = $("#user_name").text();
             destroyId = $("#commentDestroy").val(); //<#%= c.id %>
             
             $.ajax({
@@ -256,5 +295,7 @@
                 } 
             })
         });
-    });   
+    });  
+    
+    
 </script>

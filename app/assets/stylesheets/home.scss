@@ -10,8 +10,8 @@ header {
     text-align: center;
 }
 
-#activity {
-    height: 200px;
+#upactivity {
+    height: auto;
     text-align: center;
     #map {
         width: 100%;
@@ -19,23 +19,27 @@ header {
     }
 }
 
-#event {
+#upclub {
     height: $eachHeight;
     text-align: center;
 }
 
-#client {
+#upevent {
     height: $eachHeight;
     text-align: center;
 }
 
-#event {
-    height: $eachHeight;
-    text-align: center;
+#upcast {
+   height: $eachHeight;
 }
 
-#cast {
-   
-    
+.scroll {
+    position: fixed;
+    right: 2%;
+    bottom: 2%;
+    z-index: 1;
 }
 
+.scroll a img {
+    width: 60px;
+}

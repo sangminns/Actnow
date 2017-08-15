@@ -6,9 +6,18 @@ Rails.application.routes.draw do
   
   root 'home#index'
   
-  get 'admin/new_create'
-  post 'admin/create'
-  get 'destroy/:info_id' => 'admin#destroy'
+  #---info 해당 routes-----------------------------
+   
+  get '/infos' => 'infos#info_index', as: "info"
+  post '/infos' => 'infos#info_create' 
+  get '/infos/info_new' => 'infos#info_new' 
+ 
+  get '/infos/:id/edit' => 'infos#info_edit', as: "edit_info" 
+  # get '/infos/:id' => 'infos#info_show', as: "info" 
+
+  patch '/infos.:id' => 'infos#info_update' 
+
+  get '/destroy/:id' => 'infos#info_destroy' 
   
   #---comment 해당 routes---------------------------------
   

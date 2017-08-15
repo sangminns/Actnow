@@ -1,0 +1,31 @@
+<%= form_for(@info, :html => { :multipart => true }) do |f| %>
+    가게 이름 : 
+    <%= f.text_field :infoTitle %><br>
+    
+    가게 종목 : 
+    <%= f.select :game, options_for_select([
+        ['볼링'], ['탁구'], ['농구'], ['야구'], ['요가'], ['수영'], ['서핑']
+    ]) %><br>
+    
+    가게 지역 :
+    <%= f.select :region, options_for_select([
+        ['강남구'], ['강동구'], ['강북구'], ['강서구'], ['관악구'],
+        ['광진구'], ['구로구'], ['금천구'], ['노원구'], ['도봉구'],
+        ['동대문구'], ['동작구'], ['마포구'], ['서대문구'], ['서초구'],
+        ['성동구'], ['성북구'], ['송파구'], ['양천구'], ['영등포구'],
+        ['용산구'], ['은평구'], ['종로구'], ['중구'], ['중랑구']
+    ]) %><br>
+    
+    
+    가게 주소(자동 좌표 변환) : <%= f.text_field :address %><br>
+    
+    대표 사진 등록
+    <%= f.file_field :info_image_url %>
+    <br>
+    사진 추가
+    <%= f.fields_for :info_attachments do |p| %>
+          <%= p.file_field :upcast, :multiple => true, name: "info_attachments[upcast][]" %>
+    <% end %>
+    
+    <%= f.submit '추가하기' %>
+<% end %>

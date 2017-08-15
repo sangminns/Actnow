@@ -134,11 +134,7 @@ header {
     background-repeat: no-repeat;
     // background-position: bottom; 
     padding-bottom: 200px;
-    
-    
 }
-
-
 
 header h2, header p {
     color: white;
@@ -155,9 +151,8 @@ header img {
 .slideshow_width {
   position: relative !important;
   width: 100% !important;
+  
 }
-
-
 
 
 #logo {
@@ -165,7 +160,7 @@ header img {
   margin-right: 10px;
   font-size: 3em;
   // color: #fff;
-  text-transform: uppercase;
+  // text-transform: uppercase;
   letter-spacing: -1px;
   padding-top: 9px;
   font-weight: bold;
@@ -189,10 +184,8 @@ header img {
 .w3-animate-bottom{position:relative;animation:animatebottom 3s}@keyframes animatebottom{from{bottom:-400px;opacity:0.1} to{bottom:0;opacity:1}}
 
 .w3-content .w3-section img {
-  
   position: relative;
   // z-index: -1;
-  
 }
 
 .over_slideshow {
@@ -218,10 +211,13 @@ header img {
 //   }
 // }
 
-
+section {
+    padding:80px;
+    margin:0;
+}
 
 // ------- section cast에 해당하는 css ------------------
-#cast {
+#upcast {
     font-family: 'Concert One', cursive;
     background-color: white;
     border-top: solid;
@@ -232,11 +228,11 @@ header img {
     border-left: transparent;
 }
 
-#cast h1 {
+#upcast h1 {
     text-align: center;
 }
 
-#cast .card img{
+#upcast .card img{
   position: relative;
   width: 100%;
   padding: 0px;

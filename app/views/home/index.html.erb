@@ -5,32 +5,27 @@
 <hr>
 <div class="container">
     <!-- 지도 섹션-->
-    <section id="activity">
+    <section id="upactivity">
         <%= render 'home/activity' %>
     </section>
     
-    <!-- 이벤트 섹션-->
-    <section id="event">
-        <hr>
-        여러가지 이벤트
-    </section>
-    
+    <hr>
     <!-- 소모임(고객참여게시판) 섹션-->
-    <section id="client">
-        <hr>
+    <section id="upclub">
         고객이 직접 Activity를 추가할 수 있습니다.<br>
         <a href="#">추가하러가기</a>
     </section>
     
+    <hr>
     <!-- 이벤트 게시판 -->
-    <section id="event">
-        <hr>
+    <section id="upevent">
         다양한 event를 찾아보세요~!.<br>
         <a href="#">보러가기</a>
     </section>
     
+    <hr>
     <!-- 캐스트 섹션 -->
-    <section id="cast">
+    <section id="upcast">
         <!--<hr>-->
         <h1>Cast</h1><br>
         <div class="row" style="z-index: 1;">
@@ -64,3 +59,29 @@
     <p>Copyright &copy; Likelion 2017</p>
 </footer>
 
+<div class="scroll" style="display:none;">
+    <a href="#pagetop" style="text-decoration:none;"><img src="<%= image_url('top.png') %>"></a>
+</div>
+
+<script>
+    $(document).ready(function(){
+    	$('a[href^="/#up"]').on('click',function (e) {
+    	    e.preventDefault();
+    	    
+    	    var target = this.hash;
+    	    var $target = $(target);
+    
+    	    $('html, body').stop().animate({
+    	        scrollTop: $target.offset().top
+    	    }, 700);
+    	});
+    });
+ 
+    $(window).scroll(function() {
+      $(".scroll").css( "display", "inline");
+    });
+    $(".scroll").click(function() {
+        $('html,body').animate({
+            scrollTop: 0 }, 700);
+    });
+</script>
