@@ -28,7 +28,6 @@ class ClubsController < ApplicationController
       @makeClub.save
     end
 
-    
     redirect_to '/clubs' #method는 자동으로 get
     
   end
@@ -72,8 +71,12 @@ class ClubsController < ApplicationController
     end
     
     if @club.users.ids.include?(@users)
+      
       redirect_to :back
     else
+      #요청을 보내라 먼저! 
+      
+      
       current_user.club_addition(@users, params[:id])
       redirect_to :back
     end

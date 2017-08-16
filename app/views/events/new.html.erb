@@ -1,16 +1,5 @@
-<div class="panel-body cast-body">
-    <%= form_tag events_path, method: 'post', enctype: "multipart/form-data" do %> <!-- , enctype: "multipart/form-data" -->
-        <div class="form-group">
-            <%= text_field_tag 'eventTitle' %>
-        </div>
-        <div class="form-group">
-            <%= text_area_tag 'eventContent' %>
-        </div>
-        <div class="form-group">
-            <%= file_field_tag 'eventImage' %> <!-- ,accept: "image/*" -->
-        </div>
-        <%#= form.file_field :model_names, multiple: true %>
-        <!--<input type="file" name="inputImage" accept="image/*">-->
-        <%= submit_tag 'submit!' %>
-    <% end %>
-</div>
+<h1>New events</h1>
+
+<%= render 'form' %>
+
+<%= link_to 'Back', events_path %>

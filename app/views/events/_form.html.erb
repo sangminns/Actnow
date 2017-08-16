@@ -1,0 +1,22 @@
+<%= form_for(@event, :html => { :multipart => true }) do |f| %>
+   <div class="field">
+     <%= f.label :eventTitle %><br>
+     <%= f.text_field :eventTitle %>
+   </div>
+   
+   <div class="field">
+     <%= f.label :eventContent %><br>
+     <%= f.text_field :eventContent %>
+   </div>
+
+  <%= f.fields_for :event_attachments do |p| %>
+    <div class="field">
+      <%= p.label :upevent %><br>
+      <%= p.file_field :upevent, :multiple => true, name: "event_attachments[upevent][]" %>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

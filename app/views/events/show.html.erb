@@ -1,0 +1,19 @@
+<div class="event-body">
+    <div class="container">
+        <h1><%= @event.eventTitle %></h1> <br>
+        <h5><%= @event.eventContent %></h5>
+        <br><br><br>
+        
+        <div class="event-show">
+            <% @event_attachments.each do |p| %>
+              <%= image_tag p.upevent.url %>
+              <br><br>
+              <%#= link_to "Edit Attachment", edit_event_attachment_path(p) %>
+            <% end %>
+        </div>
+        
+    </div>
+</div>
+
+<%= link_to 'Edit', edit_event_path(@event) %> |
+<%= link_to 'Back', events_path %>

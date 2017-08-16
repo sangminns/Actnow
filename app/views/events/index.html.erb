@@ -1,0 +1,70 @@
+<div class="event-body">
+    <div class="container">
+        
+        <h1>Activity event</h1> <br>
+        <h5> 다양한 이벤트를 만나보세요. </h5>
+        <br><br><br>
+        
+        <div class="row">
+            <% @events.each do |i| %>
+                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                    <div class="card" style="border-style: solid; width: 100%;">
+                        <%#= image_tag(i.event_attachments.url) %>
+                        <% i.event_attachments.limit(1).each do |p| %>
+                          <%= image_tag p.upevent.thumb2.url %>
+                          <br>
+                        <% end %>
+                        
+                        <%#= link_to image_tag(event.event_image_url.thumb.url), event_path(event.id) %>
+                        
+                        <br>
+                        <%#= event.id %>
+                        <div class="card-block">
+                           <h4 class="card-title"><%= i.eventTitle %></h4>
+                           
+                        </div>
+                        <%#= image_tag event.event_image_url.thumb.url %>
+                        
+                        <%#= link_to '보기', event_path(event.id) %> 
+                         <!--Button trigger modal -->
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#eventModal<%= i.id %>">
+                          캐스트 보기
+                        </button>
+                            
+                             <!--Modal -->
+                        <div class="modal fade" id="eventModal<%= i.id %>" tabindex="1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                 <h2 class="modal-title" id="exampleModalLongTitle"><%= i.eventTitle %></h2> 
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+                                <%#= i.id %>
+                                <p>
+                                <%= i.eventTitle %>
+                                </p>
+                                <P>
+                                <%= i.eventContent %> 
+                                </P><br>
+                                <% i.event_attachments.each do |p| %>
+                                  <%= image_tag p.upevent.url %>
+                                  <br><br>
+                                <% end %>
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>    
+                    </div>
+                </div>
+            <% end %>
+        </div>
+        <hr>
+        <%= link_to '새 글쓰기' , events_new_path  %>
+        <%= link_to 'Home', '/' %>
+    </div>

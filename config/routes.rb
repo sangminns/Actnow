@@ -57,6 +57,18 @@ Rails.application.routes.draw do
   get '/my_page/:id' => 'my_page#show'
   
   
+  #-------------------------events ------------
+  get '/events' => 'events#index' 
+  post '/events' => 'events#create' 
+  get '/events/new' => 'events#new' 
+ 
+  get '/events/:id/edit' => 'events#edit', as: "edit_event" 
+  get '/events/:id' => 'events#show', as: "event" 
+
+  patch '/events/:id' => 'events#update' 
+
+  delete '/events/:id' => 'events#destroy' 
+  
   
   
   

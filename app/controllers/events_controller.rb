@@ -1,73 +1,61 @@
 class EventsController < ApplicationController
-
-    
+   before_action :set_event, only: [ :show, :edit, :update, :destroy]
+  
   def index
-    @casts = Cast.all
+    @events = Event.all
+    @event_attachment = EventAttachment.all
+   
   end
 
   def new
-    @cast = Cast.new
+    @event = Event.new
+    @event_attachment = @event.event_attachments.build
   end
 
   def show
-    @cast = Cast.find(params[:id])
+    @event_attachments = @event.event_attachments.all
   end
 
   def create
     
-    # require 'carrierwave/orm/activerecord'
+    @event = Event.new(event_params)
+   
+    if @event.save
+      params[:event_attachments]['upevent'].each do |a|
+        @event_attachment = @event.event_attachments.create!(:upevent => a, :event_id => @event.id)
+      end
+     redirect_to @event, notice: 'Post was successfully created.' 
+    else
+     render action: 'new' 
+    end
     
-    @makeCast = Cast.new
-    @makeCast.castTitle = params[:castTitle]
-    @makeCast.castContent = params[:castContent]
-    # @makeCast.casts = params[:file]
-    # @makeCast.user = current_user
-    
-    # u = UpcastUploader.new
-    # u.store!(params[:castImage])
-    @makeCast.cast_image_url = params[:castImage]
-    # @makeCast.upcast_identifier
-    @makeCast.save
-
-    # uploader.retrieve_from_store!('my_file.png')
-    
-    
-    redirect_to '/casts' #method는 자동으로 get
     
   end
 
   def edit
-    @cast = Cast.find(params[:id])
+    
   end
 
   def update
-    # @cast = Cast.find(params[:id])
-    # @cast.update_attributes(castTitle: params[:castTitle], castContent: params[:castContent])
-    # redirect_to '/casts'
     
-    makeCast = Cast.find(params[:id])
-    makeCast.castTitle = params[:castTitle]
-    makeCast.castContent = params[:castContent]
-    # make_Cast.casts = params[:file]
-    # @makeCast.user = current_user
+     @event.update(event_params)
     
-    # a = UpcastUploader.new
-    # a.store!(params[:castImage])
-    makeCast.cast_image_url = params[:castImage]
-    # @makeCast.upcast_identifier
-    makeCast.save
-    redirect_to '/casts'
-    
-    
-    # Form_for 전용
-    #  @post.update_attributes(title: params[:post][:title], content: params[:content])
+  
+    redirect_to '/events'
+  
   end
 
   def destroy
-    @cast = Cast.find(params[:id])
-    @cast.destroy
-    redirect_to '/casts'
+    @event.destroy
+    redirect_to '/events'
   end
-end
+  
+  private
+    def set_event
+      @event = Event.find(params[:id])
+    end
 
-    
+    def event_params
+      params.require(:event).permit(:eventTitle, :eventContent)
+    end
+end

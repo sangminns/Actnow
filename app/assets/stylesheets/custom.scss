@@ -234,15 +234,89 @@ section {
   border-color: #00bcf2;
   background-color:  #00bcf2;
 }
+//-------------------clubs ---------------------
+#upclub {
+    padding-top: 20px;
+    font-family: 'Concert One', cursive;
+    border-top: solid;
+    border-top-color: #7b8082;
+    // border-bottom: solid;
+    // border-bottom-color: #7b8082;
+    border-right: transparent;
+    border-left: transparent;
+}
+
+#upclub h1 {
+    text-align: center;
+}
+
+
+
+//------------------- events ------------------------
+#upevent {
+    padding-top: 20px;
+    font-family: 'Concert One', cursive;
+    border-top: solid;
+    border-top-color: #7b8082;
+    // border-bottom: solid;
+    // border-bottom-color: #7b8082;
+    border-right: transparent;
+    border-left: transparent;
+}
+
+#upevent h1 {
+    text-align: center;
+}
+
+#upevent .card img{
+  position: relative;
+  width: 100%;
+  padding: 0px;
+  z-index: 1;
+}
+
+
+// .event_each {
+//     margin: 50px;
+// }
+
+.event-body {
+  background-color: #f9f9f9;
+  padding-top: 70px;
+}
+
+.event-body h1, .event-body h5, .event-body h2 .event-body p{
+  font-family: 'Hanna', serif;
+  text-align: center;
+  color: black;
+}
+
+.event-body .card{
+  width: 100%;
+  padding: 5px;
+  border-style: solid;
+  border-color: #d8d8d8;
+  text-align: center;
+}
+
+.event-body .card img {
+  width: 100%;
+}
+
+.event-show {
+  margin: auto;
+  text-align: center;
+}
 
 // ------- section cast에 해당하는 css ------------------
 #upcast {
+    padding-top: 20px;
     font-family: 'Concert One', cursive;
     background-color: white;
     border-top: solid;
     border-top-color: #7b8082;
-    border-bottom: solid;
-    border-bottom-color: #7b8082;
+    // border-bottom: solid;
+    // border-bottom-color: #7b8082;
     border-right: transparent;
     border-left: transparent;
 }
@@ -266,7 +340,6 @@ section {
 .cast-body {
   background-color: #f9f9f9;
   padding-top: 70px;
-  
 }
 
 .cast-body h1, .cast-body h5, .cast-body h2 .cast-body p{

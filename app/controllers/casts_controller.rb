@@ -65,7 +65,15 @@ class CastsController < ApplicationController
     # @cast = Cast.find(params[:id])
     # @cast.update_attributes(castTitle: params[:castTitle], castContent: params[:castContent])
     # redirect_to '/casts'
-     @cast.update(cast_params)
+      # if 
+        @cast.update(cast_params)
+        redirect_to @cast, notice: 'Cast was successfully updated.' 
+        # render :cast_show, status: :ok, location: @cast 
+      # else
+      #   render :cast_edit 
+      #   # render json: @cast.errors, status: :unprocessable_entity
+      # end
+    
     
     # makeCast = Cast.find(params[:id])
     # makeCast.castTitle = params[:castTitle]
@@ -78,7 +86,7 @@ class CastsController < ApplicationController
     # makeCast.cast_image_url = params[:castImage]
     # # @makeCast.upcast_identifier
     # makeCast.save
-    redirect_to '/casts'
+    # redirect_to '/casts'
     
     
     # Form_for 전용

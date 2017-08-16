@@ -152,16 +152,16 @@ $eachHeight: 400px;
 
 
 
-#myImg {
+#myImg0 {
     border-radius: 5px;
     cursor: pointer;
     transition: 0.3s;
 }
 
-#myImg:hover {opacity: 0.7;}
+#myImg0:hover {opacity: 0.7;}
 
 /* The Modal (background) */
-.modal {
+.modalImg {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
@@ -176,7 +176,7 @@ $eachHeight: 400px;
 }
 
 /* Modal Content (image) */
-.modal-content {
+.modal-contentImg {
     margin: auto;
     display: block;
     width: 80%;
@@ -184,7 +184,7 @@ $eachHeight: 400px;
 }
 
 /* Caption of Modal Image */
-#caption {
+#caption0 {
     margin: auto;
     display: block;
     width: 80%;
@@ -196,7 +196,7 @@ $eachHeight: 400px;
 }
 
 /* Add Animation */
-.modal-content, #caption {    
+.modal-contentImg, #caption0 {    
     -webkit-animation-name: zoom;
     -webkit-animation-duration: 0.6s;
     animation-name: zoom;
@@ -233,7 +233,7 @@ $eachHeight: 400px;
 
 /* 100% Image Width on Smaller Screens */
 @media only screen and (max-width: 700px){
-    .modal-content {
+    .modal-contentImg {
         width: 100%;
     }
 }

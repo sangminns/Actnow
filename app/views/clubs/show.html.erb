@@ -25,7 +25,7 @@
         <%= link_to '수정', edit_club_path(@club.id) %> / 
         <%= link_to '삭제', club_path(@club.id) , method: 'delete', data: {confirm: "정말 삭제하실 건가요?"} %> 
         <br>
-        <%= link_to "Back", :back %>
+        <%= link_to "Back", '/clubs' %>
                     
     </div>
 </div>
