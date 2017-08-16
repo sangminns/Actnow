@@ -1,8 +1,17 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import url(https://fonts.googleapis.com/earlyaccess/notosanskr.css);
-@import url(https://fonts.googleapis.com/earlyaccess/hanna.css);
+// @import url(https://fonts.googleapis.com/earlyaccess/hanna.css);
+@import url(//fonts.googleapis.com/earlyaccess/hanna.css);
 // 슬라이드 쇼 - https://v4-alpha.getbootstrap.com/components/carousel/
+
+// @font-face{font-family:'Nanum Gothic'; src:url('/fonts/NanumGothic.woff')}
+// @font-face{font-family:'Nanum Gothic'; src:url('/fonts/NanumGothic.eot')}
+ 
+// body, table, div, p {font-family:'Nanum Gothic';}
+
+
+
 
 .navbar-default {
     font-family: 'Concert One' , cursive;
@@ -19,7 +28,7 @@
 .navbar-default .navbar-header .navbar-brand:hover,
 .navbar-default .navbar-header .navbar-brand:focus {
     // color: white;
-    color: #fdcc52;
+    color: #006bf7;
   }
 
 .navbar-default .navbar-nav > li > a {
@@ -32,7 +41,7 @@
 }
 
 .navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
-    color: #fdcc52;
+    color: #006bf7;
 }
 
 .navbar-default .nav > li > a,
@@ -44,25 +53,25 @@
 .navbar-default .nav > li > a:hover,
 .navbar-default .nav > li > a:focus:hover {
     // color: white;
-    color: #fdcc52;
+    color: #006bf7;
 }
   
 .navbar-default.affix {
-    background-color: #00bcf2;
+    background-color: #fff;
     border-color: rgba(34, 34, 34, 0.1);
 }
   
 .navbar-default.affix .navbar-header .navbar-brand {
-    color: #ffffff;
+    color: #00bcf2;
 }
 
 .navbar-default.affix .navbar-header .navbar-brand:hover,
 .navbar-default.affix .navbar-header .navbar-brand:focus {
-    color: #fdcc52;
+    color: #006bf7;
 }
 
 .navbar-default.affix .navbar-toggle, .navbar-default.affix .navbar-toggle:hover{
-    color: white;
+    color: #00bcf2 ;
 }
 
 
@@ -70,13 +79,13 @@
 .navbar-default.affix .nav > li > a,
 .navbar-default.affix .nav > li > a:focus {
     // color: rgba(255, 255, 255, 0.5);
-    color: white;
+    color: #00bcf2;
 }
 
 .navbar-default .nav > li > a:hover,
 .navbar-default .nav > li > a:focus:hover {
     // color: white;
-    color: #fdcc52;
+    color: #006bf7;
 }
 // ---
 @media (min-width: 768px) {
@@ -91,7 +100,7 @@
   .navbar-default .navbar-header .navbar-brand:hover,
   .navbar-default .navbar-header .navbar-brand:focus {
     // color: white;
-    color: #fdcc52;
+    color: #006bf7;
   }
   .navbar-default .nav > li > a,
   .navbar-default .nav > li > a:focus {
@@ -101,52 +110,56 @@
   .navbar-default .nav > li > a:hover,
   .navbar-default .nav > li > a:focus:hover {
     // color: white;
-    color: #fdcc52;
+    color: #006bf7;
   }
   .navbar-default.affix {
-    background-color: #00bcf2;
+    background-color: #fff;
     border-color: rgba(34, 34, 34, 0.1);
   }
   .navbar-default.affix .navbar-header .navbar-brand {
-    color: #ffffff;
+    color: #00bcf2;
   }
   .navbar-default.affix .navbar-header .navbar-brand:hover,
   .navbar-default.affix .navbar-header .navbar-brand:focus {
-    color: #fdcc52;
+    color: #006bf7;
   }
   .navbar-default.affix .nav > li > a,
   .navbar-default.affix .nav > li > a:focus {
-    color: #ffffff;
+    color: #00bcf2;
   }
   .navbar-default.affix .nav > li > a:hover,
   .navbar-default.affix .nav > li > a:focus:hover {
-    color: #fdcc52;
+    color: #006bf7;
   }
 }
 
-
-header {
-    top: -50px;
-    height: 900px;
-    font-family: 'Hanna', serif;
-    // background-image: url("background_yoga1.jpg");
-    // background-size: cover;
-    background-repeat: no-repeat;
-    // background-position: bottom; 
-    padding-bottom: 200px;
+.main_header{
+  background-color: #F5FEFF;
 }
 
-header h2, header p {
-    color: white;
-}
+// header {
+//     background-color: #F5FEFF;
+//     top: -50px;
+//     height: 900px;
+//     font-family: 'Hanna', serif;
+//     // background-image: url("background_yoga1.jpg");
+//     // background-size: cover;
+//     background-repeat: no-repeat;
+//     // background-position: bottom; 
+//     padding-bottom: 200px;
+// }
 
-header h3,header h5 {
-    color: white;
-}
+// header h2, header p {
+//     color: white;
+// }
 
-header img {
-    margin: 0px 0px;
-}
+// header h3,header h5 {
+//     color: white;
+// }
+
+// header img {
+//     margin: 0px 0px;
+// }
 
 .slideshow_width {
   position: relative !important;
@@ -189,6 +202,7 @@ header img {
 }
 
 .over_slideshow {
+  font-family: 'Hanna', sans-serif;
   background-color: rgba(0, 0, 0, 0.1);
   border-spacing: 10px 50px;
   border: 2px solid transparent;
@@ -212,8 +226,13 @@ header img {
 // }
 
 section {
-    padding:80px;
-    margin:0;
+    padding: 60px;
+    margin: 0;
+}
+
+.btn-primary{
+  border-color: #00bcf2;
+  background-color:  #00bcf2;
 }
 
 // ------- section cast에 해당하는 css ------------------
@@ -296,71 +315,11 @@ footer p{
   width: 40px;
   margin: 5px; 
   border: groove;
+  cursor: pointer;
 }
 
 //info image
 .iw_inner {
   padding: 10px;
-}
-
-//modal
-
-.overlay {
-	position: fixed;
-	top: 0;
-	bottom: 0;
-  left: 0;
-  right: 0;
-  background: rgba(0,0,0,0.5);
-	transition: opacity 200ms;
-  visibility: hidden;
-	opacity: 0;
-	z-index: 101;
-	&.light {
-    background: rgba(255,255,255,0.5);
-  }
-  &:target {
-    visibility: visible;
-    opacity: 1;
-  }
-}
-
-.popup {
-	margin: 8% auto;
-	padding: 5%;
-	background: #fff;
-	border: 1px solid #666;
-	width: 90%;
-	box-shadow: 0 0 50px rgba(0,0,0,0.5);
-	position: relative;
-  .light & {
-    border-color: #aaa;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.25);
-  }
-  h2 {
-    text-align: left;
-    margin-top: 0;
-    color: #666;
-    font-family: "Trebuchet MS", Tahoma, Arial, sans-serif;
-  }
-  .close {
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    top: 20px;
-    right: 20px;
-    opacity: 0.8;
-    transition: all 200ms;
-    font-size: 24px;
-    font-weight: bold;
-    text-decoration: none;
-    color: #666;
-    &:hover {
-      opacity: 1;
-    }
-  }
-  .content {
-    max-height: 400px;
-    overflow: auto;
-  }
+  text-align: center;
 }

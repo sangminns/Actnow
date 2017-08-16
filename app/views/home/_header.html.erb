@@ -20,7 +20,7 @@
         <li>
           <% if user_signed_in? %>
             <a class="dropdown-toggle page-scroll" id="header_add" data-toggle= "dropdown">
-              <div id="user_name"><%= current_user.email%></div>
+              <span id="user_name"><%= current_user.email%></span>
               <span class="caret"></span>
             </a>
             <ul class="dropdown-menu">

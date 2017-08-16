@@ -2,6 +2,7 @@ class CommentController < ApplicationController
   def comment_create
     @comment = Comment.new(info_id: params[:info_id],
                             comment: params[:comment],
+                            user_id: current_user.id,
                             userName: current_user.email)
     @comment.save
         

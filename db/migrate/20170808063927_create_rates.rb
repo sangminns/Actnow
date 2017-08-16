@@ -4,7 +4,7 @@ class CreateRates < ActiveRecord::Migration
       create_table :rates do |t|
         t.belongs_to :rater
         t.belongs_to :rateable, :polymorphic => true
-        t.float :stars, :null => false
+        t.float :stars.to_f.round(2), :null => false
         t.string :dimension
         t.timestamps
       end
