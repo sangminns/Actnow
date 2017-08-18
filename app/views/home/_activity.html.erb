@@ -14,76 +14,98 @@
 <hr>
 
 <div id="map">
-    <% @storeInfo.each do |i| %>
-        <!--<div class="container">-->
-            <div id="act<%= i.id %>" class="overlay">
-            	<div class="popup">
-            		<h2><%= i.infoTitle %>
-            		    <span id="starrate"><%= rating_for i, 'average', disable_after_rate: true, imdb_avg: true %></span>
-            		</h2>
-                    <%#= imdb_style_rating_for i, "average" , disable_after_rate: true, imdb_avg: true %>
-                    <br>평점을 매긴 수 : <%= i.rates("average").count %>
-            		<a class="close" href="##<%#= i.id%>">&times;</a>
-            		<div class="content">
-            		  
-                    <!-- Nav tabs -->
-                    <ul class="nav nav-tabs" role="tablist">
-                      <li role="presentation" class="active"><a href="#info<%= i.id%>" aria-controls="info" role="tab" data-toggle="tab">INFO</a></li>
-                      <li role="presentation"><a href="#review<%= i.id%>" aria-controls="review" role="tab" data-toggle="tab">REVIEW</a></li>
-                    </ul>
+  <% @storeInfo.each do |i| %>
   
-                    <!-- Tab panes -->
-                    <div class="tab-content">
-                      <div role="tabpanel" class="tab-pane active" id="info<%= i.id%>">
-                          <div class="row detail">
-                              <div class="col-xs-5 col-sm-3 col-md-3 detailImage"><img id="myImg0" src="<%=i.info_attachments[0].upcast.thumb2.url%>"></div>
-                              <div class="col-xs-5 col-sm-3 col-md-3 detailImage"><img id="myImg1" src="<%=i.info_attachments[1].upcast.thumb2.url%>"></div>
-                              <div class="col-xs-5 col-sm-3 col-md-3 detailImage"><img id="myImg2" src="<%=i.info_attachments[0].upcast.thumb2.url%>"></div>
-                              <div class="col-xs-5 col-sm-3 col-md-3 detailImage"><img id="myImg3" src="<%=i.info_attachments[1].upcast.thumb2.url%>"></div>
-                          </div>
-                          <div id="myModal0" class="modalImg">
-                            <span class="closess">&times;</span>
-                            <img class="modal-contentImg" id="img0">
-                            <div id="caption0"></div>
-                          </div>
-                      <hr>
-                      </div>
-                      <div role="tabpanel" class="tab-pane" id="review<%= i.id%>">
-                          <div class="row">
-                            <div class="col-md-6">
-                                <div id="commentshow_<%= i.id %>">
-                                  <% i.comments.each do |c| %>
-                                     <span id="user_<%= i.id%>"><%= c.userName %></span>
-                                     : <%= c.comment %>
-                                     <% if user_signed_in? %>
-                                         <a href="/comment_destroy/<%= c.id %>" class="destroyComment">[댓글삭제]</a>
-                                     <% end %>
-                                     <input id="oneComment" type="hidden" value="<%=c.id %>">
-                                     <br>
-                                  <% end %>
-                                </div><hr>
-                                후기 작성<br> 
-                                <textarea class="form-control" rows="3" name="comment" id="comment_<%= i.id%>" placeholder="후기를 작성해주세요"></textarea>
-                                <button value="<%= i.id %>" style="text-align: center" class="btn reply_submit">
-                                    작성
-                                </button>
-                                <hr>
-                            </div>
-                            <div class="col-md-6">
-                              평점 매기기는 로그인하셔야 가능합니다
-                              <% if current_user %>
-                                  <br>평점 작성
-                                  <%= rating_for i, 'average' , enable_half: true, disable_after_rate: false %>
-                              <% end %>
-                            </div>
-                          </div>
-                      </div>
-                    </div>
-                  </div>
-            	</div>
+    <div id="act<%= i.id %>" class="overlay">
+    	<div class="popup">
+    		<h2><%= i.infoTitle %>
+    		  <span id="starrate" style="color: #fff; font-size: 1.8rem;"><%= rating_for i, 'average', disable_after_rate: true, imdb_avg: true %></span>
+    		</h2>
+            <%#= imdb_style_rating_for i, "average" , disable_after_rate: true, imdb_avg: true %>
+        <br>평점을 매긴 수 : <%= i.rates("average").count %>
+    		<a class="close" href="##<%#= i.id%>">&times;</a>
+    		<div class="content">
+    		  
+          <!-- Nav tabs -->
+          <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active"><a href="#info<%= i.id%>" aria-controls="info" role="tab" data-toggle="tab">INFO</a></li>
+            <li role="presentation"><a href="#review<%= i.id%>" aria-controls="review" role="tab" data-toggle="tab">REVIEW</a></li>
+          </ul>
+
+          <!-- Tab panes -->
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade in active" id="info<%= i.id%>">
+              <div class="slide-section">
+                
+              <% i.info_attachments.each do |p| %>
+                <div class="slide-img">
+                  <a href="#img<%= i.id %><%= p.id %>"><img src="<%= p.upcast.thumb2.url%>"></a>
+                </div>
+                <!--img id="myImg<%#= i.id %><%#= p.id %>"-->
+                <!--<div id="myModal<%#= i.id %><%#= p.id %>" class="modalImg">-->
+                <!--  <span class="closess">&times;</span>-->
+                  
+                <!--  <img class="modal-contentImg" id="img<%#= i.id %><%#= p.id %>">-->
+                <!--  <div id="caption<%#= i.id %><%#= p.id %>"></div>-->
+                <!--</div>    -->
+                <div class="imageModal" id="img<%= i.id %><%= p.id %>">
+                  <img src="<%= p.upcast.thumb2.url%>">
+                    <p></p>
+                  <a href="#"><button>Close</button></a>
+                </div>  
+                
+              <% end %>
+                          
+              </div>
+      
+  
+              <div class="slider-controls">
+                <span class="prev">Prev</span>
+                <span class="next">Next</span>
+              </div>
+             
+              <hr>
+              
+                
+               
+              <!--</div>-->
             </div>
-        <!--</div>-->
-    <% end %>
+            <div role="tabpanel" class="tab-pane fade" id="review<%= i.id%>">
+              <div class="row">
+                <div class="col-md-6">
+                  <div id="commentshow_<%= i.id %>">
+                    <% i.comments.each do |c| %>
+                      <span id="user_<%= i.id%>"><%= c.userName %></span>
+                      : <%= c.comment %>
+                      <% if user_signed_in? %>
+                        <a href="/comment_destroy/<%= c.id %>" class="destroyComment">[댓글삭제]</a>
+                      <% end %>
+                      <input id="oneComment" type="hidden" value="<%=c.id %>">
+                      <br>
+                    <% end %>
+                  </div><hr>
+                  후기 작성<br> 
+                  <textarea class="form-control" rows="3" name="comment" id="comment_<%= i.id%>" placeholder="후기를 작성해주세요"></textarea>
+                  <button value="<%= i.id %>" style="text-align: center" class="btn reply_submit">
+                    작성
+                  </button>
+                  <hr>
+                </div>
+                <div class="col-md-6">
+                  <% if user_signed_in? %>
+                      <br>평점 작성
+                      <%= rating_for i, 'average' , enable_half: true, disable_after_rate: false %>
+                  <% else %>    
+                      평점 매기기는 로그인하셔야 가능합니다
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    	</div>
+    </div>
+  <% end %>
 </div>
    
  
@@ -336,26 +358,75 @@
     //         })
     //   }); 
     // });
-   
-      // Get the modal
-      var modal = document.getElementById('myModal0');
+    
+//     var modal = new Array();
+//     var img = new Array();
+//     var modalImg = new Array();
+//     var captionText = new Array();
+    
+// <%# @storeInfo.each do |i| %>
+//   <%#i.info_attachments.each do |p| %>
+//       // // Get the modal
       
-      // Get the image and insert it inside the modal - use its "alt" text as a caption
-      var img = document.getElementById('myImg0');
-      var modalImg = document.getElementById("img0");
-      var captionText = document.getElementById("caption0");
-      img.onclick = function(){
-          modal.style.display = "block";
-          modalImg.src = this.src;
-          captionText.innerHTML = this.alt;
-      }
       
-      // Get the <span> element that closes the modal
-      var span = document.getElementsByClassName("closess")[0];
+//       modal[<%#= i.id + p.id %>] = document.getElementById('myModal<%#= i.id %><%#= p.id %>');
       
-      // When the user clicks on <span> (x), close the modal
-      span.onclick = function() { 
-          modal.style.display = "none";
-      }
+//       // Get the image and insert it inside the modal - use its "alt" text as a caption
+//       img[<%#= i.id %><%#= p.id %>] = document.getElementById('myImg<%#= i.id %><%#= p.id %>');
+//       modalImg[<%#= i.id %><%#= p.id %>] = document.getElementById("img<%#= i.id %><%#= p.id %>");
+//       captionText[<%#= i.id %><%#= p.id %>] = document.getElementById("caption<%#= i.id %><%# p.id %>");
+//       img.onclick = function() {
+//           modal[<%#= i.id %><%#= p.id %>].style.display = "block";
+//           modalImg[<%#= i.id %><%#= p.id %>].src = this.src;
+//           captionText[<%#= i.id %><%#= p.id %>].innerHTML = this.alt;
+//       }
+      
+//       // Get the <span> element that closes the modal
+//       var span = document.getElementsByClassName("closess")[0];
+      
+//       // When the user clicks on <span> (x), close the modal
+//       span.onclick = function() { 
+//           modal[<%#= i.id %><%#= p.id %>].style.display = "none";
+//       }
+//   <%# end %>    
+// <%# end %>
 
+$(document).ready(function(){
+  v = $('.slide-section .slide-img').length;
+  i = 1;
+  var left = 0;
+  var mrg = 0;
+  var ht = $('.slide-section .slide-img').css('width');
+  $('.slide-section .slide-img').css('height', ht);
+  $('.next').click(function(){
+         
+    if(i<=(v-4)) {
+      left = left - 25;
+      mrg = 0;
+    } else if(i > (v-4)) {
+      left = 0;
+      i = 0;
+      mrg = 0;
+    }
+    
+    $('.slide-section').css('margin-left','calc('+left+'% - '+mrg+'px)');
+    i++;      
+  });
+  
+  $('.prev').click(function(){
+    if(i == 1) {
+      left = -(v-4) * 25;
+      mrg = (v-4) * 5;
+      i = (v - 4) + 1;
+    }else{
+      left = left + 25;
+      mrg = 0;
+      i--;
+    }
+    
+    $('.slide-section').css('margin-left','calc('+left+'% - '+mrg+'px)');
+  });
+
+});
 </script>
+

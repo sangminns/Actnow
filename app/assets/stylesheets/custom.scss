@@ -225,10 +225,10 @@
 //   }
 // }
 
-section {
-    padding: 60px;
-    margin: 0;
-}
+// section {
+//     padding: 60px;
+//     margin: 0;
+// }
 
 .btn-primary{
   border-color: #00bcf2;
@@ -237,7 +237,8 @@ section {
 //-------------------clubs ---------------------
 #upclub {
     padding-top: 20px;
-    font-family: 'Concert One', cursive;
+    
+    font-family: 'Hanna', sans-serif;
     border-top: solid;
     border-top-color: #7b8082;
     // border-bottom: solid;
@@ -247,7 +248,9 @@ section {
 }
 
 #upclub h1 {
+    font-family: 'Concert One', cursive;
     text-align: center;
+    
 }
 
 
@@ -255,7 +258,7 @@ section {
 //------------------- events ------------------------
 #upevent {
     padding-top: 20px;
-    font-family: 'Concert One', cursive;
+    font-family: 'Hanna', sans-serif;
     border-top: solid;
     border-top-color: #7b8082;
     // border-bottom: solid;
@@ -266,6 +269,7 @@ section {
 
 #upevent h1 {
     text-align: center;
+    font-family: 'Concert One', cursive;
 }
 
 #upevent .card img{
@@ -311,7 +315,7 @@ section {
 // ------- section cast에 해당하는 css ------------------
 #upcast {
     padding-top: 20px;
-    font-family: 'Concert One', cursive;
+    font-family: 'Hanna', serif;
     background-color: white;
     border-top: solid;
     border-top-color: #7b8082;
@@ -322,6 +326,7 @@ section {
 }
 
 #upcast h1 {
+  font-family: 'Concert One', cursive;
     text-align: center;
 }
 

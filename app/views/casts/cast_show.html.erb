@@ -28,7 +28,7 @@
         
         <div class="cast-show">
             <% @cast_attachments.each do |p| %>
-              <%= image_tag p.upcast.url %>
+              <%= image_tag p.upcast.url, :style => "width: 100%" %>
               <br><br>
               <%#= link_to "Edit Attachment", edit_cast_attachment_path(p) %>
             <% end %>

@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+
+
 # 주소 입력시 좌표로 변환해주는 gem
 gem 'geocoder'
 

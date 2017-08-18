@@ -6,7 +6,7 @@
         
         <div class="event-show">
             <% @event_attachments.each do |p| %>
-              <%= image_tag p.upevent.url %>
+              <%= image_tag p.upevent.url , :style => "width: 100%" %>
               <br><br>
               <%#= link_to "Edit Attachment", edit_event_attachment_path(p) %>
             <% end %>

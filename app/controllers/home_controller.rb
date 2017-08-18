@@ -11,6 +11,7 @@ class HomeController < ApplicationController
     @yoga = Info.where(game: '요가')
     
     @casts = Cast.all
+    @events = Event.all
   end
   
 end
