@@ -3,6 +3,12 @@ id: <%= @user.id  %><br>
 email: <%= @user.email  %><br>
 
 club 받은 요청
-:
+:<% @clubMember.each do |a| %>
+    <hr>
+    <%= a.member_id %>
+    <%= form_tag("/my_page/accept/#{a.id}/#{a.member_id}/#{a.club_id}", method: 'post') do %>
+        <%= submit_tag('허락') %>
+    <% end %>
+ <% end %>
 
 

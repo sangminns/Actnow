@@ -11,7 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170816101104) do
+ActiveRecord::Schema.define(version: 20170822063226) do
+
+  create_table "acceptances", force: :cascade do |t|
+    t.integer  "club_id"
+    t.integer  "leader_id"
+    t.integer  "member_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "applies", force: :cascade do |t|
     t.integer  "club_id"

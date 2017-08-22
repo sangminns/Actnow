@@ -76,11 +76,11 @@ $eachHeight: 400px;
 	position: fixed;
 	top: 0;
 	bottom: 0;
-  left: 0;
-  right: 0;
-  background: rgba(0,0,0,0.5);
+    left: 0;
+    right: 0;
+    background: rgba(0,0,0,0.5);
 	transition: opacity 200ms;
-  visibility: hidden;
+    visibility: hidden;
 	opacity: 0;
 	z-index: 101;
 	&.light {
@@ -131,6 +131,7 @@ $eachHeight: 400px;
   .content {
     max-height: 400px;
     overflow: auto;
+    margin-top: 10px;
   }
 }
 
@@ -150,128 +151,6 @@ $eachHeight: 400px;
     }
 }
 
-
-// //<%# @storeInfo.each do |i| %>
-// //<%# i.info_attachments.each do |p| %>
-//     #myImg {
-//         border-radius: 5px;
-//         cursor: pointer;
-//         transition: 0.3s;
-//     }
-    
-//     #myImg:hover {opacity: 0.7;}
-    
-    
-//     /* Caption of Modal Image */
-//     #caption {
-//         margin: auto;
-//         display: block;
-//         width: 80%;
-//         max-width: 700px;
-//         text-align: center;
-//         color: #ccc;
-//         padding: 10px 0;
-//         height: 150px;
-//     }
-    
-//     /* Add Animation */
-//     .modal-contentImg, #caption {    
-//         -webkit-animation-name: zoom;
-//         -webkit-animation-duration: 0.6s;
-//         animation-name: zoom;
-//         animation-duration: 0.6s;
-//     }
-//   //<%# end %>
-// //<%# end %>
-
-
-// /* The Modal (background) */
-// .modalImg {
-//     display: none; /* Hidden by default */
-//     position: fixed; /* Stay in place */
-//     z-index: 1; /* Sit on top */
-//     padding-top: 15%; /* Location of the box */
-//     left: 0;
-//     top: 0;
-//     width: 100%; /* Full width */
-//     height: 100%; /* Full height */
-//     overflow: auto; /* Enable scroll if needed */
-//     background-color: rgb(0,0,0); /* Fallback color */
-//     background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
-// }
-
-// /* Modal Content (image) */
-// .modal-contentImg {
-//     margin: auto;
-//     display: block;
-//     width: 80%;
-//     max-width: 700px;
-// }
-
-// @-webkit-keyframes zoom {
-//     from {-webkit-transform:scale(0)} 
-//     to {-webkit-transform:scale(1)}
-// }
-
-// @keyframes zoom {
-//     from {transform:scale(0)} 
-//     to {transform:scale(1)}
-// }
-
-// /* The Close Button */
-// .closess {
-//     position: absolute;
-//     top: 10%;
-//     right: 5%;
-//     color: #f1f1f1;
-//     font-size: 40px;
-//     font-weight: bold;
-//     transition: 0.3s;
-// }
-
-// .closess:hover,
-// .closess:focus {
-//     color: #bbb;
-//     text-decoration: none;
-//     cursor: pointer;
-// }
-
-// /* 100% Image Width on Smaller Screens */
-// @media only screen and (max-width: 700px){
-//     .modal-contentImg {
-//         width: 100%;
-//     }
-// }
-//---------------------
-
-
-.imageModal{
-  /**Default imageModal to hidden**/
-  display:none;
-  position:fixed;
-  z-index:999;
-  width: 100%;
-  height: 100%;
-  text-align: center;
-  top: 0;
-  left: 0;
-  background: rgba(0,0,0,0.8);
-}
-
-.imageModal img{
-  width: 300px;
-  height: 200px;
-  margin-top:5%;
-
-  
-}
-.imageModal:target{
-  outline: none;
-  display: block;
-}
-
-
-//-----------------------------------
 
 .slide-section{
   width:100%;
@@ -296,4 +175,63 @@ div .slide-img {
 .slider-controls {
   display :flex;
   justify-content:space-between;
+  span {
+      cursor: pointer;
+      img {
+          width: 30px;
+      }
+  }
+}
+//------------------------------------
+
+.shows{
+    z-index: 999;
+    display: none;
+}
+.shows .overlays{
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,.66);
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.shows .img-show{
+    width: 600px;
+    height: 400px;
+    background: #FFF;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    overflow: hidden
+}
+.img-show span{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 99;
+    cursor: pointer;
+}
+.img-show img{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.inforate {
+    margin-top: 0;
+    color: #666;
+    display: inline-block;
+    .controlsize {
+        font-size: 1.5em;
+    }
+    #starrate {
+        display: inline-block;
+    }
+    .jump {
+        color: white;
+    }
 }

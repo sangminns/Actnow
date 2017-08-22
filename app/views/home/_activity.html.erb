@@ -24,6 +24,7 @@
             <%#= imdb_style_rating_for i, "average" , disable_after_rate: true, imdb_avg: true %>
         <br>평점을 매긴 수 : <%= i.rates("average").count %>
     		<a class="close" href="##<%#= i.id%>">&times;</a>
+    		
     		<div class="content">
     		  
           <!-- Nav tabs -->
@@ -37,38 +38,34 @@
             <div role="tabpanel" class="tab-pane fade in active" id="info<%= i.id%>">
               <div class="slide-section">
                 
-              <% i.info_attachments.each do |p| %>
-                <div class="slide-img">
-                  <a href="#img<%= i.id %><%= p.id %>"><img src="<%= p.upcast.thumb2.url%>"></a>
-                </div>
-                <!--img id="myImg<%#= i.id %><%#= p.id %>"-->
-                <!--<div id="myModal<%#= i.id %><%#= p.id %>" class="modalImg">-->
-                <!--  <span class="closess">&times;</span>-->
-                  
-                <!--  <img class="modal-contentImg" id="img<%#= i.id %><%#= p.id %>">-->
-                <!--  <div id="caption<%#= i.id %><%#= p.id %>"></div>-->
-                <!--</div>    -->
-                <div class="imageModal" id="img<%= i.id %><%= p.id %>">
-                  <img src="<%= p.upcast.thumb2.url%>">
-                    <p></p>
-                  <a href="#"><button>Close</button></a>
-                </div>  
+                <% i.info_attachments.each do |p| %>
+                  <div class="slide-img">
+                    <span class="modalimage<%= p.id %>"><img src="<%= p.upcast.thumb2.url%>"></span>
+                  </div>
+                <% end %>
                 
-              <% end %>
-                          
               </div>
-      
-  
-              <div class="slider-controls">
-                <span class="prev">Prev</span>
-                <span class="next">Next</span>
-              </div>
-             
-              <hr>
               
-                
+              <div class="slider-controls">
+                <span class="prev"><img src="<%= image_url('leftbutton.png') %>"></span>
+                <span class="next"><img src="<%= image_url('rightbutton.png') %>"></span>
+              </div>   
                
+              <hr>
+              <div class="well" align="center">
+                <%= i.address %> | <%= i.game %> <br>
+                <%= i.content %>
+                
+              </div>
+    
               <!--</div>-->
+            </div>
+            <div class="shows">
+              <div class="overlays"></div>
+                <div class="img-show">
+                  <span></span>
+                  <img src="">
+              </div>
             </div>
             <div role="tabpanel" class="tab-pane fade" id="review<%= i.id%>">
               <div class="row">
@@ -179,7 +176,7 @@
         contentString[<%= i.id %>] = [
             '<div class="iw_inner">',
             '    <%= image_tag i.info_image_url.thumb1.url, class: "infoImage img-rounded" %><br>',
-            '    <h4><%= i.infoTitle %></h4>',
+            '    <div class="inforate"><span class="controlsize"><%= i.infoTitle %></span><span class="jump">""</span><span id="starrate" style="color: #fff; font-size: 1.8rem;"><%= rating_for i, 'average', disable_after_rate: true, imdb_avg: true %></span></div>',
             '    <p><%= i.region %> | <%= i.address %><br>',
             '        <%= i.game %> &gt; 특별, 광역시청<br>',
             '   </p>',
@@ -358,38 +355,6 @@
     //         })
     //   }); 
     // });
-    
-//     var modal = new Array();
-//     var img = new Array();
-//     var modalImg = new Array();
-//     var captionText = new Array();
-    
-// <%# @storeInfo.each do |i| %>
-//   <%#i.info_attachments.each do |p| %>
-//       // // Get the modal
-      
-      
-//       modal[<%#= i.id + p.id %>] = document.getElementById('myModal<%#= i.id %><%#= p.id %>');
-      
-//       // Get the image and insert it inside the modal - use its "alt" text as a caption
-//       img[<%#= i.id %><%#= p.id %>] = document.getElementById('myImg<%#= i.id %><%#= p.id %>');
-//       modalImg[<%#= i.id %><%#= p.id %>] = document.getElementById("img<%#= i.id %><%#= p.id %>");
-//       captionText[<%#= i.id %><%#= p.id %>] = document.getElementById("caption<%#= i.id %><%# p.id %>");
-//       img.onclick = function() {
-//           modal[<%#= i.id %><%#= p.id %>].style.display = "block";
-//           modalImg[<%#= i.id %><%#= p.id %>].src = this.src;
-//           captionText[<%#= i.id %><%#= p.id %>].innerHTML = this.alt;
-//       }
-      
-//       // Get the <span> element that closes the modal
-//       var span = document.getElementsByClassName("closess")[0];
-      
-//       // When the user clicks on <span> (x), close the modal
-//       span.onclick = function() { 
-//           modal[<%#= i.id %><%#= p.id %>].style.display = "none";
-//       }
-//   <%# end %>    
-// <%# end %>
 
 $(document).ready(function(){
   v = $('.slide-section .slide-img').length;
@@ -397,7 +362,7 @@ $(document).ready(function(){
   var left = 0;
   var mrg = 0;
   var ht = $('.slide-section .slide-img').css('width');
-  $('.slide-section .slide-img').css('height', ht);
+  //$('.slide-section .slide-img').css('height', ht);
   $('.next').click(function(){
          
     if(i<=(v-4)) {
@@ -428,5 +393,25 @@ $(document).ready(function(){
   });
 
 });
+
+$(function () {
+    "use strict";
+    
+    <% @storeInfo.each do |i| %>
+      <% i.info_attachments.each do |p| %>
+        $(".modalimage<%= p.id %> img").click(function () {
+            var $src = $(this).attr("src");
+            $(".shows").fadeIn();
+            $(".img-show img").attr("src", $src);
+        });
+      <% end %>
+    <% end %>
+    
+    $("spans, .overlays").click(function () {
+        $(".shows").fadeOut();
+    });
+    
+});
+
 </script>
 

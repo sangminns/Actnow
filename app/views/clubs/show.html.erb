@@ -9,9 +9,13 @@
         
         
         
-        <%= form_tag("/clubs/#{@club.id}/apply", method: 'post') do %>
+        <!--<%#= form_tag("/clubs/#{@club.id}/apply", method: 'post') do %>-->
+        <!--    <%#= submit_tag('가입하기') %>-->
+        <!--<%# end %>-->
+        <%= form_tag("/clubs/#{@club.id}/apply/#{@club.user_id}", method: 'post') do %>
             <%= submit_tag('가입하기') %>
         <% end %>
+
         <hr>
         
         <h4>클럽 회원</h4>

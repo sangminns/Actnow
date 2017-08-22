@@ -26,7 +26,7 @@
 #     PostAttachment.create!(
 #         post_id: "#{k}",
         
-#         avatar: File.open(Rails.root + "app/assets/images/1.png")
+#         avatar: File.open(Rails.root + "app/assets/images/1.PNG")
 #         )
     
 # end
@@ -41,6 +41,7 @@
 #       t.float :location_lng
 
 
+
 require 'geocoder'
 
 # 1
@@ -51,23 +52,77 @@ Info.create!(
     region: "일산동구",
     game: "서핑",
     content: "ㅎㅎㅎㅎ",
-    info_image_url: File.open(Rails.root + "app/assets/images/background_basketball.jpg"),
+    info_image_url: File.open(Rails.root + "app/assets/images/surfing/1/1.jpg"),
     location_lat: @locate_change[0],
     location_lng: @locate_change[1]
     )
 
 InfoAttachment.create!(
     info_id: 1,
-    upcast: File.open(Rails.root + "app/assets/images/background_surfing.jpg")
+    upcast: File.open(Rails.root + "app/assets/images/surfing/1/2.jpg")
     )
 
 
 
 InfoAttachment.create!(
     info_id: 1,
-    upcast: File.open(Rails.root + "app/assets/images/background_surfing2.jpg")
+    upcast: File.open(Rails.root + "app/assets/images/surfing/1/3.jpg")
     )
     
+InfoAttachment.create!(
+    info_id: 1,
+    upcast: File.open(Rails.root + "app/assets/images/surfing/1/4.jpg")
+    )
+    
+InfoAttachment.create!(
+    info_id: 1,
+    upcast: File.open(Rails.root + "app/assets/images/surfing/1/5.jpg")
+    )
+    
+InfoAttachment.create!(
+    info_id: 1,
+    upcast: File.open(Rails.root + "app/assets/images/surfing/1/6.jpg")
+    )
+    
+InfoAttachment.create!(
+    info_id: 1,
+    upcast: File.open(Rails.root + "app/assets/images/surfing/1/7.jpg")
+    )
+    
+InfoAttachment.create!(
+    info_id: 1,
+    upcast: File.open(Rails.root + "app/assets/images/surfing/1/8.jpg")
+    )
+    
+InfoAttachment.create!(
+    info_id: 1,
+    upcast: File.open(Rails.root + "app/assets/images/surfing/1/9.jpg")
+    )
+    
+InfoAttachment.create!(
+    info_id: 1,
+    upcast: File.open(Rails.root + "app/assets/images/surfing/1/10.jpg")
+    )
+    
+InfoAttachment.create!(
+    info_id: 1,
+    upcast: File.open(Rails.root + "app/assets/images/surfing/1/11.jpg")
+    )
+    
+InfoAttachment.create!(
+    info_id: 1,
+    upcast: File.open(Rails.root + "app/assets/images/surfing/1/12.jpg")
+    )
+    
+InfoAttachment.create!(
+    info_id: 1,
+    upcast: File.open(Rails.root + "app/assets/images/surfing/1/13.jpg")
+    )
+    
+InfoAttachment.create!(
+    info_id: 1,
+    upcast: File.open(Rails.root + "app/assets/images/surfing/1/14.jpg")
+    )
     
 # 2
 @locate_change = Geocoder.coordinates("강원도 양양군 현남면 화상해안길 245")
@@ -76,22 +131,42 @@ Info.create!(
     address: "강원도 양양군 현남면 화상해안길 245",
     region: "양양군",
     game: "서핑",
-    content: "ㅎㅎㅎㅎ",
-    info_image_url: File.open(Rails.root + "app/assets/images/background_basketball.jpg"),
+    content: "출처 - http://www.surfoceans.com",
+    info_image_url: File.open(Rails.root + "app/assets/images/surfing/2/bar_01.jpg"),
     location_lat: @locate_change[0],
     location_lng: @locate_change[1]
     )
 
 InfoAttachment.create!(
     info_id: 2,
-    upcast: File.open(Rails.root + "app/assets/images/background_surfing.jpg")
+    upcast: File.open(Rails.root + "app/assets/images/surfing/2/bar_01.jpg")
     )
 
 
 
 InfoAttachment.create!(
     info_id: 2,
-    upcast: File.open(Rails.root + "app/assets/images/background_surfing2.jpg")
+    upcast: File.open(Rails.root + "app/assets/images/surfing/2/1.jpg")
+    )
+    
+InfoAttachment.create!(
+    info_id: 2,
+    upcast: File.open(Rails.root + "app/assets/images/surfing/2/2.jpg")
+    )
+    
+InfoAttachment.create!(
+    info_id: 2,
+    upcast: File.open(Rails.root + "app/assets/images/surfing/2/3.jpg")
+    )
+    
+InfoAttachment.create!(
+    info_id: 2,
+    upcast: File.open(Rails.root + "app/assets/images/surfing/2/4.jpg")
+    )
+    
+InfoAttachment.create!(
+    info_id: 2,
+    upcast: File.open(Rails.root + "app/assets/images/surfing/2/5.PNG")
     )
     
 # 3
@@ -101,24 +176,58 @@ Info.create!(
     address: "강원도 고성군 죽왕면 자작도선사길 86",
     region: "고성군",
     game: "서핑",
-    content: "ㅎㅎㅎㅎ",
-    info_image_url: File.open(Rails.root + "app/assets/images/background_basketball.jpg"),
+    content: "출처 - https://gogobeach.modoo.at/?link=d3v6yxw6 ",
+    info_image_url: File.open(Rails.root + "app/assets/images/surfing/3/1.jpg"),
     location_lat: @locate_change[0],
     location_lng: @locate_change[1]
     )
 
 InfoAttachment.create!(
     info_id: 3,
-    upcast: File.open(Rails.root + "app/assets/images/background_surfing.jpg")
+    upcast: File.open(Rails.root + "app/assets/images/surfing/3/1.jpg")
     )
 
 
 
 InfoAttachment.create!(
     info_id: 3,
-    upcast: File.open(Rails.root + "app/assets/images/background_surfing2.jpg")
+    upcast: File.open(Rails.root + "app/assets/images/surfing/3/2.jpg")
     )
     
+InfoAttachment.create!(
+    info_id: 3,
+    upcast: File.open(Rails.root + "app/assets/images/surfing/3/3.jpg")
+    )
+    
+InfoAttachment.create!(
+    info_id: 3,
+    upcast: File.open(Rails.root + "app/assets/images/surfing/3/4.jpeg")
+    )
+    
+InfoAttachment.create!(
+    info_id: 3,
+    upcast: File.open(Rails.root + "app/assets/images/surfing/3/5.jpeg")
+    )
+    
+InfoAttachment.create!(
+    info_id: 3,
+    upcast: File.open(Rails.root + "app/assets/images/surfing/3/6.jpeg")
+    )
+    
+InfoAttachment.create!(
+    info_id: 3,
+    upcast: File.open(Rails.root + "app/assets/images/surfing/3/7.PNG")
+    )
+    
+InfoAttachment.create!(
+    info_id: 3,
+    upcast: File.open(Rails.root + "app/assets/images/surfing/3/8.PNG")
+    )
+    
+InfoAttachment.create!(
+    info_id: 3,
+    upcast: File.open(Rails.root + "app/assets/images/surfing/3/9.PNG")
+    )
 
 # 4
 @locate_change = Geocoder.coordinates("서울특별시 성북구 보문로34길 69")
@@ -128,22 +237,34 @@ Info.create!(
     region: "성북구",
     game: "볼링",
     content: "ㅎㅎㅎㅎ",
-    info_image_url: File.open(Rails.root + "app/assets/images/background_basketball.jpg"),
+    info_image_url: File.open(Rails.root + "app/assets/images/bowling/1/3.PNG"),
     location_lat: @locate_change[0],
     location_lng: @locate_change[1]
     )
 
 InfoAttachment.create!(
     info_id: 4,
-    upcast: File.open(Rails.root + "app/assets/images/background_surfing.jpg")
+    upcast: File.open(Rails.root + "app/assets/images/bowling/1/1.PNG")
     )
 
 
 
 InfoAttachment.create!(
     info_id: 4,
-    upcast: File.open(Rails.root + "app/assets/images/background_surfing2.jpg")
+    upcast: File.open(Rails.root + "app/assets/images/bowling/1/2.PNG")
     )
+    
+InfoAttachment.create!(
+    info_id: 4,
+    upcast: File.open(Rails.root + "app/assets/images/bowling/1/3.PNG")
+    )
+    
+InfoAttachment.create!(
+    info_id: 4,
+    upcast: File.open(Rails.root + "app/assets/images/bowling/1/4.PNG")
+    )
+    
+
 
 
 # 5
@@ -154,22 +275,38 @@ Info.create!(
     region: "성북구",
     game: "볼링",
     content: "ㅎㅎㅎㅎ",
-    info_image_url: File.open(Rails.root + "app/assets/images/background_basketball.jpg"),
+    info_image_url: File.open(Rails.root + "app/assets/images/bowling/2/3.PNG"),
     location_lat: @locate_change[0],
     location_lng: @locate_change[1]
     )
 
 InfoAttachment.create!(
     info_id: 5,
-    upcast: File.open(Rails.root + "app/assets/images/background_surfing.jpg")
+    upcast: File.open(Rails.root + "app/assets/images/bowling/2/1.PNG")
     )
 
 
 
 InfoAttachment.create!(
     info_id: 5,
-    upcast: File.open(Rails.root + "app/assets/images/background_surfing2.jpg")
+    upcast: File.open(Rails.root + "app/assets/images/bowling/2/2.PNG")
     )
+
+InfoAttachment.create!(
+    info_id: 5,
+    upcast: File.open(Rails.root + "app/assets/images/bowling/2/3.PNG")
+    )
+
+InfoAttachment.create!(
+    info_id: 5,
+    upcast: File.open(Rails.root + "app/assets/images/bowling/2/4.PNG")
+    )
+
+InfoAttachment.create!(
+    info_id: 5,
+    upcast: File.open(Rails.root + "app/assets/images/bowling/2/5.PNG")
+    )
+    
 
 
 # 6
@@ -180,22 +317,43 @@ Info.create!(
     region: "성북구",
     game: "볼링",
     content: "ㅎㅎㅎㅎ",
-    info_image_url: File.open(Rails.root + "app/assets/images/background_basketball.jpg"),
+    info_image_url: File.open(Rails.root + "app/assets/images/bowling/3/4.jpg"),
     location_lat: @locate_change[0],
     location_lng: @locate_change[1]
     )
 
 InfoAttachment.create!(
     info_id: 6,
-    upcast: File.open(Rails.root + "app/assets/images/background_surfing.jpg")
+    upcast: File.open(Rails.root + "app/assets/images/bowling/3/1.jpg")
     )
 
 
 
 InfoAttachment.create!(
     info_id: 6,
-    upcast: File.open(Rails.root + "app/assets/images/background_surfing2.jpg")
+    upcast: File.open(Rails.root + "app/assets/images/bowling/3/2.jpg")
     )
+
+InfoAttachment.create!(
+    info_id: 6,
+    upcast: File.open(Rails.root + "app/assets/images/bowling/3/3.jpg")
+    )
+
+InfoAttachment.create!(
+    info_id: 6,
+    upcast: File.open(Rails.root + "app/assets/images/bowling/3/4.jpg")
+    )
+
+InfoAttachment.create!(
+    info_id: 6,
+    upcast: File.open(Rails.root + "app/assets/images/bowling/3/5.jpg")
+    )
+
+InfoAttachment.create!(
+    info_id: 6,
+    upcast: File.open(Rails.root + "app/assets/images/bowling/3/6.jpg")
+    )
+
 
 # 7
 @locate_change = Geocoder.coordinates("서울특별시 성북구 화랑로 254")
@@ -205,21 +363,26 @@ Info.create!(
     region: "성북구",
     game: "볼링",
     content: "ㅎㅎㅎㅎ",
-    info_image_url: File.open(Rails.root + "app/assets/images/background_basketball.jpg"),
+    info_image_url: File.open(Rails.root + "app/assets/images/bowling/4/1.jpg"),
     location_lat: @locate_change[0],
     location_lng: @locate_change[1]
     )
 
 InfoAttachment.create!(
     info_id: 7,
-    upcast: File.open(Rails.root + "app/assets/images/background_surfing.jpg")
+    upcast: File.open(Rails.root + "app/assets/images/bowling/4/1.jpg")
+    )
+    
+InfoAttachment.create!(
+    info_id: 7,
+    upcast: File.open(Rails.root + "app/assets/images/bowling/4/2.jpg")
     )
 
 
 
 InfoAttachment.create!(
     info_id: 7,
-    upcast: File.open(Rails.root + "app/assets/images/background_surfing2.jpg")
+    upcast: File.open(Rails.root + "app/assets/images/bowling/4/3.jpg")
     )
 
 
@@ -231,23 +394,48 @@ Info.create!(
     region: "성북구",
     game: "볼링",
     content: "ㅎㅎㅎㅎ",
-    info_image_url: File.open(Rails.root + "app/assets/images/background_basketball.jpg"),
+    info_image_url: File.open(Rails.root + "app/assets/images/bowling/5/7.jpg"),
     location_lat: @locate_change[0],
     location_lng: @locate_change[1]
     )
 
 InfoAttachment.create!(
     info_id: 8,
-    upcast: File.open(Rails.root + "app/assets/images/background_surfing.jpg")
+    upcast: File.open(Rails.root + "app/assets/images/bowling/5/1.jpg")
     )
 
 
 
 InfoAttachment.create!(
     info_id: 8,
-    upcast: File.open(Rails.root + "app/assets/images/background_surfing2.jpg")
+    upcast: File.open(Rails.root + "app/assets/images/bowling/5/2.jpg")
     )
     
+InfoAttachment.create!(
+    info_id: 8,
+    upcast: File.open(Rails.root + "app/assets/images/bowling/5/3.jpg")
+    )
+    
+InfoAttachment.create!(
+    info_id: 8,
+    upcast: File.open(Rails.root + "app/assets/images/bowling/5/4.jpg")
+    )
+    
+InfoAttachment.create!(
+    info_id: 8,
+    upcast: File.open(Rails.root + "app/assets/images/bowling/5/5.jpg")
+    )
+    
+InfoAttachment.create!(
+    info_id: 8,
+    upcast: File.open(Rails.root + "app/assets/images/bowling/5/6.jpg")
+    )
+    
+InfoAttachment.create!(
+    info_id: 8,
+    upcast: File.open(Rails.root + "app/assets/images/bowling/5/7.jpg")
+    )
+  
 # 9
 @locate_change = Geocoder.coordinates("서울특별시 성북구 장위로 126")
 Info.create!(
@@ -256,23 +444,47 @@ Info.create!(
     region: "성북구",
     game: "볼링",
     content: "ㅎㅎㅎㅎ",
-    info_image_url: File.open(Rails.root + "app/assets/images/background_basketball.jpg"),
+    info_image_url: File.open(Rails.root + "app/assets/images/bowling/6/2.jpg"),
     location_lat: @locate_change[0],
     location_lng: @locate_change[1]
     )
 
 InfoAttachment.create!(
     info_id: 9,
-    upcast: File.open(Rails.root + "app/assets/images/background_surfing.jpg")
+    upcast: File.open(Rails.root + "app/assets/images/bowling/6/1.jpg")
     )
 
 
 
 InfoAttachment.create!(
     info_id: 9,
-    upcast: File.open(Rails.root + "app/assets/images/background_surfing2.jpg")
+    upcast: File.open(Rails.root + "app/assets/images/bowling/6/2.jpg")
     )
-    
+
+InfoAttachment.create!(
+    info_id: 9,
+    upcast: File.open(Rails.root + "app/assets/images/bowling/6/3.jpg")
+    )
+
+InfoAttachment.create!(
+    info_id: 9,
+    upcast: File.open(Rails.root + "app/assets/images/bowling/6/4.jpg")
+    )
+
+InfoAttachment.create!(
+    info_id: 9,
+    upcast: File.open(Rails.root + "app/assets/images/bowling/6/5.jpg")
+    )
+
+InfoAttachment.create!(
+    info_id: 9,
+    upcast: File.open(Rails.root + "app/assets/images/bowling/6/6.jpg")
+    )
+
+InfoAttachment.create!(
+    info_id: 9,
+    upcast: File.open(Rails.root + "app/assets/images/bowling/6/7.PNG")
+    )
     
 # 10
 @locate_change = Geocoder.coordinates("서울특별시 종로구 새문안로3길 30")
@@ -282,23 +494,28 @@ Info.create!(
     region: "종로구",
     game: "볼링",
     content: "ㅎㅎㅎㅎ",
-    info_image_url: File.open(Rails.root + "app/assets/images/background_basketball.jpg"),
+    info_image_url: File.open(Rails.root + "app/assets/images/bowling/7/1.PNG"),
     location_lat: @locate_change[0],
     location_lng: @locate_change[1]
     )
 
 InfoAttachment.create!(
     info_id: 10,
-    upcast: File.open(Rails.root + "app/assets/images/background_surfing.jpg")
+    upcast: File.open(Rails.root + "app/assets/images/bowling/7/1.PNG")
     )
 
 
 
 InfoAttachment.create!(
     info_id: 10,
-    upcast: File.open(Rails.root + "app/assets/images/background_surfing2.jpg")
+    upcast: File.open(Rails.root + "app/assets/images/bowling/7/2.PNG")
     )
-
+    
+InfoAttachment.create!(
+    info_id: 10,
+    upcast: File.open(Rails.root + "app/assets/images/bowling/7/3.PNG")
+    )
+    
 # 11
 @locate_change = Geocoder.coordinates("서울특별시 종로구 창덕궁1길 13")
 Info.create!(
@@ -307,21 +524,46 @@ Info.create!(
     region: "종로구",
     game: "볼링",
     content: "ㅎㅎㅎㅎ",
-    info_image_url: File.open(Rails.root + "app/assets/images/background_basketball.jpg"),
+    info_image_url: File.open(Rails.root + "app/assets/images/bowling/8/1.jpg"),
     location_lat: @locate_change[0],
     location_lng: @locate_change[1]
     )
 
 InfoAttachment.create!(
     info_id: 11,
-    upcast: File.open(Rails.root + "app/assets/images/background_surfing.jpg")
+    upcast: File.open(Rails.root + "app/assets/images/bowling/8/1.jpg")
     )
 
 
 
 InfoAttachment.create!(
     info_id: 11,
-    upcast: File.open(Rails.root + "app/assets/images/background_surfing2.jpg")
+    upcast: File.open(Rails.root + "app/assets/images/bowling/8/2.jpg")
+    )
+    
+InfoAttachment.create!(
+    info_id: 11,
+    upcast: File.open(Rails.root + "app/assets/images/bowling/8/3.jpg")
+    )
+    
+InfoAttachment.create!(
+    info_id: 11,
+    upcast: File.open(Rails.root + "app/assets/images/bowling/8/4.jpg")
+    )
+    
+InfoAttachment.create!(
+    info_id: 11,
+    upcast: File.open(Rails.root + "app/assets/images/bowling/8/5.jpg")
+    )
+    
+InfoAttachment.create!(
+    info_id: 11,
+    upcast: File.open(Rails.root + "app/assets/images/bowling/8/6.jpg")
+    )
+    
+InfoAttachment.create!(
+    info_id: 11,
+    upcast: File.open(Rails.root + "app/assets/images/bowling/8/7.jpg")
     )
     
 # 12
@@ -332,23 +574,58 @@ Info.create!(
     region: "강북구",
     game: "볼링",
     content: "ㅎㅎㅎㅎ",
-    info_image_url: File.open(Rails.root + "app/assets/images/background_basketball.jpg"),
+    info_image_url: File.open(Rails.root + "app/assets/images/bowling/9/1.jpg"),
     location_lat: @locate_change[0],
     location_lng: @locate_change[1]
     )
 
 InfoAttachment.create!(
     info_id: 12,
-    upcast: File.open(Rails.root + "app/assets/images/background_surfing.jpg")
+    upcast: File.open(Rails.root + "app/assets/images/bowling/9/1.jpg")
     )
 
 
 
 InfoAttachment.create!(
     info_id: 12,
-    upcast: File.open(Rails.root + "app/assets/images/background_surfing2.jpg")
+    upcast: File.open(Rails.root + "app/assets/images/bowling/9/2.jpg")
     )
     
+InfoAttachment.create!(
+    info_id: 12,
+    upcast: File.open(Rails.root + "app/assets/images/bowling/9/3.jpg")
+    )
+   
+InfoAttachment.create!(
+    info_id: 12,
+    upcast: File.open(Rails.root + "app/assets/images/bowling/9/4.jpg")
+    )
+   
+InfoAttachment.create!(
+    info_id: 12,
+    upcast: File.open(Rails.root + "app/assets/images/bowling/9/5.jpg")
+    )
+   
+InfoAttachment.create!(
+    info_id: 12,
+    upcast: File.open(Rails.root + "app/assets/images/bowling/9/6.jpg")
+    )
+   
+InfoAttachment.create!(
+    info_id: 12,
+    upcast: File.open(Rails.root + "app/assets/images/bowling/9/7.jpg")
+    )
+   
+InfoAttachment.create!(
+    info_id: 12,
+    upcast: File.open(Rails.root + "app/assets/images/bowling/9/8.jpg")
+    )
+   
+InfoAttachment.create!(
+    info_id: 12,
+    upcast: File.open(Rails.root + "app/assets/images/bowling/9/9.jpg")
+    )
+   
 # 13
 @locate_change = Geocoder.coordinates("서울특별시 강북구 도봉로 34")
 Info.create!(
@@ -357,21 +634,66 @@ Info.create!(
     region: "강북구",
     game: "볼링",
     content: "ㅎㅎㅎㅎ",
-    info_image_url: File.open(Rails.root + "app/assets/images/background_basketball.jpg"),
+    info_image_url: File.open(Rails.root + "app/assets/images/bowling/10/3.jpg"),
     location_lat: @locate_change[0],
     location_lng: @locate_change[1]
     )
 
 InfoAttachment.create!(
     info_id: 13,
-    upcast: File.open(Rails.root + "app/assets/images/background_surfing.jpg")
+    upcast: File.open(Rails.root + "app/assets/images/bowling/10/1.jpg")
     )
 
 
 
 InfoAttachment.create!(
     info_id: 13,
-    upcast: File.open(Rails.root + "app/assets/images/background_surfing2.jpg")
+    upcast: File.open(Rails.root + "app/assets/images/bowling/10/2.jpg")
+    )
+    
+InfoAttachment.create!(
+    info_id: 13,
+    upcast: File.open(Rails.root + "app/assets/images/bowling/10/3.jpg")
+    )
+    
+InfoAttachment.create!(
+    info_id: 13,
+    upcast: File.open(Rails.root + "app/assets/images/bowling/10/4.jpg")
+    )
+    
+InfoAttachment.create!(
+    info_id: 13,
+    upcast: File.open(Rails.root + "app/assets/images/bowling/10/5.jpg")
+    )
+    
+InfoAttachment.create!(
+    info_id: 13,
+    upcast: File.open(Rails.root + "app/assets/images/bowling/10/6.jpg")
+    )
+    
+InfoAttachment.create!(
+    info_id: 13,
+    upcast: File.open(Rails.root + "app/assets/images/bowling/10/7.jpg")
+    )
+    
+InfoAttachment.create!(
+    info_id: 13,
+    upcast: File.open(Rails.root + "app/assets/images/bowling/10/8.jpg")
+    )
+    
+InfoAttachment.create!(
+    info_id: 13,
+    upcast: File.open(Rails.root + "app/assets/images/bowling/10/9.jpg")
+    )
+    
+InfoAttachment.create!(
+    info_id: 13,
+    upcast: File.open(Rails.root + "app/assets/images/bowling/10/10.jpg")
+    )
+    
+InfoAttachment.create!(
+    info_id: 13,
+    upcast: File.open(Rails.root + "app/assets/images/bowling/10/11.jpg")
     )
     
 # 14
@@ -382,21 +704,66 @@ Info.create!(
     region: "중랑구",
     game: "볼링",
     content: "ㅎㅎㅎㅎ",
-    info_image_url: File.open(Rails.root + "app/assets/images/background_basketball.jpg"),
+    info_image_url: File.open(Rails.root + "app/assets/images/bowling/11/2.jpg"),
     location_lat: @locate_change[0],
     location_lng: @locate_change[1]
     )
 
 InfoAttachment.create!(
     info_id: 14,
-    upcast: File.open(Rails.root + "app/assets/images/background_surfing.jpg")
+    upcast: File.open(Rails.root + "app/assets/images/bowling/11/1.jpg")
     )
 
 
 
 InfoAttachment.create!(
     info_id: 14,
-    upcast: File.open(Rails.root + "app/assets/images/background_surfing2.jpg")
+    upcast: File.open(Rails.root + "app/assets/images/bowling/11/2.jpg")
+    )
+
+InfoAttachment.create!(
+    info_id: 14,
+    upcast: File.open(Rails.root + "app/assets/images/bowling/11/3.jpg")
+    )
+
+InfoAttachment.create!(
+    info_id: 14,
+    upcast: File.open(Rails.root + "app/assets/images/bowling/11/4.jpg")
+    )
+
+InfoAttachment.create!(
+    info_id: 14,
+    upcast: File.open(Rails.root + "app/assets/images/bowling/11/5.jpg")
+    )
+
+InfoAttachment.create!(
+    info_id: 14,
+    upcast: File.open(Rails.root + "app/assets/images/bowling/11/6.jpg")
+    )
+
+InfoAttachment.create!(
+    info_id: 14,
+    upcast: File.open(Rails.root + "app/assets/images/bowling/11/7.jpg")
+    )
+
+InfoAttachment.create!(
+    info_id: 14,
+    upcast: File.open(Rails.root + "app/assets/images/bowling/11/8.jpg")
+    )
+
+InfoAttachment.create!(
+    info_id: 14,
+    upcast: File.open(Rails.root + "app/assets/images/bowling/11/9.jpg")
+    )
+
+InfoAttachment.create!(
+    info_id: 14,
+    upcast: File.open(Rails.root + "app/assets/images/bowling/11/10.jpg")
+    )
+
+InfoAttachment.create!(
+    info_id: 14,
+    upcast: File.open(Rails.root + "app/assets/images/bowling/11/11.jpg")
     )
 
 # 15
@@ -407,21 +774,36 @@ Info.create!(
     region: "동대문구",
     game: "볼링",
     content: "ㅎㅎㅎㅎ",
-    info_image_url: File.open(Rails.root + "app/assets/images/background_basketball.jpg"),
+    info_image_url: File.open(Rails.root + "app/assets/images/bowling/12/4.jpg"),
     location_lat: @locate_change[0],
     location_lng: @locate_change[1]
     )
 
 InfoAttachment.create!(
     info_id: 15,
-    upcast: File.open(Rails.root + "app/assets/images/background_surfing.jpg")
+    upcast: File.open(Rails.root + "app/assets/images/bowling/12/1.jpg")
     )
 
 
 
 InfoAttachment.create!(
     info_id: 15,
-    upcast: File.open(Rails.root + "app/assets/images/background_surfing2.jpg")
+    upcast: File.open(Rails.root + "app/assets/images/bowling/12/2.jpg")
+    )
+
+InfoAttachment.create!(
+    info_id: 15,
+    upcast: File.open(Rails.root + "app/assets/images/bowling/12/3.jpg")
+    )
+
+InfoAttachment.create!(
+    info_id: 15,
+    upcast: File.open(Rails.root + "app/assets/images/bowling/12/4.jpg")
+    )
+
+InfoAttachment.create!(
+    info_id: 15,
+    upcast: File.open(Rails.root + "app/assets/images/bowling/12/5.jpg")
     )
 
 # 16
@@ -432,23 +814,42 @@ Info.create!(
     region: "종로구",
     game: "볼링",
     content: "ㅎㅎㅎㅎ",
-    info_image_url: File.open(Rails.root + "app/assets/images/background_basketball.jpg"),
+    info_image_url: File.open(Rails.root + "app/assets/images/bowling/13/6.jpg"),
     location_lat: @locate_change[0],
     location_lng: @locate_change[1]
     )
 
 InfoAttachment.create!(
     info_id: 16,
-    upcast: File.open(Rails.root + "app/assets/images/background_surfing.jpg")
+    upcast: File.open(Rails.root + "app/assets/images/bowling/13/1.jpg")
     )
 
 
 
 InfoAttachment.create!(
     info_id: 16,
-    upcast: File.open(Rails.root + "app/assets/images/background_surfing2.jpg")
+    upcast: File.open(Rails.root + "app/assets/images/bowling/13/2.jpg")
     )
-    
+
+InfoAttachment.create!(
+    info_id: 16,
+    upcast: File.open(Rails.root + "app/assets/images/bowling/13/3.jpg")
+    )
+
+InfoAttachment.create!(
+    info_id: 16,
+    upcast: File.open(Rails.root + "app/assets/images/bowling/13/4.jpg")
+    )
+
+InfoAttachment.create!(
+    info_id: 16,
+    upcast: File.open(Rails.root + "app/assets/images/bowling/13/5.jpg")
+    )
+
+InfoAttachment.create!(
+    info_id: 16,
+    upcast: File.open(Rails.root + "app/assets/images/bowling/13/6.jpg")
+    )
 # 17
 @locate_change = Geocoder.coordinates("서울특별시 강북구 도봉로 342")
 Info.create!(
@@ -457,21 +858,71 @@ Info.create!(
     region: "강북구",
     game: "볼링",
     content: "ㅎㅎㅎㅎ",
-    info_image_url: File.open(Rails.root + "app/assets/images/background_basketball.jpg"),
+    info_image_url: File.open(Rails.root + "app/assets/images/bowling/14/6.jpg"),
     location_lat: @locate_change[0],
     location_lng: @locate_change[1]
     )
 
 InfoAttachment.create!(
     info_id: 17,
-    upcast: File.open(Rails.root + "app/assets/images/background_surfing.jpg")
+    upcast: File.open(Rails.root + "app/assets/images/bowling/14/1.jpg")
     )
 
 
 
 InfoAttachment.create!(
     info_id: 17,
-    upcast: File.open(Rails.root + "app/assets/images/background_surfing2.jpg")
+    upcast: File.open(Rails.root + "app/assets/images/bowling/14/2.jpg")
+    )
+    
+InfoAttachment.create!(
+    info_id: 17,
+    upcast: File.open(Rails.root + "app/assets/images/bowling/14/3.jpg")
+    )
+    
+InfoAttachment.create!(
+    info_id: 17,
+    upcast: File.open(Rails.root + "app/assets/images/bowling/14/4.jpg")
+    )
+    
+InfoAttachment.create!(
+    info_id: 17,
+    upcast: File.open(Rails.root + "app/assets/images/bowling/14/5.jpg")
+    )
+    
+InfoAttachment.create!(
+    info_id: 17,
+    upcast: File.open(Rails.root + "app/assets/images/bowling/14/6.jpg")
+    )
+    
+InfoAttachment.create!(
+    info_id: 17,
+    upcast: File.open(Rails.root + "app/assets/images/bowling/14/7.jpg")
+    )
+    
+InfoAttachment.create!(
+    info_id: 17,
+    upcast: File.open(Rails.root + "app/assets/images/bowling/14/8.jpg")
+    )
+    
+InfoAttachment.create!(
+    info_id: 17,
+    upcast: File.open(Rails.root + "app/assets/images/bowling/14/9.jpg")
+    )
+    
+InfoAttachment.create!(
+    info_id: 17,
+    upcast: File.open(Rails.root + "app/assets/images/bowling/14/10.jpg")
+    )
+    
+InfoAttachment.create!(
+    info_id: 17,
+    upcast: File.open(Rails.root + "app/assets/images/bowling/14/11.jpg")
+    )
+    
+InfoAttachment.create!(
+    info_id: 17,
+    upcast: File.open(Rails.root + "app/assets/images/bowling/14/12.jpg")
     )
     
 # 18
@@ -482,22 +933,53 @@ Info.create!(
     region: "동대문구",
     game: "볼링",
     content: "ㅎㅎㅎㅎ",
-    info_image_url: File.open(Rails.root + "app/assets/images/background_basketball.jpg"),
+    info_image_url: File.open(Rails.root + "app/assets/images/bowling/15/1.jpeg"),
     location_lat: @locate_change[0],
     location_lng: @locate_change[1]
     )
 
 InfoAttachment.create!(
     info_id: 18,
-    upcast: File.open(Rails.root + "app/assets/images/background_surfing.jpg")
+    upcast: File.open(Rails.root + "app/assets/images/bowling/15/1.jpeg")
     )
 
 
 
 InfoAttachment.create!(
     info_id: 18,
-    upcast: File.open(Rails.root + "app/assets/images/background_surfing2.jpg")
+    upcast: File.open(Rails.root + "app/assets/images/bowling/15/2.jpeg")
     )
+
+InfoAttachment.create!(
+    info_id: 18,
+    upcast: File.open(Rails.root + "app/assets/images/bowling/15/3.jpeg")
+    )
+
+InfoAttachment.create!(
+    info_id: 18,
+    upcast: File.open(Rails.root + "app/assets/images/bowling/15/4.jpeg")
+    )
+
+InfoAttachment.create!(
+    info_id: 18,
+    upcast: File.open(Rails.root + "app/assets/images/bowling/15/5.jpg")
+    )
+
+InfoAttachment.create!(
+    info_id: 18,
+    upcast: File.open(Rails.root + "app/assets/images/bowling/15/6.jpg")
+    )
+
+InfoAttachment.create!(
+    info_id: 18,
+    upcast: File.open(Rails.root + "app/assets/images/bowling/15/7.jpg")
+    )
+    
+InfoAttachment.create!(
+    info_id: 18,
+    upcast: File.open(Rails.root + "app/assets/images/bowling/15/8.jpg")
+    )
+
 
 # 19
 @locate_change = Geocoder.coordinates("서울특별시 성북구 길음로 118")
@@ -982,23 +1464,28 @@ Info.create!(
     region: "동대문구",
     game: "농구",
     content: "ㅎㅎㅎㅎ",
-    info_image_url: File.open(Rails.root + "app/assets/images/background_basketball.jpg"),
+    info_image_url: File.open(Rails.root + "app/assets/images/basketball/bp/1.jpg"),
     location_lat: @locate_change[0],
     location_lng: @locate_change[1]
     )
 
 InfoAttachment.create!(
     info_id: 38,
-    upcast: File.open(Rails.root + "app/assets/images/background_surfing.jpg")
+    upcast: File.open(Rails.root + "app/assets/images/basketball/bp/1.jpg")
     )
 
 
 
 InfoAttachment.create!(
     info_id: 38,
-    upcast: File.open(Rails.root + "app/assets/images/background_surfing2.jpg")
+    upcast: File.open(Rails.root + "app/assets/images/basketball/bp/2.jpg")
     )
 
+InfoAttachment.create!(
+    info_id: 38,
+    upcast: File.open(Rails.root + "app/assets/images/basketball/bp/3.jpeg")
+    )
+    
 # 39
 @locate_change = Geocoder.coordinates("서울특별시 성북구 동소문로 86-15")
 Info.create!(

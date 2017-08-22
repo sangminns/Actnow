@@ -44,7 +44,8 @@ Rails.application.routes.draw do
   get '/clubs' => 'clubs#index' 
   post '/clubs' => 'clubs#create' 
   get '/clubs/new' => 'clubs#new' 
-  post '/clubs/:id/apply' => 'clubs#apply_create'
+  # post '/clubs/:id/apply' => 'clubs#apply_create'
+  post '/clubs/:id/apply/:leader_id' => 'clubs#apply_create'
   get '/clubs/:id/edit' => 'clubs#edit', as: "edit_club" 
   get '/clubs/:id' => 'clubs#show', as: "club" 
 
@@ -55,6 +56,8 @@ Rails.application.routes.draw do
   #----------------- my_page -----------------
   
   get '/my_page/:id' => 'my_page#show'
+  
+  post 'my_page/accept/:id/:member_id/:club_id' => 'my_page#accept_create'
   
   
   #-------------------------events ------------

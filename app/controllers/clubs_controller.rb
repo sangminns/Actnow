@@ -61,6 +61,7 @@ class ClubsController < ApplicationController
   
   def apply_create
     @club = Club.find(params[:id])
+    @leader = params[:leader_id]
     @users = current_user.id
     
     @clubs = []
@@ -75,9 +76,13 @@ class ClubsController < ApplicationController
       redirect_to :back
     else
       #요청을 보내라 먼저! 
+      somoim = Acceptance.new
+      somoim.club_id = params[:id]
+      somoim.leader_id = @leader
+      somoim.member_id = current_user.id
+      somoim.save
       
-      
-      current_user.club_addition(@users, params[:id])
+      # current_user.club_addition(@users, params[:id])
       redirect_to :back
     end
     
