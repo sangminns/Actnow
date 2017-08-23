@@ -80,6 +80,7 @@ class ClubsController < ApplicationController
       somoim.club_id = params[:id]
       somoim.leader_id = @leader
       somoim.member_id = current_user.id
+      somoim.clubApply = params[:clubApply]
       somoim.save
       
       # current_user.club_addition(@users, params[:id])

@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 20170822063226) do
     t.integer  "club_id"
     t.integer  "leader_id"
     t.integer  "member_id"
+    t.text     "clubApply"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
