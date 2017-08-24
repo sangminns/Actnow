@@ -55,7 +55,7 @@ Rails.application.routes.draw do
   
   #----------------- my_page -----------------
   
-  get '/my_page/:id' => 'my_page#show'
+  get '/my_page/:id' => 'my_page#show', as: "my_page"
   
   post 'my_page/accept/:id/:member_id/:club_id' => 'my_page#accept_create'
   
