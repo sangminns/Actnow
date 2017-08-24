@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 
 
+# Editor
+gem 'tinymce-rails'
 
 # 주소 입력시 좌표로 변환해주는 gem
 gem 'geocoder'
@@ -22,6 +24,7 @@ gem 'devise-i18n'
 
 # bootstrap
 gem 'bootstrap-sass', '~> 3.3.6'
+
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'

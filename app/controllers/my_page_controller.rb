@@ -29,5 +29,14 @@ class MyPageController < ApplicationController
         redirect_to :back
         
     end
+    
+    def destroy_create
+      
+        apply = Acceptance.find(params[:id])
+        apply.destroy
+        
+        redirect_to :back
+        
+    end
 
 end

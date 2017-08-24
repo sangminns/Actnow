@@ -6,6 +6,7 @@ class CreateAcceptances < ActiveRecord::Migration
       t.integer :leader_id
       t.integer :member_id
       t.text :clubApply
+      t.string :member_email
 
       t.timestamps null: false
     end

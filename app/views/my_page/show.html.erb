@@ -1,18 +1,32 @@
-<br><br><br><br><br><br><br><br><br><br>
-id: <%= @user.id  %><br>
-email: <%= @user.email  %><br>
-
-
-
-<hr>
-club 받은 요청
-:<% @clubMember.each do |a| %>
-    <hr>
-    <%= a.member_id %>
-    <%= a.clubApply %>
-    <%= form_tag("/my_page/accept/#{a.id}/#{a.member_id}/#{a.club_id}", method: 'post') do %>
-        <%= submit_tag('허락') %>
-    <% end %>
- <% end %>
+<br><br><br><br><br>
+<div class="container">
+    <div class="mypage">
+        <h2>My Page</h2>
+        <hr>
+        id: <%= @user.id  %><br>
+        <h3><%= @user.email  %></h3><br>
+    
+        <br><br><br><br><br>
+        <hr>
+        
+        <h4>club 받은 요청</h4>
+        <% @clubMember.each do |a| %>
+            <hr>
+            <%= a.member_id %>
+            <br>
+            <%= a.member_email %>의 요청
+            <br>
+            자기소개 : <%= a.clubApply %>
+            <br><br>
+            <%= form_tag("/my_page/accept/#{a.id}/#{a.member_id}/#{a.club_id}", method: 'post') do %>
+                <%= submit_tag('허락', class: 'button') %>
+            <% end %>
+            <br>
+            <%= form_tag("/my_page/accept/#{a.id}/#{a.member_id}/#{a.club_id}", method: 'post') do %>
+                <%= submit_tag('거절', class: 'button') %>
+            <% end %>
+         <% end %>
+     </div>
+ </div>
 
 
