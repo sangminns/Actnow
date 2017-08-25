@@ -1,25 +1,34 @@
-<div class="cast-body">
+<div class="cast-body club-body">
     <div class="container">
-        <h2>클럽 소개</h2>
+        <h1>Club</h1> <br>
+        <h5> 동호회 / 간단한 소모임을 만들고 가입해보세요. </h5>
+        <br>
+        
+        <% if user_signed_in? %>
+            <a href=<%= clubs_new_path %> class="btn btn-warning" style="float: right;">클럽 만들기</a>
+            <%#= link_to '새 글쓰기' , clubs_new_path  %><br>
+        <% else %>    
+            <p style="float: right;">*클럽을 만들거나 가입하려면 로그인을 해주세요.</p><br>
+        <% end %>
+        
+        <hr>
+        
         <% @clubs.each do |i| %>
-            대표 : <%= i.clubUser %><br>
-            이름 : <%= i.clubTitle %><br>
-            소개 : <%= i.clubContent %><br>
-            종목 : <%= i.clubGame %><br>
-            지역 : <%= i.clubRegion %><br>
-            <%= link_to '보기', club_path(i.id) %> 
-            <hr>
+            <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4">
+                <div class="card">
+                  <img class="card-img-top" src="<%= image_url i.club_image_url.thumb.url %>" alt="Card image cap">
+                  <div class="card-block">
+                    <h4 class="card-title"><%= i.clubTitle %></h4>
+                    <p class="card-text">지역 : <%= i.clubRegion %></p>
+                    <p class="card-text">종목 : <%= i.clubGame %></p>
+                    <p class="card-text">대표 : <%= i.clubUser %></p>
+                    <a href=<%= club_path(i.id) %> class="btn btn-primary">자세히 보기</a>
+                  </div>
+                </div>
+            </div>
             
         <% end %>
-        <hr>
-
-        <% if user_signed_in? %>
-            <%= link_to '새 글쓰기' , clubs_new_path  %><br>
-        <% else %>    
-            클럽을 만들거나 가입하려면 로그인을 해주세요.<br>
-        <% end %>
-        <%= link_to 'Home', '/' %>
-    
+        
     </div>
 </div>
 

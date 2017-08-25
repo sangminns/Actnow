@@ -1,19 +1,27 @@
-<div class="cast-body">
+<div class="cast-body club-body">
     <div class="container">
         <%#= @club.id %>
+        
         <h1><%= @club.clubTitle %></h1> <br>
         <h5><%= @club.clubGame %></h5>
         <h5><%= @club.clubRegion %></h5>
-        <h5><%= @club.clubContent %></h5>
-        <br>
+        <hr>
+        <h5>대표: <%= @club.clubUser %></h5>
+        <h5>설명: <%= @club.clubContent %></h5>
+        <hr>
         
+        <h5>대표 이미지</h5>
+        <%= image_tag @club.club_image_url.url %>
+    
+        <br>
+        <hr>
         
         
         <!--<%#= form_tag("/clubs/#{@club.id}/apply", method: 'post') do %>-->
         <!--    <%#= submit_tag('가입하기') %>-->
         <!--<%# end %>-->
         <%= form_tag("/clubs/#{@club.id}/apply/#{@club.user_id}", method: 'post') do %>
-            <h4>클럽장에게 자신을 소개하세요.(ex- 이름/성별/나이 등)</h4>
+            <h4>* 클럽장에게 자신을 소개하세요.(ex- 이름/성별/나이 등)</h4>
             <%= text_area_tag(:clubApply) %><br>
             <%= submit_tag('가입요청') %>
         <% end %>

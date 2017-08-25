@@ -59,7 +59,7 @@ Rails.application.routes.draw do
   
   post 'my_page/accept/:id/:member_id/:club_id' => 'my_page#accept_create'
   
-  post 'my_page/destroy/:id/:member_id/club_id' => 'my_page#destroy_create' 
+  post 'my_page/destroy/:id/:member_id/:club_id' => 'my_page#destroy_create' 
   
   
   #-------------------------events ------------

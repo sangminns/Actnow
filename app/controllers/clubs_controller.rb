@@ -20,10 +20,11 @@ class ClubsController < ApplicationController
       @makeClub = Club.new
       @makeClub.user_id = current_user.id
       @makeClub.clubUser = @user
-      @makeClub.clubTitle = params[:clubTitle]
-      @makeClub.clubContent = params[:clubContent]
-      @makeClub.clubGame = params[:clubGame]
-      @makeClub.clubRegion = params[:clubRegion]
+      @makeClub.clubTitle = params[:club][:clubTitle]
+      @makeClub.clubContent = params[:club][:clubContent]
+      @makeClub.clubGame = params[:club][:clubGame]
+      @makeClub.clubRegion = params[:club][:clubRegion]
+      @makeClub.club_image_url = params[:club][:club_image_url]
   
       @makeClub.save
     end
@@ -33,7 +34,7 @@ class ClubsController < ApplicationController
   end
 
   def edit
-    @Club = Club.find(params[:id])
+    @club = Club.find(params[:id])
   end
 
   def update
@@ -41,11 +42,18 @@ class ClubsController < ApplicationController
     # @club.update_attributes(clubTitle: params[:clubTitle], clubContent: params[:clubContent])
     # redirect_to '/clubs'
     
-    makeclub = Club.find(params[:id])
-    makeclub.clubTitle = params[:clubTitle]
-    makeclub.clubContent = params[:clubContent]
-  
-    makeclub.save
+    
+    Club.find(params[:id]).update(params.require(:club).permit(:clubTitle, :clubGame, :clubRegion, :club_image_url))
+    # makeClub.user_id = current_user.id
+    # makeClub.clubUser = @user
+    # makeClub.clubTitle = params[:club][:clubTitle]
+    # makeClub.clubContent = params[:club][:clubContent]
+    # makeClub.clubGame = params[:club][:clubGame]
+    # makeClub.clubRegion = params[:club][:clubRegion]
+    # makeClub.club_image_url = params[:club][:club_image_url]
+    
+    # makeClub.save
+    
     redirect_to '/clubs'
     
     
@@ -82,12 +90,13 @@ class ClubsController < ApplicationController
       somoim.member_id = current_user.id
       somoim.member_email = current_user.email
       somoim.clubApply = params[:clubApply]
+      somoim.clubName = @club.clubContent
       somoim.save
       
       # current_user.club_addition(@users, params[:id])
       redirect_to :back
     end
     
-    
+ 
   end
 end

@@ -8,6 +8,7 @@ class CreateClubs < ActiveRecord::Migration
       t.text :clubContent
       t.string :clubGame
       t.string :clubRegion
+      t.string :club_image_url
       
       t.timestamps null: false
     end

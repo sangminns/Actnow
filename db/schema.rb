@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 20170822063226) do
     t.integer  "leader_id"
     t.integer  "member_id"
     t.text     "clubApply"
+    t.text     "clubName"
     t.string   "member_email"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
@@ -60,8 +61,9 @@ ActiveRecord::Schema.define(version: 20170822063226) do
     t.text     "clubContent"
     t.string   "clubGame"
     t.string   "clubRegion"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.string   "club_image_url"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
   create_table "comments", force: :cascade do |t|

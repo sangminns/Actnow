@@ -9,10 +9,12 @@
         <br><br><br><br><br>
         <hr>
         
-        <h4>club 받은 요청</h4>
+        <h4>*club 받은 요청</h4>
         <% @clubMember.each do |a| %>
             <hr>
-            <%= a.member_id %>
+            <%#= a.member_id %>
+            <br>
+            Club 이름 : <%= a.clubName %>
             <br>
             <%= a.member_email %>의 요청
             <br>
@@ -22,7 +24,7 @@
                 <%= submit_tag('허락', class: 'button') %>
             <% end %>
             <br>
-            <%= form_tag("/my_page/accept/#{a.id}/#{a.member_id}/#{a.club_id}", method: 'post') do %>
+            <%= form_tag("/my_page/destroy/#{a.id}/#{a.member_id}/#{a.club_id}", method: 'post') do %>
                 <%= submit_tag('거절', class: 'button') %>
             <% end %>
          <% end %>
