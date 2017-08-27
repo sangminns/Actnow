@@ -3,9 +3,6 @@
     Club 이름 : 
     <%= f.text_field :clubTitle %><br>
     
-    Club 소개 :
-    <%= f.text_area :clubContent %><br>
-    
     Club 종목 : 
     <%= f.select(:clubGame, options_for_select([
         ['볼링'], ['탁구'], ['농구'], ['야구'], ['요가'], ['수영'], ['서핑']
@@ -18,7 +15,10 @@
         ['동대문구'], ['동작구'], ['마포구'], ['서대문구'], ['서초구'],
         ['성동구'], ['성북구'], ['송파구'], ['양천구'], ['영등포구'],
         ['용산구'], ['은평구'], ['종로구'], ['중구'], ['중랑구']
-    ])) %><br>
+    ])) %><br><br>
+    
+    Club 소개 :
+    <%= f.text_area :clubContent %><br><br>
     
     대표 사진 등록
     <%= f.file_field :club_image_url %>

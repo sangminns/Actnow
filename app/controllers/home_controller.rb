@@ -12,6 +12,7 @@ class HomeController < ApplicationController
     
     @casts = Cast.all
     @events = Event.all
+    @clubs = Club.all
     
   end
   
