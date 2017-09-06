@@ -57,47 +57,29 @@
                 <%= i.content %>
                 
               </div>
-    
-              <!--</div>-->
-            </div>
-            <div class="shows">
-              <div class="overlays"></div>
+              
+              <div class="shows">
+                <div class="overlays"></div>
                 <div class="img-show">
                   <span></span>
                   <img src="">
+                </div>
               </div>
             </div>
+            
             <div role="tabpanel" class="tab-pane fade" id="review<%= i.id%>">
-              <div class="row">
-                <div class="col-md-6">
-                  <div id="commentshow_<%= i.id %>">
-                    <% i.comments.each do |c| %>
-                      <span id="user_<%= i.id%>"><%= c.userName %></span>
-                      : <%= c.comment %>
-                      <% if user_signed_in? %>
-                        <a href="/comment_destroy/<%= c.id %>" class="destroyComment">[댓글삭제]</a>
-                      <% end %>
-                      <input id="oneComment" type="hidden" value="<%=c.id %>">
-                      <br>
-                    <% end %>
-                  </div><hr>
-                  후기 작성<br> 
-                  <textarea class="form-control" rows="3" name="comment" id="comment_<%= i.id%>" placeholder="후기를 작성해주세요"></textarea>
-                  <button value="<%= i.id %>" style="text-align: center" class="btn reply_submit">
-                    작성
-                  </button>
-                  <hr>
-                </div>
-                <div class="col-md-6">
-                  <% if user_signed_in? %>
-                      <br>평점 작성
-                      <%= rating_for i, 'average' , enable_half: true, disable_after_rate: false %>
-                  <% else %>    
-                      평점 매기기는 로그인하셔야 가능합니다
-                  <% end %>
+              <%= render 'home/showreview' %>
+              
+              <div class="shows">
+                <div class="overlays"></div>
+                <div class="review-show">
+                  리뷰쓰기!!
                 </div>
               </div>
+              
             </div>
+            
+            
           </div>
         </div>
     	</div>
@@ -178,7 +160,7 @@
             '    <%= image_tag i.info_image_url.thumb1.url, class: "infoImage img-rounded" %><br>',
             '    <div class="inforate"><span class="controlsize"><%= i.infoTitle %></span><span class="jump">""</span><span id="starrate" style="color: #fff; font-size: 1.8rem;"><%= rating_for i, 'average', disable_after_rate: true, imdb_avg: true %></span></div>',
             '    <p><%= i.region %> | <%= i.address %><br>',
-            '        <%= i.game %> &gt; 특별, 광역시청<br>',
+            '        <%= i.game %> &gt; <%= i.city %><br>',
             '   </p>',
             '   <a class="btn btn-primary" href="#act<%= i.id %>">상세보기</a>',
             '</div>'
@@ -310,7 +292,8 @@
         geoinfowindow.open(map, gpsMarker);
         
         // 지도 중심좌표를 접속위치로 변경합니다
-        map.setCenter(locPosition);      
+        map.setCenter(locPosition); 
+        map.setZoom(8);
     }    
     
 //댓글 작성
@@ -336,26 +319,8 @@
             })
         });
     });  
-    
-    // $(function() {
-    //   $(".destroyComment").click(function() {
-    //       destroyId = $("commentDestroy").val();
-           
-    //       $.ajax({
-    //           method: "GET",
-    //           url: "comment_destroy/:comment_id",
-    //           data: { id: destroyId},
-    //             success: function() {
-    //                 alert( "댓글이 삭제되었습니다.");
-    //                 $("#oneComment_" + destroyId).remove();
-    //             },
-    //             error: function() {
-    //                 alert( "댓글이 삭제되지 않았습니다.");
-    //             } 
-    //         })
-    //   }); 
-    // });
 
+//사진 슬라이더
 $(document).ready(function(){
   v = $('.slide-section .slide-img').length;
   i = 1;
@@ -394,9 +359,8 @@ $(document).ready(function(){
 
 });
 
+// 이미지 모달 
 $(function () {
-    "use strict";
-    
     <% @storeInfo.each do |i| %>
       <% i.info_attachments.each do |p| %>
         $(".modalimage<%= p.id %> img").click(function () {
@@ -405,6 +369,24 @@ $(function () {
             $(".img-show img").attr("src", $src);
         });
       <% end %>
+    <% end %>
+    
+    $("spans, .overlays").click(function () {
+        $(".shows").fadeOut();
+    });
+    
+});
+
+//리뷰쓰기 모달
+$(function () {
+    <% @storeInfo.each do |i| %>
+     
+        $("#write<%= i.id %>").click(function () {
+            var $src = $(this).attr("src");
+            $(".shows").fadeIn();
+            $(".review-show").append('<p>리뷰쓰기</p>');
+        });
+      
     <% end %>
     
     $("spans, .overlays").click(function () {

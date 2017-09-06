@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+#local_time
+gem 'local_time'
 
 # Editor
 gem 'tinymce-rails'

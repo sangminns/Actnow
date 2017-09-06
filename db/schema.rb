@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170822063226) do
+ActiveRecord::Schema.define(version: 20170906074753) do
 
   create_table "acceptances", force: :cascade do |t|
     t.integer  "club_id"
@@ -99,6 +99,7 @@ ActiveRecord::Schema.define(version: 20170822063226) do
   create_table "infos", force: :cascade do |t|
     t.string   "infoTitle"
     t.string   "address"
+    t.string   "city"
     t.string   "region"
     t.string   "game"
     t.text     "content"
@@ -115,6 +116,25 @@ ActiveRecord::Schema.define(version: 20170822063226) do
     t.float    "overall_avg",   null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "question_comments", force: :cascade do |t|
+    t.string   "question_comment_content"
+    t.integer  "user_id"
+    t.integer  "question_id"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
+  add_index "question_comments", ["question_id"], name: "index_question_comments_on_question_id"
+  add_index "question_comments", ["user_id"], name: "index_question_comments_on_user_id"
+
+  create_table "questions", force: :cascade do |t|
+    t.string   "questionTitle"
+    t.text     "questionContent"
+    t.integer  "user_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
   create_table "rates", force: :cascade do |t|
@@ -152,6 +172,8 @@ ActiveRecord::Schema.define(version: 20170822063226) do
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
+    t.string   "username"
+    t.string   "nickname"
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"

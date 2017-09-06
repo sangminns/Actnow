@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+
   post '/rate' => 'rater#create', :as => 'rate'
   
   devise_for :users
@@ -74,8 +75,15 @@ Rails.application.routes.draw do
 
   delete '/events/:id' => 'events#destroy' 
   
+  # ------------------question 문의 게시판 ---------------------
+ 
+  resources :questions do
+    resources :question_comments, only: [:create, :destroy]
+  end
   
-  
+  # resources :memos do
+  #   resources :comments, only: [:create, :destroy]
+  # end
   
 
   # The priority is based upon order of creation: first created -> highest priority.

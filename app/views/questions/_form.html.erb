@@ -1,0 +1,15 @@
+<%= form_for @question do |f| %>
+  
+  <%= f.hidden_field :user_id, value: current_user.id  %> 
+  <p>
+    <%= f.text_field :questionTitle, label: '제목' %>
+  </p>
+ 
+  <p>
+    <%= f.text_area :questionContent, label: 'Memo', class: "tinymce", rows: 15, cols: 120 %>
+  </p>
+    <%= tinymce %> 
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>

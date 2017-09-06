@@ -8,6 +8,9 @@ class User < ActiveRecord::Base
   has_many :requests
   has_many :acceptances
   
+  has_many :questions
+  has_many :question_comments
+  
   def club_addition(user_id, club_id)
     Apply.create(user_id: user_id, club_id: club_id)
   end

@@ -18,12 +18,16 @@
     ])) %><br><br>
     
     Club 소개 :
-    <%= f.text_area :clubContent %><br><br>
+    <%= f.text_area :clubContent, :class => "tinymce", :rows => 15, :cols => 50 %>
+    
+    <%= tinymce %>
+    
+    <br>
     
     대표 사진 등록
     <%= f.file_field :club_image_url %>
     <br>
 
-    <%= f.submit('클럽 추가') %>
+    <%= f.submit '클럽 추가', class: "btn btn-success" %>
 <% end %>
 <hr>

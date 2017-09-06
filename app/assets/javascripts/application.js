@@ -15,6 +15,7 @@
 //= require jquery_ujs
 //= require custom
 //= require jquery.raty
+//= require tinymce
 //= require tinymce-jquery
 //= require ratyrate
 //= require_tree .

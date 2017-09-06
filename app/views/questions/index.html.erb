@@ -1,0 +1,23 @@
+<br><br><br><br><br>
+<div class="container">
+    <h1>문의사항</h1>
+    <div class="table-responsive">
+      <table class="table table-fit">
+        <thead>
+          <tr>
+            <th>title</th>
+            <th>user</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @questions.each do |p| %>
+            <tr>
+              <td><%= link_to p.questionTitle, p %></td>
+              <td><%= p.user.email %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <a href='/questions/new'>글쓰기</a>
+</div>

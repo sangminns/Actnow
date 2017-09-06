@@ -1,7 +1,7 @@
 require 'geocoder'
 
 class InfosController < ApplicationController
-      before_action :set_info, only: [ :info_edit, :info_update, :info_destroy]
+  before_action :set_info, only: [ :info_edit, :info_update, :info_destroy]
   
   def info_index
     @storeInfo = Info.all.reverse
@@ -49,7 +49,7 @@ class InfosController < ApplicationController
     redirect_to '/infos'
 
   end
-  
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_info
@@ -58,7 +58,7 @@ class InfosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def info_params
-      params.require(:info).permit(:infoTitle, :game, :region, :address, :location_lat, :location_lng,:info_image_url)
+      params.require(:info).permit(:infoTitle, :game, :city, :region, :address, :location_lat, :location_lng,:info_image_url)
     end
     
 end

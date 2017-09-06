@@ -19,17 +19,19 @@ class EventsController < ApplicationController
   def create
     
     @event = Event.new(event_params)
-   
-    if @event.save
+    
+    @event.save
+    
+    if params[:event_attachments] != nil
       params[:event_attachments]['upevent'].each do |a|
         @event_attachment = @event.event_attachments.create!(:upevent => a, :event_id => @event.id)
       end
      redirect_to @event, notice: 'Post was successfully created.' 
     else
-     render action: 'new' 
+    # render action: 'new' 
+    redirect_to '/events'
     end
-    
-    
+  
   end
 
   def edit

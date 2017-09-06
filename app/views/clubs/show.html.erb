@@ -7,7 +7,8 @@
         <h5><%= @club.clubRegion %></h5>
         <hr>
         <h5>대표: <%= @club.clubUser %></h5>
-        <h5>설명: <%= @club.clubContent %></h5>
+        <h5>설명: </h5>
+        <%= @club.clubContent.html_safe %>
         <hr>
         
         <h5>대표 이미지</h5>

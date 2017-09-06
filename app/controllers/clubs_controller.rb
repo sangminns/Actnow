@@ -43,7 +43,7 @@ class ClubsController < ApplicationController
     # redirect_to '/clubs'
     
     
-    Club.find(params[:id]).update(params.require(:club).permit(:clubTitle, :clubGame, :clubRegion, :club_image_url))
+    Club.find(params[:id]).update(params.require(:club).permit(:clubTitle, :clubContent, :clubGame, :clubRegion, :club_image_url))
     # makeClub.user_id = current_user.id
     # makeClub.clubUser = @user
     # makeClub.clubTitle = params[:club][:clubTitle]
@@ -82,6 +82,12 @@ class ClubsController < ApplicationController
     if @club.users.ids.include?(@users)
       
       redirect_to :back
+      
+    elsif Acceptance.exists?(member_id: current_user.id)
+   
+      # flash[:notice] = 'Successfully checked in'
+      
+      redirect_to club_path(@club), alert: "Invalid email or password"
     else
       #요청을 보내라 먼저! 
       somoim = Acceptance.new

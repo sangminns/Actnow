@@ -4,6 +4,7 @@ class CreateInfos < ActiveRecord::Migration
 
       t.string :infoTitle
       t.string :address
+      t.string :city
       t.string :region
       t.string :game
       t.text :content
