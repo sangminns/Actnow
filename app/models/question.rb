@@ -1,4 +1,6 @@
 class Question < ActiveRecord::Base
+  resourcify
+  
   belongs_to :user
   has_many :question_comments
   validates :questionTitle, presence: true, length: { minimum: 2, maximum: 100 }

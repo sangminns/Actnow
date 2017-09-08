@@ -9,16 +9,16 @@ Rails.application.routes.draw do
   
   #---info 해당 routes-----------------------------
    
-  get '/infos' => 'infos#info_index', as: "info"
-  post '/infos' => 'infos#info_create' 
-  get '/infos/info_new' => 'infos#info_new' 
+  get '/infos' => 'infos#index', as: "info"
+  post '/infos' => 'infos#create' 
+  get '/infos/info_new' => 'infos#new' 
  
-  get '/infos/:id/edit' => 'infos#info_edit', as: "edit_info" 
+  get '/infos/:id/edit' => 'infos#edit', as: "edit_info" 
   # get '/infos/:id' => 'infos#info_show', as: "info" 
 
-  patch '/infos.:id' => 'infos#info_update' 
+  patch '/infos.:id' => 'infos#update' 
 
-  get '/destroy/:id' => 'infos#info_destroy' 
+  get '/destroy/:id' => 'infos#destroy' 
   
   #---comment 해당 routes---------------------------------
   
@@ -28,16 +28,16 @@ Rails.application.routes.draw do
   #---cast 해당 routes---------------------------------
   
   
-  get '/casts' => 'casts#cast_index' 
-  post '/casts' => 'casts#cast_create' 
-  get '/casts/cast_new' => 'casts#cast_new' 
+  get '/casts' => 'casts#index' 
+  post '/casts' => 'casts#create' 
+  get '/casts/cast_new' => 'casts#new' 
  
-  get '/casts/:id/edit' => 'casts#cast_edit', as: "edit_cast" 
-  get '/casts/:id' => 'casts#cast_show', as: "cast" 
+  get '/casts/:id/edit' => 'casts#edit', as: "edit_cast" 
+  get '/casts/:id' => 'casts#show', as: "cast" 
 
-  patch '/casts/:id' => 'casts#cast_update' 
+  patch '/casts/:id' => 'casts#update' 
 
-  delete '/casts/:id' => 'casts#cast_destroy' 
+  delete '/casts/:id' => 'casts#destroy' 
   
   
   #---club 해당 routes---------------------------------

@@ -1,43 +1,48 @@
-<h1><%= @question.questionTitle %></h1>
-<hr />
-<h2>by <%= @question.user.email %></h2>
-<h3><%#= icon 'time' %><%= local_time(@question.created_at) %></h3>
-<% if current_user == @question.user %>
-  <%#= icon 'pencil' %><%= link_to '수정하기', edit_question_path(@question) %> | 
-  <%#= icon 'trash' %><%= link_to '삭제하기', question_path, method: :delete %>
-<% end %>
-<hr />
-    <%= @question.questionContent.html_safe %>
-<hr />
-
-<div class="well">
-  <% if user_signed_in? %>
-    <%= form_for @questionComment, url: question_question_comments_path(@question) do |f| %>
-      <%= f.hidden_field :user_id, value: current_user.id %>
-      <%= f.hidden_field :question_id, value: @question.id %>
-      <%= f.text_field :question_comment_content, label: 'Leave a comment!' %>
-      <%= f.submit %>
+<br><br><br><br><br>
+<div class="container">
+  
+  <a href=<%= questions_path %> class="btn btn-primary" style="float: right;">목록</a><br>
+  <h1><%= @question.questionTitle %></h1>
+  <hr />
+  <h2>by <%= @question.user.email %></h2>
+  <h3><i class="fa fa-clock-o" aria-hidden="true"></i><%= local_time(@question.created_at) %></h3>
+  <%# if current_user == @question.user %>
+    <i class="fa fa-pencil" aria-hidden="true"></i><%= link_to '수정하기', edit_question_path(@question) %> | 
+    <i class="fa fa-trash" aria-hidden="true"></i><%= link_to '삭제하기', question_path, method: :delete %>
+  <%# end %>
+  <hr />
+      <%= @question.questionContent.html_safe %>
+  <hr />
+  
+  <div class="well">
+    <% if user_signed_in? %>
+      <%= form_for @questionComment, url: question_question_comments_path(@question) do |f| %>
+        <%= f.hidden_field :user_id, value: current_user.id %>
+        <%= f.hidden_field :question_id, value: @question.id %>
+        <%= f.text_field :question_comment_content, label: 'Leave a comment!' %>
+        <%= f.submit %>
+      <% end %>
+    <% else %>
+      <%= link_to '댓글을 남기려면 로그인 하세요!', new_user_session_path	%>
     <% end %>
-  <% else %>
-    <%= link_to '댓글을 남기려면 로그인 하세요!', new_user_session_path	%>
+  </div>
+  
+  <hr />
+  
+  <% @questionComments.each do |comment| %>
+    <div class="media">
+      <div class="media-body">
+        <h4 class="media-heading">
+          <strong><%= comment.user.email %></strong>
+          <i class="fa fa-clock-o" aria-hidden="true"></i>
+          <small><%= local_time(comment.created_at) %></small>
+          <% if current_user == comment.user %>
+            <%= link_to 'trash', question_question_comment_path(@question, comment), method: :delete %>
+          <% end %>
+        </h4>
+        <%= comment.question_comment_content %>
+      </div>
+    </div>
+    <hr />
   <% end %>
 </div>
-
-<hr />
-
-<% @questionComments.each do |comment| %>
-  <div class="media">
-    <div class="media-body">
-      <h4 class="media-heading">
-        <strong><%= comment.user.email %></strong>
-        <%#= icon 'time' %>
-        <small><%= local_time(comment.created_at) %></small>
-        <% if current_user == comment.user %>
-          <%= link_to 'trash', question_question_comment_path(@question, comment), method: :delete %>
-        <% end %>
-      </h4>
-      <%= comment.question_comment_content %>
-    </div>
-  </div>
-  <hr />
-<% end %>

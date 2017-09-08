@@ -2,6 +2,7 @@ class QuestionsController < ApplicationController
   before_action :authenticate_user!, except: [:show, :index]
   before_action :set_question, only: [:show, :edit, :update, :destroy]
   # before_action :is_owner?, only: [:edit, :update, :destroy]
+  load_and_authorize_resource
   
   def index
     @questions = Question.all

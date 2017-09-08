@@ -1,4 +1,6 @@
 class CommentController < ApplicationController
+  
+  
   def comment_create
     @comment = Comment.new(info_id: params[:info_id],
                             comment: params[:comment],

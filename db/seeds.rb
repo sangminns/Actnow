@@ -40,15 +40,22 @@
 #       t.float :location_lat
 #       t.float :location_lng
 
+(1..3).each do |i|
+    User.create( email: "rlfgus#{i}@gmail.com" , username: "rlfgus#{i}", nickname: "rlfgus#{i}", password: "rlfgus#{i}", password_confirmation: "rlfgus#{i}")
+    (1..3).each do |j|
+        Question.create( user_id: i, questionTitle: "제목 아이디 #{i} 글 #{j}", questionContent: "내용 아이디 #{i}, 글 #{j}" )
+    end
+end
 
 
 require 'geocoder'
-
+=begin
 # 1
 @locate_change = Geocoder.coordinates("경기도 고양시 일산동구 공릉천로 104")
 Info.create!(
     infoTitle: "플로우하우스",
     address: "경기도 고양시 일산동구 공릉천로 104",
+    city: "일산시",
     region: "일산동구",
     game: "서핑",
     content: "ㅎㅎㅎㅎ",
@@ -123,7 +130,46 @@ InfoAttachment.create!(
     info_id: 1,
     upcast: File.open(Rails.root + "app/assets/images/surfing/1/14.jpg")
     )
+=end
     
+# 4
+@locate_change = Geocoder.coordinates("서울특별시 성북구 보문로34길 69")
+Info.create!(
+    infoTitle: "성신볼링장",
+    address: "서울특별시 성북구 보문로34길 69",
+    city: "서울시",
+    region: "성북구",
+    game: "볼링",
+    content: "ㅎㅎㅎㅎ",
+    info_image_url: File.open(Rails.root + "app/assets/images/image_lightsky.png"),
+    location_lat: @locate_change[0],
+    location_lng: @locate_change[1]
+    )
+
+InfoAttachment.create!(
+    info_id: 1,
+    upcast: File.open(Rails.root + "app/assets/images/image_white.png")
+    )
+
+
+
+InfoAttachment.create!(
+    info_id: 1,
+    upcast: File.open(Rails.root + "app/assets/images/image_white.png")
+    )
+    
+InfoAttachment.create!(
+    info_id: 1,
+    upcast: File.open(Rails.root + "app/assets/images/image_white.png")
+    )
+    
+InfoAttachment.create!(
+    info_id: 1,
+    upcast: File.open(Rails.root + "app/assets/images/image_white.png")
+    )
+        
+
+=begin
 # 2
 @locate_change = Geocoder.coordinates("강원도 양양군 현남면 화상해안길 245")
 Info.create!(
@@ -2685,4 +2731,6 @@ InfoAttachment.create!(
     info_id: 86,
     upcast: File.open(Rails.root + "app/assets/images/background_surfing2.jpg")
     )   
+
+=end
     

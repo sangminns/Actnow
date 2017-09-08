@@ -3,6 +3,7 @@ class QuestionCommentsController < ApplicationController
   before_action :set_comment, only: [:destroy]
   before_action :is_owner?, only: [:destroy]
   
+  
   def create
     @questionComment = QuestionComment.new(comment_params)
     @questionComment.save

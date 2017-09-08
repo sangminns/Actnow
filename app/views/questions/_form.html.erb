@@ -2,11 +2,11 @@
   
   <%= f.hidden_field :user_id, value: current_user.id  %> 
   <p>
-    <%= f.text_field :questionTitle, label: '제목' %>
+    제목 : <%= f.text_field :questionTitle, label: '제목' %>
   </p>
  
   <p>
-    <%= f.text_area :questionContent, label: 'Memo', class: "tinymce", rows: 15, cols: 120 %>
+    내용 : <%= f.text_area :questionContent, label: 'Memo', class: "tinymce", rows: 15, cols: 120 %>
   </p>
     <%= tinymce %> 
   <p>

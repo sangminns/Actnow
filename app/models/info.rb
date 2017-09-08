@@ -1,4 +1,6 @@
 class Info < ActiveRecord::Base
+   resourcify
+   
     has_many :comments
     has_many :info_attachments
     accepts_nested_attributes_for :info_attachments

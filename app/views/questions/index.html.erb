@@ -1,6 +1,14 @@
 <br><br><br><br><br>
 <div class="container">
     <h1>문의사항</h1>
+    
+    <% if user_signed_in? %>
+      <a href=<%= new_question_path %> class="btn btn-warning" style="float: right;">글쓰기</a><br>
+    <% else %>    
+      <p style="float: right;">*문의사항은 로그인 후에 이용가능합니다.</p><br>
+    <% end %>
+    <br>
+        
     <div class="table-responsive">
       <table class="table table-fit">
         <thead>
@@ -19,5 +27,4 @@
         </tbody>
       </table>
     </div>
-    <a href='/questions/new'>글쓰기</a>
 </div>

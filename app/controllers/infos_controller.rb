@@ -1,20 +1,21 @@
 require 'geocoder'
 
 class InfosController < ApplicationController
-  before_action :set_info, only: [ :info_edit, :info_update, :info_destroy]
+  before_action :set_info, only: [ :edit, :update, :destroy]
+  load_and_authorize_resource
   
-  def info_index
+  def index
     @storeInfo = Info.all.reverse
     @info_attachment = InfoAttachment.all
     
   end
 
-  def info_new
+  def new
     @info = Info.new
     infoAttachment = @info.info_attachments.build
   end
 
-  def info_create
+  def create
     @locate_change = Geocoder.coordinates(params[:info][:address])
     
     @info = Info.new(info_params)
@@ -33,18 +34,18 @@ class InfosController < ApplicationController
     end
   end
 
-  def info_edit
+  def edit
    
   end
 
-  def info_update
+  def update
     
     @info.update(info_params)
     
     redirect_to '/infos'
   end
 
-  def info_destroy
+  def destroy
     @info.destroy
     redirect_to '/infos'
 

@@ -1,7 +1,8 @@
 class CastsController < ApplicationController
-   before_action :set_cast, only: [ :cast_show, :cast_edit, :cast_update, :cast_destroy]
-  
-  def cast_index
+   before_action :set_cast, only: [ :show, :edit, :update, :destroy]
+   load_and_authorize_resource
+   
+  def index
     @casts = Cast.all
     @cast_attachment = CastAttachment.all
     
@@ -9,17 +10,17 @@ class CastsController < ApplicationController
     # @cast_attachments = @cast.cast_attachments.all
   end
 
-  def cast_new
+  def new
     @cast = Cast.new
     @cast_attachment = @cast.cast_attachments.build
   end
 
-  def cast_show
+  def show
     # @cast = Cast.find(params[:id])
     @cast_attachments = @cast.cast_attachments.all
   end
 
-  def cast_create
+  def create
     
     # require 'carrierwave/orm/activerecord'
     
@@ -57,11 +58,11 @@ class CastsController < ApplicationController
     
   end
 
-  def cast_edit
+  def edit
     # @cast = Cast.find(params[:id])
   end
 
-  def cast_update
+  def update
     # @cast = Cast.find(params[:id])
     # @cast.update_attributes(castTitle: params[:castTitle], castContent: params[:castContent])
     # redirect_to '/casts'
@@ -93,7 +94,7 @@ class CastsController < ApplicationController
     #  @post.update_attributes(title: params[:post][:title], content: params[:content])
   end
 
-  def cast_destroy
+  def destroy
     @cast.destroy
     redirect_to '/casts'
   end
