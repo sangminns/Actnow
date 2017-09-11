@@ -20,13 +20,16 @@ Rails.application.routes.draw do
 
   get '/destroy/:id' => 'infos#destroy' 
   
-  #---comment 해당 routes---------------------------------
+  #---review 해당 routes---------------------------------
   
-  post 'comment' => 'comment#comment_create'
-  get 'comment_destroy/:comment_id' => 'comment#comment_destroy'
+  get '/:infoTitle/:info_id/reviews' => 'reviews#new'
+  post '/reviews' => 'reviews#create'
+  
+  patch '/reviews/:id' => 'reviews#update' 
+  
+  delete '/reviews/:id' => 'reviews#destroy'
   
   #---cast 해당 routes---------------------------------
-  
   
   get '/casts' => 'casts#index' 
   post '/casts' => 'casts#create' 

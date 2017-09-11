@@ -19,12 +19,14 @@
     
     가게 주소(자동 좌표 변환) : <%= f.text_field :address %><br>
     
+    가게 정보 : <%= f.text_field :content %><br>
+    
     대표 사진 등록
     <%= f.file_field :info_image_url %>
     <br>
     사진 추가
     <%= f.fields_for :info_attachments do |p| %>
-          <%= p.file_field :upcast, :multiple => true, name: "info_attachments[upcast][]" %>
+          <%= p.file_field :upinfo, :multiple => true, name: "info_attachments[upinfo][]" %>
     <% end %>
     
     <%= f.submit '추가하기' %>

@@ -14,7 +14,7 @@
     사진 : <%= image_tag i.info_image_url.thumb1.url %><br>
     
     <% i.info_attachments.each do |p| %>
-      <%= image_tag p.upcast.thumb1.url %>
+      <%= image_tag p.upinfo.thumb1.url %>
       <br><br>
     <% end %>
     

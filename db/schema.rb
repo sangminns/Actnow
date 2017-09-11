@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170908070805) do
+ActiveRecord::Schema.define(version: 20170909093817) do
 
   create_table "acceptances", force: :cascade do |t|
     t.integer  "club_id"
@@ -66,13 +66,22 @@ ActiveRecord::Schema.define(version: 20170908070805) do
     t.datetime "updated_at",     null: false
   end
 
-  create_table "comments", force: :cascade do |t|
-    t.text     "comment"
-    t.string   "userName"
-    t.integer  "user_id"
-    t.integer  "info_id"
+  create_table "comment_attachments", force: :cascade do |t|
+    t.integer  "comment_id"
+    t.string   "upcast"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.string   "userName"
+    t.string   "reviewTitle"
+    t.text     "reviewContent"
+    t.string   "comment_image_url"
+    t.integer  "user_id"
+    t.integer  "info_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
   end
 
   create_table "event_attachments", force: :cascade do |t|
@@ -167,6 +176,22 @@ ActiveRecord::Schema.define(version: 20170908070805) do
     t.string   "club_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "review_attachments", force: :cascade do |t|
+    t.integer  "review_id"
+    t.string   "upreview"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.string   "reviewTitle"
+    t.text     "reviewContent"
+    t.integer  "user_id"
+    t.integer  "info_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   create_table "roles", force: :cascade do |t|

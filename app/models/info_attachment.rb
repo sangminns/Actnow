@@ -1,4 +1,4 @@
 class InfoAttachment < ActiveRecord::Base
-    mount_uploader :upcast, UpcastUploader
+    mount_uploader :upinfo, UpinfoUploader
     belongs_to :info
 end

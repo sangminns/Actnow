@@ -3,7 +3,7 @@ class CreateInfoAttachments < ActiveRecord::Migration
     create_table :info_attachments do |t|
       
       t.integer :info_id 
-      t.string :upcast
+      t.string :upinfo
 
       t.timestamps null: false
     end

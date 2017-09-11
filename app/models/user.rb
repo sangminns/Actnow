@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   ratyrate_rater
   
   has_many :applies
-  has_many :comments
+  has_many :reviews
   has_many :clubs, through: :applies
   has_many :requests
   has_many :acceptances

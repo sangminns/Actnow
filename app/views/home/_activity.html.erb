@@ -16,21 +16,22 @@
 <div id="map">
   <% @storeInfo.each do |i| %>
   
-    <div id="act<%= i.id %>" class="overlay">
+    <div id="act_<%= i.infoTitle %>" class="overlay">
     	<div class="popup">
     		<h2><%= i.infoTitle %>
     		  <span id="starrate" style="color: #fff; font-size: 1.8rem;"><%= rating_for i, 'average', disable_after_rate: true, imdb_avg: true %></span>
     		</h2>
             <%#= imdb_style_rating_for i, "average" , disable_after_rate: true, imdb_avg: true %>
         <br>평점을 매긴 수 : <%= i.rates("average").count %>
-    		<a class="close" href="##<%#= i.id%>">&times;</a>
+    		<a class="close" href="##">&times;</a>
     		
     		<div class="content">
     		  
           <!-- Nav tabs -->
           <ul class="nav nav-tabs" role="tablist">
-            <li role="presentation" class="active"><a href="#info<%= i.id%>" aria-controls="info" role="tab" data-toggle="tab">INFO</a></li>
-            <li role="presentation"><a href="#review<%= i.id%>" aria-controls="review" role="tab" data-toggle="tab">REVIEW</a></li>
+            <li role="presentation" class="active"><a href="#info<%= i.id%>" aria-controls="info" role="tab" data-toggle="tab">정보</a></li>
+            <li role="presentation"><a href="#review<%= i.id%>" aria-controls="review" role="tab" data-toggle="tab">리뷰</a></li>
+            <li role="presentation"><a href="#notice<%= i.id%>" aria-controls="review" role="tab" data-toggle="tab">공지사항</a></li>
           </ul>
 
           <!-- Tab panes -->
@@ -40,7 +41,7 @@
                 
                 <% i.info_attachments.each do |p| %>
                   <div class="slide-img">
-                    <span class="modalimage<%= p.id %>"><img src="<%= p.upcast.thumb2.url%>"></span>
+                    <span class="modalimage<%= p.id %>"><img src="<%= p.upinfo.thumb2.url%>"></span>
                   </div>
                 <% end %>
                 
@@ -68,17 +69,36 @@
             </div>
             
             <div role="tabpanel" class="tab-pane fade" id="review<%= i.id%>">
-              <%= render 'home/showreview' %>
-              
-              <div class="shows">
-                <div class="overlays"></div>
-                <div class="review-show">
-                  리뷰쓰기!!
-                </div>
-              </div>
+            
+              <br>
+              <a href="<%= i.infoTitle %>/<%= i.id %>/reviews" class="btn btn-primary">리뷰쓰기</a>
+              총 <%= @countReview %>건
+              <select>
+                <option>최신 순</option>
+                <option>조회 순</option>
+              </select>
+              <hr>
+           
+              <% i.reviews.each do |c| %>
+                작성자 : <%#= current_user.nickname %><br>
+                제목 : <%= c.reviewTitle %><br>
+                내용 : <%= c.reviewContent %><br>
+                
+                <% if user_signed_in? %>
+                  <a href="/comment_destroy/<%= c.id %>" class="destroyComment">[댓글삭제]</a>
+                <% end %>
+                
+                <input id="oneComment" type="hidden" value="<%=c.id %>">
+                
+                <br>
+              <% end %>
               
             </div>
             
+            <div role="tabpanel" class="tab-pane fade" id="notice<%= i.id%>">
+              <%#= render '' %>
+              
+            </div>
             
           </div>
         </div>
@@ -146,7 +166,7 @@
                 size: new naver.maps.Size(30,38),// 마커 사이즈
                 scaledSize: new naver.maps.Size(30,38),
                 origin: new naver.maps.Point(0, 0), // origin 기본값 (0, 0)
-                anchor: new naver.maps.Point(15, 35) // anchor속성은 이미지의 중앙 하단 포인터를 기본값으로 설정
+                anchor: new naver.maps.Point(14, 35) // anchor속성은 이미지의 중앙 하단 포인터를 기본값으로 설정
                 
             }     
         };
@@ -162,7 +182,7 @@
             '    <p><%= i.region %> | <%= i.address %><br>',
             '        <%= i.game %> &gt; <%= i.city %><br>',
             '   </p>',
-            '   <a class="btn btn-primary" href="#act<%= i.id %>">상세보기</a>',
+            '   <a class="btn btn-primary" href="#act_<%= i.infoTitle %>">상세보기</a>',
             '</div>'
         ].join('');
         
@@ -369,24 +389,6 @@ $(function () {
             $(".img-show img").attr("src", $src);
         });
       <% end %>
-    <% end %>
-    
-    $("spans, .overlays").click(function () {
-        $(".shows").fadeOut();
-    });
-    
-});
-
-//리뷰쓰기 모달
-$(function () {
-    <% @storeInfo.each do |i| %>
-     
-        $("#write<%= i.id %>").click(function () {
-            var $src = $(this).attr("src");
-            $(".shows").fadeIn();
-            $(".review-show").append('<p>리뷰쓰기</p>');
-        });
-      
     <% end %>
     
     $("spans, .overlays").click(function () {

@@ -6,6 +6,7 @@ class InfosController < ApplicationController
   
   def index
     @storeInfo = Info.all.reverse
+    @countReview = Review.where(:info_id => '1').count
     @info_attachment = InfoAttachment.all
     
   end
@@ -25,10 +26,10 @@ class InfosController < ApplicationController
     
     if @info.save
       
-      params[:info_attachments]['upcast'].each do |a|
-        @info_attachment = @info.info_attachments.create!(:upcast => a, :info_id => @info.id)
+      params[:info_attachments]['upinfo'].each do |a|
+        @info_attachment = @info.info_attachments.create!(:upinfo => a, :info_id => @info.id)
       end
-      redirect_to :back, notice: 'Post was successfully created.' 
+      redirect_to @info, notice: 'Post was successfully created.' 
     else
       redirect_to :back
     end
@@ -59,7 +60,7 @@ class InfosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def info_params
-      params.require(:info).permit(:infoTitle, :game, :city, :region, :address, :location_lat, :location_lng,:info_image_url)
+      params.require(:info).permit(:infoTitle, :game, :city, :content, :region, :address, :location_lat, :location_lng, :info_image_url)
     end
     
 end
