@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 
+
+gem 'mobile-fu'
+
 gem 'cancancan' #권한부여
 gem 'rolify'    #역할, 등급부여
 

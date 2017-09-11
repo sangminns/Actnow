@@ -28,7 +28,7 @@
     <%= f.fields_for :info_attachments do |p| %>
           <%= p.file_field :upinfo, :multiple => true, name: "info_attachments[upinfo][]" %>
     <% end %>
-    
+    <br>
     <%= f.submit '추가하기' %>
 <% end %>
 
