@@ -7,6 +7,9 @@ class CreateInfos < ActiveRecord::Migration
       t.string :city
       t.string :region
       t.string :game
+      t.string :infoPhone
+      t.string :infoEmail
+      t.string :InfoUrl
       t.text :content
       t.string :info_image_url
       t.float :location_lat

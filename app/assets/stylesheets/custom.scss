@@ -10,8 +10,16 @@
  
 // body, table, div, p {font-family:'Nanum Gothic';}
 
-
-
+.btn-custom {
+    padding: 20px 30px;
+    width: 100%;
+    border: 0 none;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    background: #00bcf2;
+    color: #ffffff;
+}
 
 .navbar-default {
     font-family: 'Concert One' , cursive;
@@ -167,7 +175,6 @@
   
 }
 
-
 #logo {
   float: left;
   margin-right: 10px;
@@ -237,7 +244,6 @@
 //-------------------clubs ---------------------
 #upclub {
     padding-top: 20px;
-    
     font-family: 'Hanna', sans-serif;
     border-top: solid;
     border-top-color: #7b8082;
@@ -250,7 +256,6 @@
 #upclub h1 {
     font-family: 'Concert One', cursive;
     text-align: center;
-    
 }
 
 .index-club img {
@@ -281,7 +286,6 @@
   padding: 0px;
   z-index: 1;
 }
-
 
 // .event_each {
 //     margin: 50px;
@@ -317,20 +321,20 @@
 
 // ------- section cast에 해당하는 css ------------------
 #upcast {
-    padding-top: 20px;
-    font-family: 'Hanna', serif;
-    background-color: white;
-    border-top: solid;
-    border-top-color: #7b8082;
-    // border-bottom: solid;
-    // border-bottom-color: #7b8082;
-    border-right: transparent;
-    border-left: transparent;
+  padding-top: 20px;
+  font-family: 'Hanna', serif;
+  background-color: white;
+  border-top: solid;
+  border-top-color: #7b8082;
+  // border-bottom: solid;
+  // border-bottom-color: #7b8082;
+  border-right: transparent;
+  border-left: transparent;
 }
 
 #upcast h1 {
   font-family: 'Concert One', cursive;
-    text-align: center;
+  text-align: center;
 }
 
 #upcast .card img{

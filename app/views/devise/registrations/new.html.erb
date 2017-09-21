@@ -1,5 +1,9 @@
 <%#= bootstrap_devise_error_messages! %>
-<div class="container" style="padding-top: 100px; width: 50%">
+<% if is_mobile_device? %>
+<div class="container" style="padding-top: 100px">
+<% else %>
+<div class="container" style="width: 50%; padding-top: 100px">
+<% end %>
   <div class="panel panel-default devise-bs">
     <div class="panel-heading">
       <h4><%= t('.sign_up', default: 'Sign up') %></h4>

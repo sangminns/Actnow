@@ -15,9 +15,8 @@
     
     <% i.info_attachments.each do |p| %>
       <%= image_tag p.upinfo.thumb1.url %>
-      <br><br>
     <% end %>
-    
+    <br>
     <a href="/destroy/<%= i.id %>">[삭제]</a> |
     <%= link_to '[수정]', edit_info_path(i.id) %><hr>
     

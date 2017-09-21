@@ -49,7 +49,7 @@ Rails.application.routes.draw do
   post '/clubs' => 'clubs#create' 
   get '/clubs/new' => 'clubs#new' 
   # post '/clubs/:id/apply' => 'clubs#apply_create'
-  post '/clubs/:id/apply/:leader_id' => 'clubs#apply_create'
+  post '/clubs/:id/apply/:leader_id' => 'apply#apply_create'
   get '/clubs/:id/edit' => 'clubs#edit', as: "edit_club" 
   get '/clubs/:id' => 'clubs#show', as: "club" 
 

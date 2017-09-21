@@ -4,6 +4,7 @@
         <h2>My Page</h2>
         <hr>
         id: <%= @user.id  %><br>
+         <%= link_to '정보 수정하기', edit_user_registration_path , :style => 'float: right; font-size: 1.3em;'%> 
         <h3><%= @user.email  %></h3><br>
     
         <br><br><br><br><br>

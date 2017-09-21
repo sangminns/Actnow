@@ -3,9 +3,14 @@
 <% else %>
 <div class="container" style="width: 50%; padding-top: 100px">
 <% end %>
+
   <div class="panel panel-default devise-bs">
     <div class="panel-heading">
-      <h4><%= t('.sign_in', default: 'Sign in') %></h4>
+      <img src="<%= image_url('kangaroo2.png') %>" style="height: 200px; width: 50%; margin: auto">
+      <h4><%#= t('.sign_in', default: 'Sign in') %></h4>
+      
+      <!--image_tag("/icons/icon.gif", height: '32', width: '32')-->
+      
     </div>
     <div class="panel-body">
       <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { role: 'form' }) do |f| %>
@@ -24,7 +29,7 @@
             <% end %>
           </div>
         <% end %>
-        <%= f.submit  t('.sign_in', default: 'Sign in'), class: 'btn btn-primary' %>
+        <%= f.submit  t('.sign_in', default: 'Sign in'), class: 'btn-custom' %>
       <% end %>
     </div>
   </div>

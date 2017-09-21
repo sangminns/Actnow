@@ -6,9 +6,8 @@ class InfosController < ApplicationController
   
   def index
     @storeInfo = Info.all.reverse
-    @countReview = Review.where(:info_id => '1').count
     @info_attachment = InfoAttachment.all
-    
+    @review_attachment = ReviewAttachment.all
   end
 
   def new
@@ -23,12 +22,43 @@ class InfosController < ApplicationController
     
     @info.location_lat = @locate_change[0]
     @info.location_lng = @locate_change[1]
+    @info.info_image_url = File.open(Rails.root + "app/assets/images/default/8.png")
     
     if @info.save
+    
+      info_image1 = @info.info_attachments.create!(
+        info_id: params[:id],
+        upinfo: File.open(Rails.root + "app/assets/images/default/1.png")
+      )
+      info_image2 = @info.info_attachments.create!(
+        info_id: params[:id],
+        upinfo: File.open(Rails.root + "app/assets/images/default/2.png")
+      )
+      info_image3 = @info.info_attachments.create!(
+        info_id: params[:id],
+        upinfo: File.open(Rails.root + "app/assets/images/default/3.png")
+      )
+      info_image4 = @info.info_attachments.create!(
+        info_id: params[:id],
+        upinfo: File.open(Rails.root + "app/assets/images/default/4.png")
+      )
+      info_image5 = @info.info_attachments.create!(
+        info_id: params[:id],
+        upinfo: File.open(Rails.root + "app/assets/images/default/5.png")
+      ) 
+      info_image6 = @info.info_attachments.create!(
+        info_id: params[:id],
+        upinfo: File.open(Rails.root + "app/assets/images/default/6.png")
+      ) 
+      info_image7 = @info.info_attachments.create!(
+        info_id: params[:id],
+        upinfo: File.open(Rails.root + "app/assets/images/default/7.png")
+      ) 
       
-      params[:info_attachments]['upinfo'].each do |a|
-        @info_attachment = @info.info_attachments.create!(:upinfo => a, :info_id => @info.id)
-      end
+      # params[:info_attachments]['upinfo'].each do |a|
+      #   @info_attachment = @info.info_attachments.create!(:upinfo => a, :info_id => @info.id)
+      # end
+      
       redirect_to @info, notice: 'Post was successfully created.' 
     else
       redirect_to :back
@@ -40,7 +70,6 @@ class InfosController < ApplicationController
   end
 
   def update
-    
     @info.update(info_params)
     
     redirect_to '/infos'
@@ -48,8 +77,8 @@ class InfosController < ApplicationController
 
   def destroy
     @info.destroy
+    
     redirect_to '/infos'
-
   end
 
   private
@@ -60,7 +89,7 @@ class InfosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def info_params
-      params.require(:info).permit(:infoTitle, :game, :city, :content, :region, :address, :location_lat, :location_lng, :info_image_url)
+      params.require(:info).permit(:infoTitle, :game, :city, :content, :region, :address, :location_lat, :location_lng)
     end
     
 end

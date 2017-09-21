@@ -10,6 +10,10 @@
 
 $eachHeight: 400px;
 
+#user_name {
+    cursor: pointer;
+}
+
 .upactivity_background{
     background-color: #F5FEFF;
     padding: 60px;
@@ -98,6 +102,7 @@ $eachHeight: 400px;
 	background: #fff;
 	border: 1px solid #666;
 	width: 90%;
+	height: 75%ㅇㅇㅇ;
 	box-shadow: 0 0 50px rgba(0,0,0,0.5);
 	position: relative;
   .light & {
@@ -131,6 +136,7 @@ $eachHeight: 400px;
   .content {
     max-height: 400px;
     overflow: auto;
+    overflow-x: hidden;
     margin-top: 10px;
   }
 }

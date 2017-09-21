@@ -3,7 +3,6 @@ class ReviewsController < ApplicationController
   
   def index
     @review_attachment = ReviewAttachment.all
-    
   end
   
   def new
@@ -20,8 +19,8 @@ class ReviewsController < ApplicationController
   def create
     @review = Review.new(review_params)
     @review.user_id = current_user.id
-    @review.info_id = Info.find(params[:info_id])
-   
+    @review.info_id = params[:info_id]
+    
     if @review.save
       params[:review_attachments]['upreview'].each do |a|
         @review_attachment = @review.review_attachments.create!(:upreview => a, :review_id => @review.id)

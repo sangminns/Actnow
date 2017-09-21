@@ -55,33 +55,16 @@ ActiveRecord::Schema.define(version: 20170909093817) do
   end
 
   create_table "clubs", force: :cascade do |t|
-    t.string   "user_id"
+    t.integer  "user_id"
     t.string   "clubUser"
     t.string   "clubTitle"
     t.text     "clubContent"
     t.string   "clubGame"
+    t.string   "clubCity"
     t.string   "clubRegion"
     t.string   "club_image_url"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
-  end
-
-  create_table "comment_attachments", force: :cascade do |t|
-    t.integer  "comment_id"
-    t.string   "upcast"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "comments", force: :cascade do |t|
-    t.string   "userName"
-    t.string   "reviewTitle"
-    t.text     "reviewContent"
-    t.string   "comment_image_url"
-    t.integer  "user_id"
-    t.integer  "info_id"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
   end
 
   create_table "event_attachments", force: :cascade do |t|
@@ -93,6 +76,8 @@ ActiveRecord::Schema.define(version: 20170909093817) do
 
   create_table "events", force: :cascade do |t|
     t.string   "eventTitle"
+    t.string   "eventCity"
+    t.string   "eventRegion"
     t.text     "eventContent"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
@@ -100,7 +85,7 @@ ActiveRecord::Schema.define(version: 20170909093817) do
 
   create_table "info_attachments", force: :cascade do |t|
     t.integer  "info_id"
-    t.string   "upcast"
+    t.string   "upinfo"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -111,6 +96,9 @@ ActiveRecord::Schema.define(version: 20170909093817) do
     t.string   "city"
     t.string   "region"
     t.string   "game"
+    t.string   "infoPhone"
+    t.string   "infoEmail"
+    t.string   "InfoUrl"
     t.text     "content"
     t.string   "info_image_url"
     t.float    "location_lat"

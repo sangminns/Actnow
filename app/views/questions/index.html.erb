@@ -21,7 +21,7 @@
           <% @questions.each do |p| %>
             <tr>
               <td><%= link_to p.questionTitle, p %></td>
-              <td><%= p.user.email %></td>
+              <td><%#= p.user.nickname %></td>
             </tr>
           <% end %>
         </tbody>

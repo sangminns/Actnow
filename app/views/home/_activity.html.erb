@@ -1,4 +1,16 @@
-
+<% if is_mobile_device? %>
+<div class="markerImg">
+    <img src="<%= image_url('all.png') %>" class="img-rounded" alt="Cinque Terre" height="40" id="searchAll">
+    <img src="<%= image_url('basketball.png') %>" class="img-rounded" alt="Cinque Terre" height="40" id="searchBasketball">
+    <img src="<%= image_url('pingpong.png') %>" class="img-rounded" alt="Cinque Terre" height="40" id="searchPingpong">
+    <img src="<%= image_url('bowling.png') %>" class="img-rounded" alt="Cinque Terre" height="40" id="searchBowling">
+    <img src="<%= image_url('surfing.png') %>" class="img-rounded" alt="Cinque Terre" height="40" id="searchSurfing">
+    <img src="<%= image_url('yoga.png') %>" class="img-rounded" alt="Cinque Terre" height="40" id="searchYoga">
+    <img src="<%= image_url('baseball.png') %>" class="img-rounded" alt="Cinque Terre" height="40" id="searchBaseball">
+    <img src="<%= image_url('swimming.png') %>" class="img-rounded" alt="Cinque Terre" height="40" id="searchSwimming">
+    <br><br><p>위 마커를 누르면 종목별로 보실 수 있습니다.</p>
+</div>
+<% else %>
 <div class="markerImg">
     <img src="<%= image_url('all.png') %>" class="img-rounded" alt="Cinque Terre" height="90" id="searchAll">
     <img src="<%= image_url('basketball.png') %>" class="img-rounded" alt="Cinque Terre" height="90" id="searchBasketball">
@@ -10,20 +22,20 @@
     <img src="<%= image_url('swimming.png') %>" class="img-rounded" alt="Cinque Terre" height="90" id="searchSwimming">
     <br><br><p>위 마커를 누르면 종목별로 보실 수 있습니다.</p>
 </div>
-
+<% end %>
 <hr>
 
 <div id="map">
   <% @storeInfo.each do |i| %>
   
-    <div id="act_<%= i.infoTitle %>" class="overlay">
+    <div id="act_<%= i.id %>" class="overlay">
     	<div class="popup">
     		<h2><%= i.infoTitle %>
     		  <span id="starrate" style="color: #fff; font-size: 1.8rem;"><%= rating_for i, 'average', disable_after_rate: true, imdb_avg: true %></span>
     		</h2>
             <%#= imdb_style_rating_for i, "average" , disable_after_rate: true, imdb_avg: true %>
         <br>평점을 매긴 수 : <%= i.rates("average").count %>
-    		<a class="close" href="##">&times;</a>
+    		<a class="close" href="#actnow">&times;</a>
     		
     		<div class="content">
     		  
@@ -37,10 +49,10 @@
           <!-- Tab panes -->
           <div class="tab-content">
             <div role="tabpanel" class="tab-pane fade in active" id="info<%= i.id%>">
-              <div class="slide-section">
+              <div class="slide-section" id="slide-section<%= i.id%>">
                 
                 <% i.info_attachments.each do |p| %>
-                  <div class="slide-img">
+                  <div class="slide-img" id="slide-img<%= i.id%>">
                     <span class="modalimage<%= p.id %>"><img src="<%= p.upinfo.thumb2.url%>"></span>
                   </div>
                 <% end %>
@@ -72,25 +84,32 @@
             
               <br>
               <a href="<%= i.infoTitle %>/<%= i.id %>/reviews" class="btn btn-primary">리뷰쓰기</a>
-              총 <%= @countReview %>건
+              
+              총 <%= i.reviews.count %>건
+              
               <select>
                 <option>최신 순</option>
                 <option>조회 순</option>
               </select>
+              
               <hr>
-           
+             
               <% i.reviews.each do |c| %>
-                작성자 : <%#= current_user.nickname %><br>
+                작성자 : <%= c.user.nickname %><br>
                 제목 : <%= c.reviewTitle %><br>
-                내용 : <%= c.reviewContent %><br>
+                내용 : <%= c.reviewContent.html_safe %><br>
+                사진 : 
+                <% c.review_attachments.each do |r| %>
+                  <img src="<%= r.upreview.thumb.url%>">
+                <% end %><br>
                 
                 <% if user_signed_in? %>
-                  <a href="/comment_destroy/<%= c.id %>" class="destroyComment">[댓글삭제]</a>
+                  <a href="/reviews/<%= c.id %>" class="destroyComment">[댓글삭제]</a>
                 <% end %>
                 
                 <input id="oneComment" type="hidden" value="<%=c.id %>">
                 
-                <br>
+                <hr>
               <% end %>
               
             </div>
@@ -117,7 +136,7 @@
         scaleControl: false,
         logoControl: false,
         mapDataControl: false,
-        mapTypeControl: true,
+        // mapTypeControl: true,
         zoomControl: true,
         minZoom: 1,
         zoomControlOptions: {
@@ -182,7 +201,7 @@
             '    <p><%= i.region %> | <%= i.address %><br>',
             '        <%= i.game %> &gt; <%= i.city %><br>',
             '   </p>',
-            '   <a class="btn btn-primary" href="#act_<%= i.infoTitle %>">상세보기</a>',
+            '   <a class="btn btn-primary" href="#act_<%= i.id %>">상세보기</a>',
             '</div>'
         ].join('');
         
@@ -257,10 +276,11 @@
     <% end %>
  
 // GPS이용하기
+    
     // HTML5의 geolocation으로 사용할 수 있는지 확인합니다  x
     function getLocation() {
+      
         if (navigator.geolocation) {
-            
             // GeoLocation을 이용해서 접속 위치를 얻어옵니다
             navigator.geolocation.getCurrentPosition(function(position) {
                 
@@ -272,14 +292,13 @@
                 
                 // 마커와 인포윈도우를 표시합니다
                 displayMarker(locPosition, message);   
-            
             });
         } else { // HTML5의 GeoLocation을 사용할 수 없을때 마커 표시 위치와 인포윈도우 내용을 설정합니다
-        
             var locPosition = seoulCenter,    
                 message = 'geolocation을 사용할수 없어요'
                 
             displayMarker(locPosition, message);
+    
         }
     }
     
@@ -317,7 +336,7 @@
     }    
     
 //댓글 작성
-    $(function() { 
+/*    $(function() { 
         $(".reply_submit").click(function() { 
             modalInfoId = this.value;
             modalComment = $("#comment_" + modalInfoId).val();
@@ -339,44 +358,52 @@
             })
         });
     });  
+*/
 
 //사진 슬라이더
 $(document).ready(function(){
-  v = $('.slide-section .slide-img').length;
-  i = 1;
-  var left = 0;
-  var mrg = 0;
-  var ht = $('.slide-section .slide-img').css('width');
-  //$('.slide-section .slide-img').css('height', ht);
-  $('.next').click(function(){
-         
-    if(i<=(v-4)) {
-      left = left - 25;
-      mrg = 0;
-    } else if(i > (v-4)) {
-      left = 0;
-      i = 0;
-      mrg = 0;
-    }
-    
-    $('.slide-section').css('margin-left','calc('+left+'% - '+mrg+'px)');
-    i++;      
-  });
   
-  $('.prev').click(function(){
-    if(i == 1) {
-      left = -(v-4) * 25;
-      mrg = (v-4) * 5;
-      i = (v - 4) + 1;
-    }else{
-      left = left + 25;
-      mrg = 0;
-      i--;
-    }
+ //아직 수정 중 
+  
+  <% @storeInfo.each do |i| %>
+    v<%= i.id%> = $('#slide-section<%= i.id%> #slide-img<%= i.id%>').length;
+  
+    f<%= i.id%> = 1;
+    var left<%= i.id%> = 0;
+    var mrg<%= i.id%> = 0;
     
-    $('.slide-section').css('margin-left','calc('+left+'% - '+mrg+'px)');
-  });
-
+    //var ht = $('#slide-section<%#= i.id%> #slide-img<%#= i.id%>').css('width');
+    //$('.slide-section .slide-img').css('height', ht);
+    
+    $('.next').click(function(){
+           
+      if(f<%= i.id%> <= (v<%= i.id%>-4)) {
+        left<%= i.id%> = left<%= i.id%> - 25;
+        mrg<%= i.id%> = 0;
+      } else if(f<%= i.id%> > (v<%= i.id%>-4)) {
+        left<%= i.id%> = 0;
+        f<%= i.id%> = 0;
+        mrg<%= i.id%> = 0;
+      }
+      
+      $('#slide-section<%= i.id%>').css('margin-left','calc('+left<%= i.id%>+'% - '+mrg<%= i.id%>+'px)');
+      f<%= i.id%>++;      
+    });
+    
+    $('.prev').click(function(){
+      if(f<%= i.id%> == 1) {
+        left<%= i.id%> = -(v<%= i.id%>-4) * 25;
+        mrg<%= i.id%> = (v<%= i.id%>-4) * 5;
+        f<%= i.id%> = (v<%= i.id%>-4) + 1;
+      }else{
+        left<%= i.id%> = left<%= i.id%> + 25;
+        mrg<%= i.id%> = 0;
+        f<%= i.id%>--;
+      }
+      
+      $('#slide-section<%= i.id%>').css('margin-left','calc('+left<%= i.id%>+'% - '+mrg<%= i.id%>+'px)');
+    });
+  <% end %>
 });
 
 // 이미지 모달 

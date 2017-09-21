@@ -1,13 +1,25 @@
 <div style="position: relative">
-    <div class="w3-content w3-section">
-          <img class="mySlides w3-animate-top" src="<%= image_url("background_yoga1.jpg") %>" style="height: 750px; width: 100%;">
-          <img class="mySlides w3-animate-top" src="<%= image_url("background_pingpong.jpg") %>" style="height: 750px; width: 100%;">
-          <img class="mySlides w3-animate-top" src="<%= image_url("background_bowling1.jpg") %>" style="height: 750px; width: 100%;">
-          <img class="mySlides w3-animate-top" src="<%= image_url("background_surfing2.jpg") %>" style="height: 750px; width: 100%;">
-          <img class="mySlides w3-animate-top" src="<%= image_url("background_basketball.jpg") %>" style="height: 750px; width: 100%;">
-          <img class="mySlides w3-animate-top" src="<%= image_url("background_baseball.jpg") %>" style="height: 750px; width: 100%;">
-          <img class="mySlides w3-animate-top" src="<%= image_url("background_swimming.jpg") %>" style="height: 750px; width: 100%;">
-    </div>
+    <% if is_mobile_device?%>
+        <div class="w3-content w3-section">
+              <img class="mySlides w3-animate-top" src="<%= image_url("background_yoga1.jpg") %>" style="height: 450px; width: 100%;">
+              <img class="mySlides w3-animate-top" src="<%= image_url("background_pingpong.jpg") %>" style="height: 450px; width: 100%;">
+              <img class="mySlides w3-animate-top" src="<%= image_url("background_bowling1.jpg") %>" style="height: 450px; width: 100%;">
+              <img class="mySlides w3-animate-top" src="<%= image_url("background_surfing2.jpg") %>" style="height: 450px; width: 100%;">
+              <img class="mySlides w3-animate-top" src="<%= image_url("background_basketball.jpg") %>" style="height: 450px; width: 100%;">
+              <img class="mySlides w3-animate-top" src="<%= image_url("background_baseball.jpg") %>" style="height: 450px; width: 100%;">
+              <img class="mySlides w3-animate-top" src="<%= image_url("background_swimming.jpg") %>" style="height: 450px; width: 100%;">
+        </div>
+    <% else %>
+        <div class="w3-content w3-section">
+              <img class="mySlides w3-animate-top" src="<%= image_url("background_yoga1.jpg") %>" style="height: 750px; width: 100%;">
+              <img class="mySlides w3-animate-top" src="<%= image_url("background_pingpong.jpg") %>" style="height: 750px; width: 100%;">
+              <img class="mySlides w3-animate-top" src="<%= image_url("background_bowling1.jpg") %>" style="height: 750px; width: 100%;">
+              <img class="mySlides w3-animate-top" src="<%= image_url("background_surfing2.jpg") %>" style="height: 750px; width: 100%;">
+              <img class="mySlides w3-animate-top" src="<%= image_url("background_basketball.jpg") %>" style="height: 750px; width: 100%;">
+              <img class="mySlides w3-animate-top" src="<%= image_url("background_baseball.jpg") %>" style="height: 750px; width: 100%;">
+              <img class="mySlides w3-animate-top" src="<%= image_url("background_swimming.jpg") %>" style="height: 750px; width: 100%;">
+        </div>
+    <% end %>
     <div style="position: absolute; bottom: 30px; left: 25%; width: 50%; text-align: center;">
             
         <div class="over_slideshow">

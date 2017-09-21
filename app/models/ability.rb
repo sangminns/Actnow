@@ -7,16 +7,25 @@ class Ability
     #   user ||= User.new # guest user (not logged in)
       if user.nil?
         can :read, [Club, Event, Cast, Question]
+      
+      elsif user.has_role? 'admin'
+       can [:read, :create, :update, :destroy], :all
+      
+      elsif user.has_role? 'manager'
+       can :read, :all
+       can [:create, :update], [Question, Club, Event, Cast, Acceptance, Apply]
+       can :destroy, :all, :user_id => user.id
+      
       elsif user.has_role? 'newbie'
         can :read, [Club, Event, Cast, Question]
         can :create, [Question, Club]
-        can [:update, :destroy], [Question, Club], user_id: user.id
-      elsif user.has_role? 'manager'
-       can :read, :all
-       can [:create, :update], [Question, Club, Event, Cast]
-       can :destroy, :all, user_id: user.id
-      elsif user.has_role? 'admin'
-       can [:read, :create, :update, :destroy], :all
+        can [:update, :destroy], [Question, Club], :user_id => user.id
+      
+      elsif user
+        can :read, [Club, Event, Cast, Question]
+        can :create, [Question, Club]
+        can [:update, :destroy], [Question, Club], :user_id => user.id
+      
       end
     #
     # The first argument to `can` is the action you are giving the user
