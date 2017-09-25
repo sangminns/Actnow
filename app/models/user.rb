@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   has_many :clubs, through: :applies
   has_many :requests
   has_many :acceptances
+  has_many :notices
   
   has_many :questions
   has_many :question_comments

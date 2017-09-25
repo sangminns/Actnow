@@ -29,6 +29,16 @@ Rails.application.routes.draw do
   
   delete '/reviews/:id' => 'reviews#destroy'
   
+  #---notice 해당 routes---------------------------------
+  
+  get '/:infoTitle/:info_id/notices' => 'notices#new'
+  post '/notices' => 'notices#create'
+  
+  patch '/notices/:id' => 'notices#update' 
+  
+  delete '/notices/:id' => 'notices#destroy'
+  
+  
   #---cast 해당 routes---------------------------------
   
   get '/casts' => 'casts#index' 

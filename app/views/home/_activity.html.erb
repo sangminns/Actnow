@@ -67,7 +67,8 @@
               <hr>
               <div class="well" align="center">
                 <%= i.address %> | <%= i.game %> <br>
-                <%= i.content %>
+                <hr>
+                <%= i.content.html_safe %>
                 
               </div>
               
@@ -87,10 +88,10 @@
               
               총 <%= i.reviews.count %>건
               
-              <select>
-                <option>최신 순</option>
-                <option>조회 순</option>
-              </select>
+              <!--<select>-->
+              <!--  <option>최신 순</option>-->
+              <!--  <option>조회 순</option>-->
+              <!--</select>-->
               
               <hr>
              
@@ -115,7 +116,35 @@
             </div>
             
             <div role="tabpanel" class="tab-pane fade" id="notice<%= i.id%>">
-              <%#= render '' %>
+              <br>
+              <a href="<%= i.infoTitle %>/<%= i.id %>/notices" class="btn btn-primary">공지사항쓰기</a>
+              
+              총 <%= i.notices.count %>건
+              
+              <!--<select>-->
+              <!--  <option>최신 순</option>-->
+              <!--  <option>조회 순</option>-->
+              <!--</select>-->
+              
+              <hr>
+             
+              <% i.reviews.each do |c| %>
+                작성자 : <%= c.user.nickname %><br>
+                공지사항 제목 : <%= c.noticeTitle %><br>
+                고지사항 내용 : <%= c.noticeContent.html_safe %><br>
+                사진 : 
+                <% c.notice_attachments.each do |r| %>
+                  <img src="<%= r.upnotice.thumb.url%>">
+                <% end %><br>
+                
+                <% if user_signed_in? %>
+                  <a href="/notices/<%= c.id %>" class="destroyNotice">[댓글삭제]</a>
+                <% end %>
+                
+                <input id="oneNotice" type="hidden" value="<%=c.id %>">
+                
+                <hr>
+              <% end %>
               
             </div>
             

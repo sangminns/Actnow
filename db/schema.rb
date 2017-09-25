@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170909093817) do
+ActiveRecord::Schema.define(version: 20170921071854) do
 
   create_table "acceptances", force: :cascade do |t|
     t.integer  "club_id"
@@ -98,13 +98,29 @@ ActiveRecord::Schema.define(version: 20170909093817) do
     t.string   "game"
     t.string   "infoPhone"
     t.string   "infoEmail"
-    t.string   "InfoUrl"
+    t.string   "infoUrl"
     t.text     "content"
     t.string   "info_image_url"
     t.float    "location_lat"
     t.float    "location_lng"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+  end
+
+  create_table "notice_attachments", force: :cascade do |t|
+    t.integer  "notice_id"
+    t.string   "upnotice"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "notices", force: :cascade do |t|
+    t.string   "noticeTitle"
+    t.text     "noticeContent"
+    t.integer  "user_id"
+    t.integer  "info_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   create_table "overall_averages", force: :cascade do |t|

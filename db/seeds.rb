@@ -40,12 +40,12 @@
 #       t.float :location_lat
 #       t.float :location_lng
 
-(1..3).each do |i|
-    User.create( email: "rlfgus#{i}@gmail.com" , username: "rlfgus#{i}", nickname: "rlfgus#{i}", password: "rlfgus#{i}", password_confirmation: "rlfgus#{i}")
-    (1..3).each do |j|
-        Question.create( user_id: i, questionTitle: "제목 아이디 #{i} 글 #{j}", questionContent: "내용 아이디 #{i}, 글 #{j}" )
-    end
-end
+# (1..3).each do |i|
+#     User.create( email: "rlfgus#{i}@gmail.com" , username: "rlfgus#{i}", nickname: "rlfgus#{i}", password: "rlfgus#{i}", password_confirmation: "rlfgus#{i}")
+#     (1..3).each do |j|
+#         Question.create( user_id: i, questionTitle: "제목 아이디 #{i} 글 #{j}", questionContent: "내용 아이디 #{i}, 글 #{j}" )
+#     end
+# end
 
 
 require 'geocoder'
@@ -132,6 +132,21 @@ InfoAttachment.create!(
     )
 =end
     
+    
+    
+    #   t.string :infoTitle
+    #   t.string :address
+    #   t.string :city
+    #   t.string :region
+    #   t.string :game
+    #   t.string :infoPhone
+    #   t.string :infoEmail
+    #   t.string :InfoUrl
+    #   t.text :content
+    #   t.string :info_image_url
+    #   t.float :location_lat
+    #   t.float :location_lng
+
 # 4
 @locate_change = Geocoder.coordinates("서울특별시 성북구 보문로34길 69")
 Info.create!(
@@ -140,7 +155,10 @@ Info.create!(
     city: "서울시",
     region: "성북구",
     game: "볼링",
-    content: "ㅎㅎㅎㅎ",
+    infoPhone: " ",
+    infoEmail: " ",
+    infoUrl: " ",
+    content: '<p><span style="font-size: 14px;">볼링화 대여로 1500원</span></p> <p>평일 (월~목)</p> <p>- 오전10시 ~ 오후 5시 : 3500원(일반) / 3000원(학생)</p> <p>- 오후 5시 ~ 영업종료 : 4000원</p> <p style="text-align: left;">&nbsp;</p> <p>평일 (금)</p> <p>- 오전10시 ~ 오후 5시 : 3500원(일반) / 3000원(학생)</p> <p>- 오후 5시 ~ 영업종료 : 4500원 토, 일, 공휴일 - 오전 10시 ~ 영업종료 : 5000원</p> <p>----------------------------------------------------------------------------------------</p> <p>볼링 30게임 쿠폰</p> <p>- 파랑 제한쿠폰 (평일 오후5시까지): 96000원 (3200원 x 30게임)</p> <p>- 노랑 무제한쿠폰 (월~목 : 영업시간내 / 금: 오후5시 / 토,일,공휴일 : 오후2시까지 ) : 108000원 (3600원 x 30게임)</p>',
     info_image_url: File.open(Rails.root + "app/assets/images/image_lightsky.png"),
     location_lat: @locate_change[0],
     location_lng: @locate_change[1]
@@ -148,24 +166,24 @@ Info.create!(
 
 InfoAttachment.create!(
     info_id: 1,
-    upcast: File.open(Rails.root + "app/assets/images/image_white.png")
+    upinfo: File.open(Rails.root + "app/assets/images/image_white.png")
     )
 
 
 
 InfoAttachment.create!(
     info_id: 1,
-    upcast: File.open(Rails.root + "app/assets/images/image_white.png")
-    )
-    
-InfoAttachment.create!(
-    info_id: 1,
-    upcast: File.open(Rails.root + "app/assets/images/image_white.png")
+    upinfo: File.open(Rails.root + "app/assets/images/image_white.png")
     )
     
 InfoAttachment.create!(
     info_id: 1,
-    upcast: File.open(Rails.root + "app/assets/images/image_white.png")
+    upinfo: File.open(Rails.root + "app/assets/images/image_white.png")
+    )
+    
+InfoAttachment.create!(
+    info_id: 1,
+    upinfo: File.open(Rails.root + "app/assets/images/image_white.png")
     )
         
 

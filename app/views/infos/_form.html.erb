@@ -19,7 +19,11 @@
     
     가게 주소(자동 좌표 변환) : <%= f.text_field :address %><br>
     
-    가게 정보 : <%= f.text_field :content %><br>
+    가게 정보 :
+    
+    <%= f.text_area :content , :class => "tinymce", :rows => 20, :cols => 100 %>
+    
+    <%= tinymce %>
     
     대표 사진 등록
     <%= f.file_field :info_image_url %>

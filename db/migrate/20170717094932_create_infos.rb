@@ -9,7 +9,7 @@ class CreateInfos < ActiveRecord::Migration
       t.string :game
       t.string :infoPhone
       t.string :infoEmail
-      t.string :InfoUrl
+      t.string :infoUrl
       t.text :content
       t.string :info_image_url
       t.float :location_lat

@@ -1,0 +1,23 @@
+
+<%= form_for(@notice, :html => { :multipart => true }) do |f| %>
+    
+    <input type="hidden" name="info_id" value="<%= @oneInfo.id %>">
+    
+    공지사항 제목 : 
+    <%= f.text_field :noticeTitle %>
+    <br><br>
+    
+    공지사항 내용 
+    <%= f.text_area :noticeContent, :class => "tinymce", :rows => 15, :cols => 50 %>
+    
+    <%= tinymce %>
+    <br>
+    
+    사진 올리기
+    <%= f.fields_for :notice_attachments do |p| %>
+      <%= p.file_field :upnotice, :multiple => true, name: "notice_attachments[upnotice][]" %>
+    <% end %>
+    <br>
+
+    <%= f.submit '리뷰 추가', class: "btn btn-success" %>
+<% end %>
