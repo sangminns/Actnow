@@ -4,6 +4,9 @@ class CreateNotices < ActiveRecord::Migration
 
       t.string :noticeTitle
       t.text :noticeContent
+      t.string :alt
+      t.string :file
+      t.string :hint
       t.integer :user_id
       t.integer :info_id
 

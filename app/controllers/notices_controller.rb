@@ -16,19 +16,33 @@ class NoticesController < ApplicationController
   end
   
   def create
-    @notice = Notice.new(review_params)
+    @notice = Notice.new(notice_params)
     @notice.user_id = current_user.id
     @notice.info_id = params[:info_id]
+    @notice.save
     
-    if @notice.save
-      params[:notice_attachments]['upnotice'].each do |a|
-        @notice_attachment = @notice.notice_attachments.create!(:upnotice => a, :notice_id => @notice.id)
-      end
-     redirect_to '/' , notice: 'Post was successfully created.' 
-    else
-     redirect_to :back
-    end
+    redirect_to '/'
+    # if @notice.save
+    #   params[:notice_attachments]['upnotice'].each do |a|
+    #     @notice_attachment = @notice.notice_attachments.create!(:upnotice => a, :notice_id => @notice.id)
+    #   end
+    # redirect_to '/' , notice: 'Post was successfully created.' 
+    # else
+    # redirect_to :back
+    # end
 
+  end
+  
+  def image_create
+    
+    notice = Notice.new(params.permit(:file, :alt, :hint))
+    
+    render json: {
+      image: {
+        url: notice.file.url
+      }
+    }, content_type: "text/html"
+    
   end
   
   def update
@@ -49,6 +63,6 @@ class NoticesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def notice_params
-      params.require(:notice).permit(:noticeTitle, :noticeContent)
+      params.require(:notice).permit(:noticeTitle, :noticeContent, :file)
     end
 end

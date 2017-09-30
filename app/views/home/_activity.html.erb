@@ -29,12 +29,18 @@
   <% @storeInfo.each do |i| %>
   
     <div id="act_<%= i.id %>" class="overlay">
+    	
+     <% if is_mobile_device?%>
+    	<div class="popup-mobile">
+     <% else %>
     	<div class="popup">
-    		<h2><%= i.infoTitle %>
+     <% end %>
+    		<h2>
+    		  <%= i.infoTitle %>
     		  <span id="starrate" style="color: #fff; font-size: 1.8rem;"><%= rating_for i, 'average', disable_after_rate: true, imdb_avg: true %></span>
     		</h2>
             <%#= imdb_style_rating_for i, "average" , disable_after_rate: true, imdb_avg: true %>
-        <br>평점을 매긴 수 : <%= i.rates("average").count %>
+       <br><%= i.address %> | <%= i.game %> <p style= "float: right;">평점을 매긴 수 : <%= i.rates("average").count %></p>
     		<a class="close" href="#actnow">&times;</a>
     		
     		<div class="content">
@@ -64,12 +70,9 @@
                 <span class="next"><img src="<%= image_url('rightbutton.png') %>"></span>
               </div>   
                
-              <hr>
+              
               <div class="well" align="center">
-                <%= i.address %> | <%= i.game %> <br>
-                <hr>
                 <%= i.content.html_safe %>
-                
               </div>
               
               <div class="shows">
@@ -128,17 +131,17 @@
               
               <hr>
              
-              <% i.reviews.each do |c| %>
+              <% i.notices.each do |c| %>
                 작성자 : <%= c.user.nickname %><br>
                 공지사항 제목 : <%= c.noticeTitle %><br>
                 고지사항 내용 : <%= c.noticeContent.html_safe %><br>
-                사진 : 
-                <% c.notice_attachments.each do |r| %>
-                  <img src="<%= r.upnotice.thumb.url%>">
-                <% end %><br>
+                <!--사진 : -->
+                <!--<%# c.notice_attachments.each do |r| %>-->
+                <!--  <img src="<%#= r.upnotice.thumb.url%>">-->
+                <!--<%# end %><br>-->
                 
                 <% if user_signed_in? %>
-                  <a href="/notices/<%= c.id %>" class="destroyNotice">[댓글삭제]</a>
+                  <a href="/notices/<%= c.id %>" class="destroyNotice">[공지사항삭제]</a>
                 <% end %>
                 
                 <input id="oneNotice" type="hidden" value="<%=c.id %>">
@@ -170,7 +173,8 @@
         minZoom: 1,
         zoomControlOptions: {
             position: naver.maps.Position.TOP_RIGHT
-        }
+        },
+        scrollWheel: false
     });
     
     // GPS 이미지 파일 넣는 곳
@@ -453,5 +457,17 @@ $(function () {
     
 });
 
-</script>
+// (document).ready
+$(function () {
+    <% @storeInfo.each do |i| %> 
+     contentString[<%= i.id %>].click(function () {
+        $('body').css('overflow', 'hidden');  //ADD THIS
+     });
+    <% end %>
+     $(".popup").on('click', '.close', function () {
+         $('body').css('overflow', 'auto');  //ADD THIS
+     });
+ });
+
+</script>   
 

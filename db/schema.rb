@@ -117,6 +117,9 @@ ActiveRecord::Schema.define(version: 20170921071854) do
   create_table "notices", force: :cascade do |t|
     t.string   "noticeTitle"
     t.text     "noticeContent"
+    t.string   "alt"
+    t.string   "file"
+    t.string   "hint"
     t.integer  "user_id"
     t.integer  "info_id"
     t.datetime "created_at",    null: false

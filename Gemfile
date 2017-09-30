@@ -11,6 +11,7 @@ gem 'local_time'
 
 # Editor
 gem 'tinymce-rails'
+gem 'tinymce-rails-imageupload', github: 'PerfectlyNormal/tinymce-rails-imageupload'
 
 # 주소 입력시 좌표로 변환해주는 gem
 gem 'geocoder'

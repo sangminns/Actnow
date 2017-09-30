@@ -10,14 +10,15 @@
     공지사항 내용 
     <%= f.text_area :noticeContent, :class => "tinymce", :rows => 15, :cols => 50 %>
     
-    <%= tinymce %>
+    <%= tinymce plugins: ["uploadimage"] %>
+    
     <br>
     
-    사진 올리기
-    <%= f.fields_for :notice_attachments do |p| %>
-      <%= p.file_field :upnotice, :multiple => true, name: "notice_attachments[upnotice][]" %>
-    <% end %>
-    <br>
+    <!--사진 올리기-->
+    <!--<%#= f.fields_for :notice_attachments do |p| %>-->
+    <!--  <%#= p.file_field :upnotice, :multiple => true, name: "notice_attachments[upnotice][]" %>-->
+    <!--<%# end %>-->
+    <!--<br>-->
 
-    <%= f.submit '리뷰 추가', class: "btn btn-success" %>
+    <%= f.submit '공지사항 추가', class: "btn btn-success" %>
 <% end %>

@@ -33,6 +33,7 @@ Rails.application.routes.draw do
   
   get '/:infoTitle/:info_id/notices' => 'notices#new'
   post '/notices' => 'notices#create'
+  post '/tinymce_assets' => 'notices#image_create'
   
   patch '/notices/:id' => 'notices#update' 
   

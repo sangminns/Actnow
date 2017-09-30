@@ -8,6 +8,8 @@ Rails.application.config.assets.version = '1.0'
 Rails.application.config.assets.precompile += %w( ratyrate.js )
 Rails.application.config.assets.precompile += %w( jquery.raty.js )
 
+Rails.application.config.assets.precompile += %w( tinymce/plugins/uploadimage/plugin.js tinymce/plugins/uploadimage/langs/en.js )
+
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
 # Rails.application.config.assets.precompile += %w( search.js )

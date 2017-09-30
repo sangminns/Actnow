@@ -97,12 +97,12 @@ $eachHeight: 400px;
 }
 
 .popup {
-	margin: 8% auto;
+	margin: 7.5% auto;
 	padding: 2%;
 	background: #fff;
 	border: 1px solid #666;
-	width: 90%;
-	height: 75%ㅇㅇㅇ;
+	width: 95%;
+	height: 80%;
 	box-shadow: 0 0 50px rgba(0,0,0,0.5);
 	position: relative;
   .light & {
@@ -134,7 +134,52 @@ $eachHeight: 400px;
     }
   }
   .content {
-    max-height: 400px;
+    max-height: 85%;
+    overflow: auto;
+    overflow-x: hidden;
+    margin-top: 10px;
+  }
+}
+
+.popup-mobile {
+	margin: 7.5% auto;
+	padding: 2%;
+	background: #fff;
+	border: 1px solid #666;
+	width: 95%;
+	height: 80%;
+	box-shadow: 0 0 50px rgba(0,0,0,0.5);
+	position: relative;
+  .light & {
+    border-color: #aaa;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.25);
+  }
+  h2 {
+    margin-top: 0;
+    color: #666;
+    display: inline-block;
+    #starrate {
+        display: inline-block;
+    }
+  }
+  .close {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 20px;
+    right: 20px;
+    opacity: 0.8;
+    transition: all 200ms;
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #666;
+    &:hover {
+      opacity: 1;
+    }
+  }
+  .content {
+    max-height: 80%;
     overflow: auto;
     overflow-x: hidden;
     margin-top: 10px;
@@ -203,8 +248,8 @@ div .slide-img {
     left: 0;
 }
 .shows .img-show{
-    width: 600px;
-    height: 400px;
+    width: 80%;
+    height: 70%;
     background: #FFF;
     position: absolute;
     top: 50%;
