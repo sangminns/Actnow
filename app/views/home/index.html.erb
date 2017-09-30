@@ -15,30 +15,10 @@
 
     <!-- 소모임(고객참여게시판) 섹션-->
 <div class="upclub_background">
-    <div class="container">
-        <section id="upclub">
-            <h1>Club</h1><br>
-                <% @clubs.sample(4).each do |k| %>
-                    <div class="section-cast col-xs-6 col-sm-6 col-md-3 col-lg-3">
-                        <div class="card index-club" >
-                            <%# k.event_attachments.limit(1).each do |p| %>
-                              <%#= image_tag k.upcast.thumb2.url %>
-                              <%= link_to image_tag(k.club_image_url.url), club_path(k.id), class: 'cast_each' %>
-                              <br>
-                            
-                            
-                            <div class="card-block">
-                              <h4 class="card-title"><%= k.clubTitle %></h4>
-                              <p class="card-text"><%#= k.castContent %></p>
-                            </div>
-                        </div>
-                    </div>
-                <% end %>
-                <br>
-         
+    <section id="upclub">
+            <%= render 'home/clubpart' %>
             <%= link_to 'More clubs', '/clubs', :style => 'float: right; font-size: 1.3em;'%><br>
-        </section>
-    </div>
+    </section>
 </div>
 
     <!-- 이벤트 게시판 -->

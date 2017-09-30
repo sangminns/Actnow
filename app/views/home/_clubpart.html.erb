@@ -1,0 +1,18 @@
+<div class="container">
+    <h1>Club</h1><br>
+    <% @clubs.sample(2).each do |k| %>
+        <div class="section-cast col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <div class="card ">
+              <img class="img-responsive" src="<%= image_url k.club_image_url.url %>" alt="Card image">
+              <%#= link_to image_tag(k.club_image_url.url), club_path(k.id), class: 'card-img-responsive' %>
+              <a href="<%= club_path(k.id) %>">
+              <div class="card-img-overlay card-img-back">
+                <h4 class="card-title-back"><%= k.clubTitle %></h4>
+                <!--<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>-->
+                <!--<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>-->
+              </div>
+              </a>
+            </div>
+        </div>
+    <% end %>
+</div>

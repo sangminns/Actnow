@@ -134,7 +134,7 @@
               <% i.notices.each do |c| %>
                 작성자 : <%= c.user.nickname %><br>
                 공지사항 제목 : <%= c.noticeTitle %><br>
-                고지사항 내용 : <%= c.noticeContent.html_safe %><br>
+                공지사항 내용 : <%= c.noticeContent.html_safe %><br>
                 <!--사진 : -->
                 <!--<%# c.notice_attachments.each do |r| %>-->
                 <!--  <img src="<%#= r.upnotice.thumb.url%>">-->
@@ -324,6 +324,7 @@
                     message = '<div style="padding:5px;">여기에 계신가요?!</div>'; // 인포윈도우에 표시될 내용입니다
                 
                 // 마커와 인포윈도우를 표시합니다
+                
                 displayMarker(locPosition, message);   
             });
         } else { // HTML5의 GeoLocation을 사용할 수 없을때 마커 표시 위치와 인포윈도우 내용을 설정합니다
@@ -363,6 +364,8 @@
         // 인포윈도우를 마커위에 표시합니다
         geoinfowindow.open(map, gpsMarker);
         
+        
+    
         // 지도 중심좌표를 접속위치로 변경합니다
         map.setCenter(locPosition); 
         map.setZoom(8);
@@ -457,16 +460,19 @@ $(function () {
     
 });
 
-// (document).ready
-$(function () {
-    <% @storeInfo.each do |i| %> 
-     contentString[<%= i.id %>].click(function () {
+// 
+$(document).ready(function () {
+  
+    <% @storeInfo.each do |i| %>
+      $("#map .iw_inner").click(function () {
         $('body').css('overflow', 'hidden');  //ADD THIS
-     });
-    <% end %>
-     $(".popup").on('click', '.close', function () {
+      });
+     
+      $(".overlay").on('click', '.close', function () {
          $('body').css('overflow', 'auto');  //ADD THIS
-     });
+      });
+    <% end %>
+     
  });
 
 </script>   
