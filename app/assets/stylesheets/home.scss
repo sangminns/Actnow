@@ -226,16 +226,13 @@ div .slide-img {
 }
 
 .slider-controls {
-  position:relative;
-  z-index:50;
-  width:100%;
-  
   display :flex;
   justify-content:space-between;
   span {
       cursor: pointer;
       img {
-          width: 30px;
+          padding-top:5px;
+          width: 35px;
       }
   }
 }
