@@ -55,6 +55,9 @@
           <!-- Tab panes -->
           <div class="tab-content">
             <div role="tabpanel" class="tab-pane fade in active" id="info<%= i.id%>">
+              <div class="slider-controls">
+                  <span class="prev"><img src="<%= image_url('leftbutton.png') %>"></span>
+                </div> 
               <div class="slide-section" id="slide-section<%= i.id%>">
                 
                 <% i.info_attachments.each do |p| %>
@@ -62,13 +65,12 @@
                     <span class="modalimage<%= p.id %>"><img src="<%= p.upinfo.thumb2.url%>"></span>
                   </div>
                 <% end %>
-                
+                <div class="slider-controls">
+                  <span class="next"><img src="<%= image_url('rightbutton.png') %>"></span>
+                </div>
               </div>
               
-              <div class="slider-controls">
-                <span class="prev"><img src="<%= image_url('leftbutton.png') %>"></span>
-                <span class="next"><img src="<%= image_url('rightbutton.png') %>"></span>
-              </div>   
+                
                
               
               <div class="well" align="center">

@@ -259,7 +259,7 @@
     padding-top: 20px;
     font-family: 'Hanna', sans-serif;
     border-top: solid;
-    border-top-color: #7b8082;
+    border-top-color: #ccc;
     // border-bottom: solid;
     // border-bottom-color: #7b8082;
     border-right: transparent;
@@ -268,7 +268,8 @@
 
 #upclub h1 {
     font-family: 'Concert One', cursive;
-    text-align: center;
+    text-align: left;
+    color: #00bcf2;
 }
 
 #upclub img {
@@ -282,7 +283,7 @@
     padding-top: 20px;
     font-family: 'Hanna', sans-serif;
     border-top: solid;
-    border-top-color: #7b8082;
+    border-top-color: #ccc;
     // border-bottom: solid;
     // border-bottom-color: #7b8082;
     border-right: transparent;
@@ -290,20 +291,25 @@
 }
 
 #upevent h1 {
-    text-align: center;
+    text-align: left;
     font-family: 'Concert One', cursive;
 }
 
-#upevent .card img{
-  position: relative;
-  width: 100%;
-  padding: 0px;
-  z-index: 1;
-}
+// #upevent .card img{
+//   position: relative;
+//   width: 100%;
+//   padding: 0px;
+//   z-index: 1;
+// }
 
 // .event_each {
 //     margin: 50px;
 // }
+// ----------------EVENT 폴더에 있는 세부사항 css
+#upevent img {
+  height: 400px;
+  width: 100%;
+}
 
 .event-body {
   background-color: #f9f9f9;
@@ -339,7 +345,7 @@
   font-family: 'Hanna', serif;
   background-color: white;
   border-top: solid;
-  border-top-color: #7b8082;
+  border-top-color: #ccc;
   // border-bottom: solid;
   // border-bottom-color: #7b8082;
   border-right: transparent;

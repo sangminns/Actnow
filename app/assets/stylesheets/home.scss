@@ -16,7 +16,7 @@ $eachHeight: 550px;
 
 .upactivity_background{
     background-color: #F5FEFF;
-    padding: 60px;
+    padding: 40px;
     // border-bottom: solid #0099f1;
     // background-image: url("14.jpg");
     // background-size: cover;
@@ -34,6 +34,8 @@ $eachHeight: 550px;
     // font-family: 'Nanum Pen Script', cursive;
     font-family: 'Hanna', sans-serif;
     height: auto;
+    padding-top: 40px;
+    margin-top: -40px;
     //text-align: center;
     #map {
         width: 100%;
@@ -47,12 +49,12 @@ $eachHeight: 550px;
 }
 
 #upevent {
-    // height: $eachHeight;
+    height: $eachHeight;
     // text-align: center;
 }
 
 #upcast {
-  height: $eachHeight;
+    height: $eachHeight;
 }
 
 .scroll {
@@ -202,7 +204,6 @@ $eachHeight: 550px;
     }
 }
 
-
 .slide-section{
   width:100%;
   display:flex;
@@ -223,7 +224,12 @@ div .slide-img {
     width: 100%;
   }
 }
+
 .slider-controls {
+  position:relative;
+  z-index:50;
+  width:100%;
+  
   display :flex;
   justify-content:space-between;
   span {
@@ -233,6 +239,7 @@ div .slide-img {
       }
   }
 }
+
 //------------------------------------
 
 .shows{

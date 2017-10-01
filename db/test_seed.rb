@@ -421,7 +421,7 @@ Info.create!(
     infoPhone: "02-992-0088",
     infoEmail: " ",
     infoUrl: " ",
-    content: ' 준비중~ ',
+    content: '<p>대화료 : 1500원</p> <p>&nbsp;</p> <p>월~목요일 (영업시간 : 오전10시 ~ 새벽 2시)</p> <p>- 할인요금 : 3000원 ( 오전10시 ~ 오후5시 ) / 3게임 이상시</p> <p>- 정상요금 : 4000원</p> <p>- 회원요금 : 3500원</p> <p>&nbsp;</p> <p>금,토,일,공휴일 (영업시간 : 오전10시 ~ 새벽 3시)</p> <p>- 할인요금 : 3000원( 오전10~12시) / 3게임 이상 시</p> <p>- 정상요금 : 4000원</p> <p>- 회원요금 : 4000원</p> <p>&nbsp;</p> <p>*대관요금</p> <p>- 월~목요일 : 250,000원 (시간당)</p> <p>- 금,토,일,공휴일 : 300,000원 (시간당)</p> <p>&nbsp;</p> <p>&nbsp;</p>',
     info_image_url: File.open(Rails.root + "app/assets/images/image_lightsky.png"),
     location_lat: @locate_change[0],
     location_lng: @locate_change[1]
@@ -444,36 +444,206 @@ InfoAttachment.create!(
     upinfo: File.open(Rails.root + "app/assets/images/image_white.png")
     )
     
-# 1234
-@locate_change = Geocoder.coordinates("서울 성북구 화랑로 254")
+# 14
+@locate_change = Geocoder.coordinates("서울 강북구 도봉로 34")
 Info.create!(
-    infoTitle: "서울볼링장",
-    address: "서울 성북구 화랑로 254",
+    infoTitle: "RNB볼링장",
+    address: "서울 강북구 도봉로 34",
     city: "서울시",
-    region: "성북구",
+    region: "강북구",
     game: "볼링",
-    infoPhone: "02-742-0707",
+    infoPhone: "02-986-1600",
     infoEmail: " ",
     infoUrl: " ",
-    content: ' 준비중~ ',
+    content: '<p>대화료 1500원</p> <p>&nbsp;</p> <p>평일 주간( 10:00 ~ 17:00 ) : 3500원</p> <p>평일 야간( 17:00 ~ 04:00 ) : 4500원</p> <p>&nbsp;</p> <p>금, 토, 일, 공휴일 (10:00 ~ 04:00 ) : 5000원</p> <p>&nbsp;</p> <p>*이벤트</p> <p>평일 10시 ~ 18시&nbsp;</p> <p>토,일,공휴일 10시 ~ 13시</p> <p>- 개인 4게임 : 10,000원</p> <p>- 볼링화 : 무료</p> <p>(이벤트는 선불!)</p>',
     info_image_url: File.open(Rails.root + "app/assets/images/image_lightsky.png"),
     location_lat: @locate_change[0],
     location_lng: @locate_change[1]
     )
 
 InfoAttachment.create!(
-    info_id: 1234,
+    info_id: 14,
     upinfo: File.open(Rails.root + "app/assets/images/image_white.png")
     )
 InfoAttachment.create!(
-    info_id: 1234,
+    info_id: 14,
     upinfo: File.open(Rails.root + "app/assets/images/image_white.png")
     )
 InfoAttachment.create!(
-    info_id: 1234,
+    info_id: 14,
     upinfo: File.open(Rails.root + "app/assets/images/image_white.png")
     )
 InfoAttachment.create!(
-    info_id: 1234,
+    info_id: 14,
+    upinfo: File.open(Rails.root + "app/assets/images/image_white.png")
+    )
+    
+# 15
+@locate_change = Geocoder.coordinates("서울 강북구 한천로139길 42")
+Info.create!(
+    infoTitle: "킹콩스트라이크",
+    address: "서울 강북구 한천로139길 42",
+    city: "서울시",
+    region: "강북구",
+    game: "볼링",
+    infoPhone: "070-4178-9358",
+    infoEmail: " ",
+    infoUrl: " ",
+    content: '<p>대화료 1500원</p> <p>&nbsp;</p> <p>월~목 : 4500원</p> <p>금, 토, 일, 공휴일 : 5000원</p> <p>&nbsp;</p> <p>*이벤트</p> <p>13:00 ~ 19:30까지 입장하시는 분</p> <p>- 3게임 + 볼링화 대여 : 10,000원</p> <p>(단, 토,일 오후1시~오후6시 / 현금만 가능)</p> <p>&nbsp;</p>',
+    info_image_url: File.open(Rails.root + "app/assets/images/image_lightsky.png"),
+    location_lat: @locate_change[0],
+    location_lng: @locate_change[1]
+    )
+
+InfoAttachment.create!(
+    info_id: 15,
+    upinfo: File.open(Rails.root + "app/assets/images/image_white.png")
+    )
+InfoAttachment.create!(
+    info_id: 15,
+    upinfo: File.open(Rails.root + "app/assets/images/image_white.png")
+    )
+InfoAttachment.create!(
+    info_id: 15,
+    upinfo: File.open(Rails.root + "app/assets/images/image_white.png")
+    )
+InfoAttachment.create!(
+    info_id: 15,
+    upinfo: File.open(Rails.root + "app/assets/images/image_white.png")
+    )
+   
+# 16
+@locate_change = Geocoder.coordinates("서울 도봉구 도봉로 578")
+Info.create!(
+    infoTitle: "미화볼링센터",
+    address: "서울 도봉구 도봉로 578",
+    city: "서울시",
+    region: "도봉구",
+    game: "볼링",
+    infoPhone: "02-903-1441",
+    infoEmail: " ",
+    infoUrl: " ",
+    content: '<p>영업시간 : 10:00 ~ &nbsp;24:00</p> <p>&nbsp;</p> <p>대화료 1000원</p> <p>&nbsp;</p> <p>평일</p> <p>- 일반 : 2800원</p> <p>- 상주 : 2600원</p> <p>- 학생(초,중,고,대학생) : 2600원</p> <p>&nbsp;</p> <p>토, 일, 공휴일</p> <p>- 일반 : 3800원</p> <p>- 상주 : 2800원</p> <p>- 학생 : 3500원</p>',
+    info_image_url: File.open(Rails.root + "app/assets/images/image_lightsky.png"),
+    location_lat: @locate_change[0],
+    location_lng: @locate_change[1]
+    )
+
+InfoAttachment.create!(
+    info_id: 16,
+    upinfo: File.open(Rails.root + "app/assets/images/image_white.png")
+    )
+InfoAttachment.create!(
+    info_id: 16,
+    upinfo: File.open(Rails.root + "app/assets/images/image_white.png")
+    )
+InfoAttachment.create!(
+    info_id: 16,
+    upinfo: File.open(Rails.root + "app/assets/images/image_white.png")
+    )
+InfoAttachment.create!(
+    info_id: 16,
+    upinfo: File.open(Rails.root + "app/assets/images/image_white.png")
+    )
+   
+# 17
+@locate_change = Geocoder.coordinates("서울 도봉구 해등로 125")
+Info.create!(
+    infoTitle: "한영프라자 볼링센터",
+    address: "서울 도봉구 해등로 125",
+    city: "서울시",
+    region: "도봉구",
+    game: "볼링",
+    infoPhone: "02-990-7991",
+    infoEmail: " ",
+    infoUrl: " ",
+    content: '<p>대화료 1000원</p> <p>&nbsp;</p> <p>*초,중,고 학생은 클럽요금 적용</p> <p>&nbsp;</p> <p>평일 오전 (9:30 ~ 18:00)</p> <p>- 일반 : 2000원</p> <p>- 클럽 : 1700원</p> <p>&nbsp;</p> <p>평일 오후 (18:00 ~ 02:00)</p> <p>- 일반 : 3000원</p> <p>- 클럽 : 2800원</p> <p>&nbsp;</p> <p>토, 일, 공휴일</p> <p>- 일반 : 3200원</p> <p>- 클럽 : 3000원</p>',
+    info_image_url: File.open(Rails.root + "app/assets/images/image_lightsky.png"),
+    location_lat: @locate_change[0],
+    location_lng: @locate_change[1]
+    )
+
+InfoAttachment.create!(
+    info_id: 17,
+    upinfo: File.open(Rails.root + "app/assets/images/image_white.png")
+    )
+InfoAttachment.create!(
+    info_id: 17,
+    upinfo: File.open(Rails.root + "app/assets/images/image_white.png")
+    )
+InfoAttachment.create!(
+    info_id: 17,
+    upinfo: File.open(Rails.root + "app/assets/images/image_white.png")
+    )
+InfoAttachment.create!(
+    info_id: 17,
+    upinfo: File.open(Rails.root + "app/assets/images/image_white.png")
+    )
+   
+# 18
+@locate_change = Geocoder.coordinates("서울 노원구 섬밭로 258")
+Info.create!(
+    infoTitle: "건영옴니볼링센터",
+    address: "서울 노원구 섬밭로 258",
+    city: "서울시",
+    region: "노원구",
+    game: "볼링",
+    infoPhone: "02-3399-5351",
+    infoEmail: " ",
+    infoUrl: " ",
+    content: '<p>대화료 1000원</p> <p>영업시간 : 오전10:00 ~ 새벽 04:00</p> <p>&nbsp;</p> <p>평일 (17시 이전)</p> <p>- 일반 : 3500원</p> <p>- 학생 : 2000원 (초,중,고- 학생증 확인!)</p> <p>- 클럽 : 2500원</p> <p>&nbsp;</p> <p>평일 (17시 이후)</p> <p>- 일반 : 4500원</p> <p>- 학생 : 3500원</p> <p>- 클럽 : 3500원</p> <p>&nbsp;</p> <p>토, 일, 공휴일 (19시 이전)</p> <p>- 일반 : 4500원</p> <p>- 학생 : 3500원</p> <p>- 클럽 : 3500원</p> <p>&nbsp;</p> <p>토, 일, 공휴일 (19시 이후)</p> <p>- 일반 : 5000원</p> <p>- 학생 : 5000원</p> <p>- 클럽 : 3500원</p> <p>&nbsp;</p> <p>VIP - 2500원</p> <p>&nbsp;</p> <p>*평일 입장(패키지) 게임 - 6게임</p> <p>오전(10~13시) : 12000원</p> <p>오후(13~17시) : 15000원</p> <p>밤(23~02시) : 18000원</p> <p>새벽 (02~04시) : 15000원</p> <p>&nbsp;</p>',
+    info_image_url: File.open(Rails.root + "app/assets/images/image_lightsky.png"),
+    location_lat: @locate_change[0],
+    location_lng: @locate_change[1]
+    )
+
+InfoAttachment.create!(
+    info_id: 18,
+    upinfo: File.open(Rails.root + "app/assets/images/image_white.png")
+    )
+InfoAttachment.create!(
+    info_id: 18,
+    upinfo: File.open(Rails.root + "app/assets/images/image_white.png")
+    )
+InfoAttachment.create!(
+    info_id: 18,
+    upinfo: File.open(Rails.root + "app/assets/images/image_white.png")
+    )
+InfoAttachment.create!(
+    info_id: 18,
+    upinfo: File.open(Rails.root + "app/assets/images/image_white.png")
+    )
+   
+# 19
+@locate_change = Geocoder.coordinates("서울 노원구 상계로 55")
+Info.create!(
+    infoTitle: "그린라이트",
+    address: "서울 노원구 상계로 55",
+    city: "서울시",
+    region: "노원구",
+    game: "볼링",
+    infoPhone: "070-8839-8487",
+    infoEmail: " ",
+    infoUrl: " ",
+    content: '<p>대화료 2000원</p> <p>&nbsp;</p> <p>락볼링(20시 이후) : 5000원</p> <p>&nbsp;</p> <p>평일&nbsp;</p> <p>- 일반 : 3500원</p> <p>- 회원(남) : 3000원</p> <p>- 회원(여) : 2000원</p> <p>- 학생 : 3000원 (학생증 지참시)</p> <p>&nbsp;</p> <p>토,일,공휴일</p> <p>- 일반 : 4000원</p> <p>&nbsp;</p>',
+    info_image_url: File.open(Rails.root + "app/assets/images/image_lightsky.png"),
+    location_lat: @locate_change[0],
+    location_lng: @locate_change[1]
+    )
+
+InfoAttachment.create!(
+    info_id: 19,
+    upinfo: File.open(Rails.root + "app/assets/images/image_white.png")
+    )
+InfoAttachment.create!(
+    info_id: 19,
+    upinfo: File.open(Rails.root + "app/assets/images/image_white.png")
+    )
+InfoAttachment.create!(
+    info_id: 19,
+    upinfo: File.open(Rails.root + "app/assets/images/image_white.png")
+    )
+InfoAttachment.create!(
+    info_id: 19,
     upinfo: File.open(Rails.root + "app/assets/images/image_white.png")
     )
