@@ -6,8 +6,14 @@
 
   <div class="panel panel-default devise-bs">
     <div class="panel-heading">
-      <img src="<%= image_url('kangaroo2.png') %>" style="height: 200px; width: 50%; margin: auto">
-      <h4><%#= t('.sign_in', default: 'Sign in') %></h4>
+      <p style="font-size:3rem; ">
+        <% if is_mobile_device? %>
+          <img src="<%= image_url('kangaroo2.png') %>" style="height: 150px; width: 50%; margin-right:10%">   Act now
+        <% else %>
+          <img src="<%= image_url('kangaroo2.png') %>" style="height: 200px; width: 50%; margin-right:10%">   Act now<%#= t('.sign_in', default: 'Sign in') %>
+        <% end %>
+      </p>
+     
       
       <!--image_tag("/icons/icon.gif", height: '32', width: '32')-->
       
@@ -15,11 +21,11 @@
     <div class="panel-body">
       <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { role: 'form' }) do |f| %>
         <div class="form-group">
-          <%= f.label :email %>
+          <%= f.label :email , style: 'color: #a3a3a3; font-size: 2rem' %>
           <%= f.email_field :email, autofocus: true, class: 'form-control' %>
         </div>
         <div class="form-group">
-          <%= f.label :password %>
+          <%= f.label :password, style: 'color: #a3a3a3; font-size: 2rem' %>
           <%= f.password_field :password, autocomplete: 'off', class: 'form-control' %>
         </div>
         <% if devise_mapping.rememberable? %>
@@ -29,7 +35,7 @@
             <% end %>
           </div>
         <% end %>
-        <%= f.submit  t('.sign_in', default: 'Sign in'), class: 'btn-custom' %>
+        <%= f.submit  t('.sign_in', default: 'Sign in'), class: 'btn btn-custom' %>
       <% end %>
     </div>
   </div>
