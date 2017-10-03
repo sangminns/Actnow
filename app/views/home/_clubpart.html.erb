@@ -1,13 +1,21 @@
 <div class="container">
-    <h1>Club<a href="<%= events_path %>" style="verticla-align:center;float: right; font-size: 0.8em; color: #999"> > More</a></h1> 
+    <h1>Club<a href="<%= clubs_path %>" style="verticla-align:center; float: right; font-size: 0.8em; color: #999"> > More</a></h1>
+    <br>
     <% @clubs.sample(2).each do |k| %>
-        <div class="section-cast col-xs-6 col-sm-6 col-md-6 col-lg-6">
-            <div class="card ">
-              <img class="img-responsive" src="<%= image_url k.club_image_url.url %>" alt="Card image">
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+            <div class="card">
+            <% if is_mobile_device? %>
+              <img class="clubpart-image-mobile" src="<%= image_url k.club_image_url.url %>" alt="Card image">
+                  <a href="<%= club_path(k.id) %>">
+                  <div class="card-img-overlay card-img-back">
+                    <h4 class="card-title-back-mobile"><%= k.clubTitle %></h4>
+            <% else %>
+              <img class="clubpart-image" src="<%= image_url k.club_image_url.url %>" alt="Card image">
+                  <a href="<%= club_path(k.id) %>">
+                  <div class="card-img-overlay card-img-back">
+                      <h4 class="card-title-back"><%= k.clubTitle %></h4>
               <%#= link_to image_tag(k.club_image_url.url), club_path(k.id), class: 'card-img-responsive' %>
-              <a href="<%= club_path(k.id) %>">
-              <div class="card-img-overlay card-img-back">
-                <h4 class="card-title-back"><%= k.clubTitle %></h4>
+            <% end %>
                 <!--<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>-->
                 <!--<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>-->
               </div>

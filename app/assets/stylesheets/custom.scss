@@ -14,9 +14,18 @@
 .card-img-back{
   background-color: rgba(0,0,0,0.2)
 }
+
 .card-title-back{
-  font-size: 4rem;
-  margin-top: 150px;
+  font-size: 3rem;
+  margin-top: 120px;
+  text-align: center;
+  color: #ffffff;
+  text-shadow: 6px 6px 16px rgba(0,0,0,0.9);
+}
+
+.card-title-back-mobile{
+  font-size: 3rem;
+  margin-top: 50px;
   text-align: center;
   color: #ffffff;
   text-shadow: 6px 6px 16px rgba(0,0,0,0.9);
@@ -273,9 +282,14 @@
     color: #00bcf2;
 }
 
-#upclub img {
-  height: 400px;
-  width: 100%;
+.clubpart-image {
+  height: 300px;
+  // width: 100%;
+}
+
+.clubpart-image-mobile {
+  height: 150px;
+  // width: 100%;
 }
 
 
@@ -292,8 +306,9 @@
 }
 
 #upevent h1 {
-    text-align: left;
     font-family: 'Concert One', cursive;
+    text-align: left;
+    color: #00bcf2;
 }
 
 // #upevent .card img{
@@ -307,10 +322,6 @@
 //     margin: 50px;
 // }
 // ----------------EVENT 폴더에 있는 세부사항 css
-#upevent img {
-  height: 400px;
-  width: 100%;
-}
 
 .event-body {
   background-color: #f9f9f9;
