@@ -77,7 +77,7 @@ Rails.application.routes.draw do
   post 'my_page/destroy/:id/:member_id/:club_id' => 'my_page#destroy_create' 
   
   
-  #-------------------------events ------------
+  #-------------------------events 게시판------------
   get '/events' => 'events#index' 
   post '/events' => 'events#create' 
   get '/events/new' => 'events#new' 

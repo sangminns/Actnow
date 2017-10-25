@@ -11,14 +11,12 @@
                 <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                     <div class="card" style="border-style: solid; width: 100%;">
                         <%#= image_tag(i.cast_attachments.url) %>
-                        <% i.cast_attachments.limit(1).each do |p| %>
-                          <%= image_tag p.upcast.thumb2.url %>
-                          <br>
-                        <% end %>
-                        
+                      
+                          <% i.cast_attachments.limit(1).each do |p| %>
+                            <%= image_tag p.upcast.thumb2.url %>
+                            <br>
+                          <% end %>
                         <%#= link_to image_tag(cast.cast_image_url.thumb.url), cast_path(cast.id) %>
-                        
-                        <br>
                         <%#= cast.id %>
                         <div class="card-block">
                            <h4 class="card-title"><%= i.castTitle %></h4>

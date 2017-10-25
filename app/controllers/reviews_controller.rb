@@ -30,7 +30,6 @@ class ReviewsController < ApplicationController
      redirect_to :back
     end
     
-    
     # if user_signed_in?
     #   @user = current_user.email
       

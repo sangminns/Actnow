@@ -31,9 +31,12 @@ class CastsController < ApplicationController
     #   params[:cast_attachments]['upcast'].each do |a|
     #     @cast_attachment = @cast.cast_attachments.create!(:upcast => a, :cast_id => @cast.id)
     #   end
+    
     if @cast.save
-      params[:cast_attachments]['upcast'].each do |a|
-        @cast_attachment = @cast.cast_attachments.create!(:upcast => a, :cast_id => @cast.id)
+      if params[:cast_attachments] != nil
+        params[:cast_attachments]['upcast'].each do |a|
+          @cast_attachment = @cast.cast_attachments.create!(:upcast => a, :cast_id => @cast.id)
+        end
       end
      redirect_to @cast, notice: 'Post was successfully created.' 
     else

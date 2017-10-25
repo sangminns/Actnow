@@ -9,7 +9,7 @@ class CreateClubs < ActiveRecord::Migration
       t.string :clubGame
       t.string :clubCity
       t.string :clubRegion
-      t.string :club_image_url
+      t.string :club_image_url # , :default => File.open(Rails.root + "app/assets/images/image_white.png")
       
       t.timestamps null: false
     end

@@ -16,7 +16,7 @@
         <% @clubs.each do |i| %>
             <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4">
                 <div class="card">
-                  <img class="card-img-top" src="<%= image_url i.club_image_url.thumb.url %>" alt="Card image cap">
+                  <img class="card-img-top" src="<%= image_url i.club_image_url.thumb.url %>" onerror="this.src='<%= image_url "image_white.png" %>'" alt="사진 준비중입니다. ">
                   <div class="card-block">
                     <h4 class="card-title"><%= i.clubTitle %></h4>
                     <p class="card-text">지역 : <%= i.clubRegion %></p>

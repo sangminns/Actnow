@@ -21,7 +21,8 @@ class NoticesController < ApplicationController
     @notice.info_id = params[:info_id]
     @notice.save
     
-    redirect_to '/'
+    redirect_to '/#act_"<%=@oneInfo%>"'
+    
     # if @notice.save
     #   params[:notice_attachments]['upnotice'].each do |a|
     #     @notice_attachment = @notice.notice_attachments.create!(:upnotice => a, :notice_id => @notice.id)

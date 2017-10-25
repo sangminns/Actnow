@@ -5,12 +5,12 @@
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
             <div class="card">
             <% if is_mobile_device? %>
-              <img class="clubpart-image-mobile" src="<%= image_url k.club_image_url.url %>" alt="Card image">
+              <img class="clubpart-image-mobile" src="<%= image_url k.club_image_url.url %>" alt="">
                   <a href="<%= club_path(k.id) %>">
                   <div class="card-img-overlay card-img-back">
                     <h4 class="card-title-back-mobile"><%= k.clubTitle %></h4>
             <% else %>
-              <img class="clubpart-image" src="<%= image_url k.club_image_url.url %>" alt="Card image">
+              <img class="clubpart-image" src="<%= image_url k.club_image_url.url %>" alt="">
                   <a href="<%= club_path(k.id) %>">
                   <div class="card-img-overlay card-img-back">
                       <h4 class="card-title-back"><%= k.clubTitle %></h4>

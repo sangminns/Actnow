@@ -5,7 +5,6 @@ class EventsController < ApplicationController
   def index
     @events = Event.all
     @event_attachment = EventAttachment.all
-   
   end
 
   def new
@@ -18,9 +17,7 @@ class EventsController < ApplicationController
   end
 
   def create
-    
     @event = Event.new(event_params)
-    
     @event.save
     
     if params[:event_attachments] != nil
@@ -36,16 +33,11 @@ class EventsController < ApplicationController
   end
 
   def edit
-    
   end
 
   def update
-    
-     @event.update(event_params)
-    
-  
+    @event.update(event_params)
     redirect_to '/events'
-  
   end
 
   def destroy
