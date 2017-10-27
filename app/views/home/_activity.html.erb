@@ -40,11 +40,11 @@
     		  <span id="starrate" style="color: #fff; font-size: 1.8rem;"><%= rating_for i, 'average', disable_after_rate: true, imdb_avg: true %></span>
     		</h2>
             <%#= imdb_style_rating_for i, "average" , disable_after_rate: true, imdb_avg: true %>
-       <br><%= i.address %> | <%= i.game %> <p style= "float: right;">평점을 매긴 수 : <%= i.rates("average").count %></p>
-    		<a class="close" href="#actnow">&times;</a>
+          <br> <%= i.game %> | <%= i.address %> <p style= "float: right;">평점을 매긴 수 : <%= i.rates("average").count %></p>
+    		  <br><a href="tel:<%= i.infoPhone %>"><%= i.infoPhone %></a> | 참고 URL : <a target="_blank" href="<%= i.infoUrl %>"><%= i.infoUrl %></a>
+    		<a class="close" onclick="mapOffclick()" href="#actnow">&times;</a>
     		
     		<div class="content">
-    		  
           <!-- Nav tabs -->
           <ul class="nav nav-tabs" role="tablist">
             <li role="presentation" class="active"><a href="#info<%= i.id%>" aria-controls="info" role="tab" data-toggle="tab">정보</a></li>
@@ -58,8 +58,9 @@
               <div class="slide-section" id="slide-section<%= i.id%>">
                
                 <% i.info_attachments.each do |p| %>
+                
                   <div class="slide-img" id="slide-img<%= i.id%>">
-                    <span class="modalimage<%= p.id %>"><img src="<%= p.upinfo.thumb2.url%>"></span>
+                    <span class="modalimage<%= p.id %>"><img src="<%= image_url p.upinfo.url%>" height="100%"></span> <!-- 이전 코드는 p.upinfo.thumb2.url 만 들어있었음.-->
                   </div>
                 <% end %>
                 
@@ -234,7 +235,7 @@
             '    <p><%= i.region %> | <%= i.address %><br>',
             '        <%= i.game %> &gt; <%= i.city %><br>',
             '   </p>',
-            '   <a class="btn btn-primary" href="#act_<%= i.id %>">상세보기</a>',
+            '   <a class="btn btn-primary" onclick="mapOnclick()" href="#act_<%= i.id %>">상세보기</a>',
             '</div>'
         ].join('');
         
@@ -460,20 +461,15 @@ $(function () {
     
 });
 
-// 
-$(document).ready(function () {
-  
-    <% @storeInfo.each do |i| %>
-      $("#map .iw_inner").click(function () {
-        $('body').css('overflow', 'hidden');  //ADD THIS
-      });
-     
-      $(".overlay").on('click', '.close', function () {
-         $('body').css('overflow', 'auto');  //ADD THIS
-      });
-    <% end %>
-     
- });
+
+function mapOnclick() {
+  $("body").css("overflow", "hidden");
+};
+
+function mapOffclick(){
+  $("body").css("overflow", "auto");
+};
+
 
 </script>   
 

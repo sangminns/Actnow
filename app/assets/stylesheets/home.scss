@@ -206,6 +206,7 @@ $eachHeight: 550px;
 
 .slide-section{
   width:100%;
+//   height: 200px;
   display:flex;
   transition:margin-left 0.25s linear 0s;
   margin-top: 15px;
@@ -214,9 +215,9 @@ div .slide-img {
   width:25%;
   min-width:25%;
   //margin-right:5px;
-  height:25%;
-  border:1px solid skyblue;
-  display:flex;
+  height: 200px;
+  border: 1px solid skyblue;
+  display: flex;
   // align-items:center;
   justify-content:center;
   box-sizing:border-box;
