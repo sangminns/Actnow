@@ -39,5 +39,8 @@ class MyPageController < ApplicationController
         redirect_to :back
         
     end
+    
+    def term
+    end
 
 end

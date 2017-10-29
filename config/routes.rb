@@ -95,6 +95,10 @@ Rails.application.routes.draw do
     resources :question_comments, only: [:create, :destroy]
   end
   
+  # -------------------이용약관 url -------------------------
+  get '/terms' => 'my_page#term'
+  
+  
   # resources :memos do
   #   resources :comments, only: [:create, :destroy]
   # end
