@@ -1,5 +1,5 @@
 <div class="container">
-    <h1>Event<a href="<%= events_path %>" style="verticla-align:center; float: right; font-size: 0.8em; color: #999"> > More</a></h1>
+    <h1>Event 진행중인 매장<a href="<%= events_path %>" style="verticla-align:center; float: right; font-size: 0.8em; color: #999"> > More</a></h1>
     <br>
     <% @events.sample(2).each do |k| %>
         <% k.event_attachments.limit(1).each do |p| %>

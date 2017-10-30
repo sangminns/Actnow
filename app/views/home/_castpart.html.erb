@@ -1,5 +1,5 @@
 <div class="container">
-    <h1>Cast <a href="<%= casts_path %>" style="verticla-align:center; float: right; font-size: 0.8em; color: #999"> > More</a></h1>
+    <h1>운동 전 도움될만한 Cast <a href="<%= casts_path %>" style="verticla-align:center; float: right; font-size: 0.8em; color: #999"> > More</a></h1>
     <br>
     <% @casts.sample(2).each do |k| %>
         <% k.cast_attachments.limit(1).each do |p| %>

@@ -285,7 +285,7 @@
 }
 
 #upclub h1 {
-    font-family: 'Concert One', cursive;
+    font-family: 'Hanna', sans-serif;
     text-align: left;
     color: #00bcf2;
 }
@@ -314,7 +314,7 @@
 }
 
 #upevent h1 {
-    font-family: 'Concert One', cursive;
+    font-family: 'Hanna', sans-serif;
     text-align: left;
     color: #00bcf2;
 }
@@ -373,8 +373,9 @@
 }
 
 #upcast h1 {
-  font-family: 'Concert One', cursive;
-  text-align: center;
+  font-family: 'Hanna', sans-serif;
+  text-align: left;
+  color: #00bcf2;
 }
 
 // #upcast .card img{
@@ -431,6 +432,10 @@ footer {
     font-size: 15px;
 }
 
+footer .about a{
+  color: #6e6e6e;
+}
+
 footer h3{
     font-family: 'Indie Flower', cursive;
     
@@ -438,7 +443,7 @@ footer h3{
 }
 
 footer p{
-    color: red;
+    color: #6e6e6e;
 }
 
 //gps image
