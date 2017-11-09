@@ -1,0 +1,176 @@
+<br><br><br><br><br>
+<div class="container">
+  
+  <h2 align="center"><%= @info.infoTitle %></h2>
+  <br>
+  
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#info<%= @info.id%>" aria-controls="info" role="tab" data-toggle="tab">정보</a></li>
+    <li role="presentation"><a href="#review<%= @info.id%>" aria-controls="review" role="tab" data-toggle="tab">리뷰</a></li>
+    <li role="presentation"><a href="#notice<%= @info.id%>" aria-controls="notice" role="tab" data-toggle="tab">공지</a></li>
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane fade in active" id="info<%= @info.id%>">
+      
+      <div class="slide-section" id="slide-section<%= @info.id%>">
+         
+          <% @info.info_attachments.each do |p| %>
+          
+            <div class="slide-img" id="slide-img<%= @info.id%>">
+              <span class="modalimage<%= p.id %>"><img src="<%= image_url p.upinfo.url%>" height="100%"></span> <!-- 이전 코드는 p.upinfo.thumb2.url 만 들어있었음.-->
+            </div>
+          <% end %>
+          
+        </div>
+        
+        <div class="slider-controls">
+            <span class="prev"><img src="<%= image_url('leftbutton.png') %>"></span>
+            <span class="next"><img src="<%= image_url('rightbutton.png') %>"></span>
+        </div>   
+         
+        <div class="well" align="center">
+          <%= @info.content.html_safe %>
+        </div>
+        
+        <div class="shows">
+          <div class="overlays"></div>
+          <div class="img-show">
+            <span></span>
+            <img src="">
+          </div>
+        </div>
+
+    </div>
+    
+    
+    <div role="tabpanel" class="tab-pane fade" id="review<%= @info.id%>">
+      <br>
+      <div align="center">
+        <% if user_signed_in? %>
+          <a href="/infos/<%= @info.id %>/<%= @info.infoTitle %>/reviews" class="btn btn-primary">리뷰쓰기</a>
+        <% else %>    
+          <p>*문의사항은 로그인 후에 이용가능합니다.</p><br>
+        <% end %>
+        <br>
+        총 <%= @info.reviews.count %>건
+      </div>
+      <!--<select>-->
+      <!--  <option>최신 순</option>-->
+      <!--  <option>조회 순</option>-->
+      <!--</select>-->
+      <hr>
+      <div class="table-responsive">
+        <table class="table table-fit">
+          <thead>
+            <tr>
+              <th>title</th>
+              <th>content</th>
+              <th>user</th>
+            </tr>
+          </thead>
+          <tbody>
+             <% @info.reviews.each do |c| %>
+              <tr>
+                <td><%= c.reviewTitle %></td>
+                <td><%= c.reviewContent.html_safe %></td>
+                <td>
+                  <%= c.user.nickname %> 
+                  <% if user_signed_in? %>
+                    <!--<a href="/reviews/<%#= c.id %>" class="destroyComment" style="float:right;">[댓글삭제]</a>-->
+                  <% end %><br>
+                </td>
+              </tr>
+        
+              <input id="oneComment" type="hidden" value="<%=c.id %>">
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+      
+        <!--사진 : -->
+        <!--<@% c.review_attachments.each do |r| %>-->
+        <!--  <img src="<%#= r.upreview.thumb.url%>">-->
+        <!--<%# end %><br>-->
+    
+    </div>
+    
+    
+    <div role="tabpanel" class="tab-pane fade" id="notice<%= @info.id%>">
+      <br>
+      <div align="center">
+        <a href="/infos/<%= @info.id %>/<%= @info.infoTitle %>/notices" class="btn btn-primary">공지사항쓰기</a>
+        <br>
+        총 <%= @info.notices.count %>건
+      </div>
+      <!--<select>-->
+      <!--  <option>최신 순</option>-->
+      <!--  <option>조회 순</option>-->
+      <!--</select>-->
+      
+      <hr>
+      
+      <div class="table-responsive">
+        <table class="table table-fit">
+          <thead>
+            <tr>
+              <th>title</th>
+              <th>info</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @info.notices.each do |c| %>
+              <tr>
+                <td><%= link_to c.noticeTitle, c %></td>
+                <td><%= @info.infoTitle %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div> 
+      
+      
+      <%# @info.notices.each do |c| %>
+      <!--  작성자 : <%#= c.user.nickname %><br>-->
+      <!--  공지사항 제목 : <%#= c.noticeTitle %><br>-->
+      <!--  공지사항 내용 : <%#= c.noticeContent.html_safe %><br>-->
+        <!--사진 : -->
+        <!--<%# c.notice_attachments.each do |r| %>-->
+        <!--  <img src="<%#= r.upnotice.thumb.url%>">-->
+        <!--<%# end %><br>-->
+        
+      <!--  <%# if user_signed_in? %>-->
+      <!--    <a href="/notices/<%#= c.id %>" class="destroyNotice">[공지사항삭제]</a>-->
+      <!--  <%# end %>-->
+        
+      <!--  <input id="oneNotice" type="hidden" value="<%#=c.id %>">-->
+        
+      <!--  <hr>-->
+      <!--<%# end %>-->
+      
+    </div>
+    
+  </div>
+    
+</div>
+
+<script>
+  // 이미지 모달 
+  $(function () {
+      
+    <% @info.info_attachments.each do |p| %>
+      $(".modalimage<%= p.id %> img").click(function () {
+          var $src = $(this).attr("src");
+          $(".shows").fadeIn();
+          $(".img-show img").attr("src", $src);
+      });
+    <% end %>
+  
+      
+    $("spans, .overlays").click(function () {
+        $(".shows").fadeOut();
+    });
+  });
+</script>

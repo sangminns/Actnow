@@ -12,7 +12,7 @@ Info.create!(
     infoPhone: "",
     infoEmail: " ",
     infoUrl: " ",
-    content: '<p>저녁 11시 소등!</p> <p>&nbsp;</p> <p>평일 저녁 / 주말 저녁 : 일반인 농구 가능.</p> <p>학기 중 대학생들 리그로 힘든 경우도 있음.</p>',
+    content: '<p>저녁 10시 소등!</p> <p>&nbsp;</p> <p>평일 저녁 / 주말 저녁 : 일반인 농구 가능.</p> <p>학기 중 대학생들 리그로 힘든 경우도 있음.</p>',
     info_image_url: File.open(Rails.root + "app/assets/images/image_lightsky.png"),
     location_lat: @locate_change[0],
     location_lng: @locate_change[1]

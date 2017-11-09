@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   get '/infos' => 'infos#index', as: "info"
   post '/infos' => 'infos#create' 
   get '/infos/info_new' => 'infos#new' 
- 
+  get '/infos/:id/:infoTitle' => 'infos#show'
   get '/infos/:id/edit' => 'infos#edit', as: "edit_info" 
   # get '/infos/:id' => 'infos#info_show', as: "info" 
 
@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   
   #---review 해당 routes---------------------------------
   
-  get '/:infoTitle/:info_id/reviews' => 'reviews#new'
+  get '/infos/:info_id/:infoTitle/reviews' => 'reviews#new', as: "review"
   post '/reviews' => 'reviews#create'
   
   patch '/reviews/:id' => 'reviews#update' 
@@ -31,7 +31,8 @@ Rails.application.routes.draw do
   
   #---notice 해당 routes---------------------------------
   
-  get '/:infoTitle/:info_id/notices' => 'notices#new'
+  get '/infos/:info_id/:infoTitle/notices' => 'notices#new'
+  get '/notices/:id' => 'notices#show', as: "notice"
   post '/notices' => 'notices#create'
   post '/tinymce_assets' => 'notices#image_create'
   

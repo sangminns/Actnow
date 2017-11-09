@@ -1,0 +1,12 @@
+<br><br><br><br><br>
+<div class="container">
+  
+  <a href=<%= questions_path %> class="btn btn-primary" style="float: right;">목록</a><br>
+  <h1><%= @notice.noticeTitle %></h1>
+  <hr />
+  <h2>by <%= @notice.user.email %></h2>
+  <h3><i class="fa fa-clock-o" aria-hidden="true"></i><%= local_time(@notice.created_at) %></h3>
+
+  공지사항 내용 <br>
+  <%= @notice.noticeContent.html_safe %><br>
+  <hr />

@@ -21,14 +21,21 @@ class ReviewsController < ApplicationController
     @review.user_id = current_user.id
     @review.info_id = params[:info_id]
     
-    if @review.save
-      params[:review_attachments]['upreview'].each do |a|
-        @review_attachment = @review.review_attachments.create!(:upreview => a, :review_id => @review.id)
-      end
-     redirect_to '/' , notice: 'Post was successfully created.' 
-    else
-     redirect_to :back
-    end
+    # if @review.save
+    #   params[:review_attachments]['upreview'].each do |a|
+    #     @review_attachment = @review.review_attachments.create!(:upreview => a, :review_id => @review.id)
+    #   end
+    # redirect_to '/' , notice: 'Post was successfully created.' 
+    # else
+    # redirect_to :back
+    # end
+    
+    @review.save
+    
+    @oneInfo = params[:info_id]
+    @oneTitle = params[:infoTitle]
+    
+    redirect_to :back 
     
     # if user_signed_in?
     #   @user = current_user.email

@@ -12,7 +12,8 @@ class NoticesController < ApplicationController
   end
   
   def show
-    @notice_attachments = @notice.notice_attachments.all
+    #@notice_attachments = @notice.notice_attachments.all
+    @notice = Notice.find(params[:id])
   end
   
   def create
@@ -21,8 +22,9 @@ class NoticesController < ApplicationController
     @notice.info_id = params[:info_id]
     @notice.save
     
-    redirect_to '/#act_"<%=@oneInfo%>"'
-    
+    #redirect_to :back #'/#act_"<%=@oneInfo%>"'
+    # render action: "/"
+    redirect_to :back
     # if @notice.save
     #   params[:notice_attachments]['upnotice'].each do |a|
     #     @notice_attachment = @notice.notice_attachments.create!(:upnotice => a, :notice_id => @notice.id)

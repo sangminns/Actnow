@@ -10,6 +10,10 @@ class InfosController < ApplicationController
     @review_attachment = ReviewAttachment.all
   end
 
+  def show
+    @info = Info.find(params[:id])
+  end
+
   def new
     @info = Info.new
     infoAttachment = @info.info_attachments.build

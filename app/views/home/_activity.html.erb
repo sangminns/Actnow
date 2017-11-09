@@ -16,8 +16,8 @@
     <img src="<%= image_url('basketball.png') %>" class="img-rounded" alt="Cinque Terre" height="90" id="searchBasketball">
     <img src="<%= image_url('pingpong.png') %>" class="img-rounded" alt="Cinque Terre" height="90" id="searchPingpong">
     <img src="<%= image_url('bowling.png') %>" class="img-rounded" alt="Cinque Terre" height="90" id="searchBowling">
-    <img src="<%= image_url('surfing.png') %>" class="img-rounded" alt="Cinque Terre" height="90" id="searchSurfing">
-    <img src="<%= image_url('yoga.png') %>" class="img-rounded" alt="Cinque Terre" height="90" id="searchYoga">
+    <!--<img src="<%#= image_url('surfing.png') %>" class="img-rounded" alt="Cinque Terre" height="90" id="searchSurfing">-->
+    <!--<img src="<%#= image_url('yoga.png') %>" class="img-rounded" alt="Cinque Terre" height="90" id="searchYoga">-->
     <img src="<%= image_url('baseball.png') %>" class="img-rounded" alt="Cinque Terre" height="90" id="searchBaseball">
     <img src="<%= image_url('swimming.png') %>" class="img-rounded" alt="Cinque Terre" height="90" id="searchSwimming">
     <br><br><p>위 마커를 누르면 종목별로 보실 수 있습니다.</p>
@@ -30,131 +30,52 @@
   
     <div id="act_<%= i.id %>" class="overlay">
     	
-     <% if is_mobile_device?%>
-    	<div class="popup-mobile">
-     <% else %>
-    	<div class="popup">
-     <% end %>
-    		<h2>
+      <% if is_mobile_device?%>
+    	  <div class="popup-mobile">
+      <% else %>
+    	  <div class="popup">
+      <% end %>
+      <div class="content">
+  	  	<h2>
     		  <%= i.infoTitle %>
     		  <span id="starrate" style="color: #fff; font-size: 1.8rem;"><%= rating_for i, 'average', disable_after_rate: true, imdb_avg: true %></span>
-    		</h2>
-            <%#= imdb_style_rating_for i, "average" , disable_after_rate: true, imdb_avg: true %>
-          <br> <%= i.game %> | <%= i.address %> <p style= "float: right;">평점을 매긴 수 : <%= i.rates("average").count %></p>
-    		  <br><a href="tel:<%= i.infoPhone %>"><%= i.infoPhone %></a> | 참고 URL : <a target="_blank" href="<%= i.infoUrl %>"><%= i.infoUrl %></a>
+  		  </h2>
+              <%#= imdb_style_rating_for i, "average" , disable_after_rate: true, imdb_avg: true %>
+        <br> <%= i.game %> | <%= i.address %> <p style= "float: right;">평점을 매긴 수 : <%= i.rates("average").count %></p>
+    	  <br><a href="tel:<%= i.infoPhone %>"><%= i.infoPhone %></a> | 참고 URL : <a target="_blank" href="<%= i.infoUrl %>"><%= i.infoUrl %></a>
     		<a class="close" onclick="mapOffclick()" href="#actnow">&times;</a>
-    		
-    		<div class="content">
-          <!-- Nav tabs -->
-          <ul class="nav nav-tabs" role="tablist">
-            <li role="presentation" class="active"><a href="#info<%= i.id%>" aria-controls="info" role="tab" data-toggle="tab">정보</a></li>
-            <li role="presentation"><a href="#review<%= i.id%>" aria-controls="review" role="tab" data-toggle="tab">리뷰</a></li>
-            <li role="presentation"><a href="#notice<%= i.id%>" aria-controls="review" role="tab" data-toggle="tab">공지사항</a></li>
-          </ul>
-
-          <!-- Tab panes -->
-          <div class="tab-content">
-            <div role="tabpanel" class="tab-pane fade in active" id="info<%= i.id%>">
-              <div class="slide-section" id="slide-section<%= i.id%>">
-               
-                <% i.info_attachments.each do |p| %>
-                
-                  <div class="slide-img" id="slide-img<%= i.id%>">
-                    <span class="modalimage<%= p.id %>"><img src="<%= image_url p.upinfo.url%>" height="100%"></span> <!-- 이전 코드는 p.upinfo.thumb2.url 만 들어있었음.-->
-                  </div>
-                <% end %>
-                
-              </div>
-              
-              <div class="slider-controls">
-                  <span class="prev"><img src="<%= image_url('leftbutton.png') %>"></span>
-                  <span class="next"><img src="<%= image_url('rightbutton.png') %>"></span>
-              </div>   
-               
-              
-              <div class="well" align="center">
-                <%= i.content.html_safe %>
-              </div>
-              
-              <div class="shows">
-                <div class="overlays"></div>
-                <div class="img-show">
-                  <span></span>
-                  <img src="">
-                </div>
-              </div>
+  		  <br>
+  		  <a href="/infos/<%= i.id %>/<%= i.infoTitle %>">더보기</a>
+  
+        <div class="slide-section" id="slide-section<%= i.id%>">
+         
+          <% i.info_attachments.each do |p| %>
+          
+            <div class="slide-img" id="slide-img<%= i.id%>">
+              <span class="modalimage<%= p.id %>"><img src="<%= image_url p.upinfo.url%>" height="100%"></span> <!-- 이전 코드는 p.upinfo.thumb2.url 만 들어있었음.-->
             </div>
-            
-            <div role="tabpanel" class="tab-pane fade" id="review<%= i.id%>">
-            
-              <br>
-              <a href="<%= i.infoTitle %>/<%= i.id %>/reviews" class="btn btn-primary">리뷰쓰기</a>
-              
-              총 <%= i.reviews.count %>건
-              
-              <!--<select>-->
-              <!--  <option>최신 순</option>-->
-              <!--  <option>조회 순</option>-->
-              <!--</select>-->
-              
-              <hr>
-             
-              <% i.reviews.each do |c| %>
-                작성자 : <%= c.user.nickname %><br>
-                제목 : <%= c.reviewTitle %><br>
-                내용 : <%= c.reviewContent.html_safe %><br>
-                사진 : 
-                <% c.review_attachments.each do |r| %>
-                  <img src="<%= r.upreview.thumb.url%>">
-                <% end %><br>
-                
-                <% if user_signed_in? %>
-                  <a href="/reviews/<%= c.id %>" class="destroyComment">[댓글삭제]</a>
-                <% end %>
-                
-                <input id="oneComment" type="hidden" value="<%=c.id %>">
-                
-                <hr>
-              <% end %>
-              
-            </div>
-            
-            <div role="tabpanel" class="tab-pane fade" id="notice<%= i.id%>">
-              <br>
-              <a href="<%= i.infoTitle %>/<%= i.id %>/notices" class="btn btn-primary">공지사항쓰기</a>
-              
-              총 <%= i.notices.count %>건
-              
-              <!--<select>-->
-              <!--  <option>최신 순</option>-->
-              <!--  <option>조회 순</option>-->
-              <!--</select>-->
-              
-              <hr>
-             
-              <% i.notices.each do |c| %>
-                작성자 : <%= c.user.nickname %><br>
-                공지사항 제목 : <%= c.noticeTitle %><br>
-                공지사항 내용 : <%= c.noticeContent.html_safe %><br>
-                <!--사진 : -->
-                <!--<%# c.notice_attachments.each do |r| %>-->
-                <!--  <img src="<%#= r.upnotice.thumb.url%>">-->
-                <!--<%# end %><br>-->
-                
-                <% if user_signed_in? %>
-                  <a href="/notices/<%= c.id %>" class="destroyNotice">[공지사항삭제]</a>
-                <% end %>
-                
-                <input id="oneNotice" type="hidden" value="<%=c.id %>">
-                
-                <hr>
-              <% end %>
-              
-            </div>
-            
+          <% end %>
+          
+        </div>
+        
+        <div class="slider-controls">
+            <span class="prev"><img src="<%= image_url('leftbutton.png') %>"></span>
+            <span class="next"><img src="<%= image_url('rightbutton.png') %>"></span>
+        </div>   
+         
+        <div class="well" align="center">
+          <%= i.content.html_safe %>
+        </div>
+        
+        <div class="shows">
+          <div class="overlays"></div>
+          <div class="img-show">
+            <span></span>
+            <img src="">
           </div>
         </div>
-    	</div>
+      </div>
+    </div>
     </div>
   <% end %>
 </div>
@@ -165,7 +86,7 @@
 // 지도 기본 위치
     var map = new naver.maps.Map('map', {
         center: seoulCenter,
-        zoom: 6,
+        zoom: 8,
         scaleControl: false,
         logoControl: false,
         mapDataControl: false,
@@ -181,8 +102,7 @@
     // GPS 이미지 파일 넣는 곳
     var locationBtnHtml = '<img src="<%= image_url('gps.png') %>" class="gpsImg" onclick="getLocation()">';
     var customControl = new naver.maps.CustomControl(locationBtnHtml, {
-        position: naver.maps.Position.TOP_LEFT,
-        zIndex: 1
+        position: naver.maps.Position.TOP_LEFT
     });
     customControl.setMap(map);
     
@@ -458,7 +378,6 @@ $(function () {
     $("spans, .overlays").click(function () {
         $(".shows").fadeOut();
     });
-    
 });
 
 
