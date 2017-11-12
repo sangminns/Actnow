@@ -50,7 +50,8 @@ gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
+gem 'therubyracer', platforms: :ruby
+gem 'figaro'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -83,3 +84,6 @@ group :development do
   gem 'spring'
 end
 
+group :production do
+  gem 'mysql2'
+end
