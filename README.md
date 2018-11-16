@@ -1,24 +1,9 @@
+## 서울 내에서 다양한 엑티비티 스포츠를 즐길 수 있도록 빠른 정보 공유 및 커뮤니티 제공 서비스.
 
-     ,-----.,--.                  ,--. ,---.   ,--.,------.  ,------.
-    '  .--./|  | ,---. ,--.,--. ,-|  || o   \  |  ||  .-.  \ |  .---'
-    |  |    |  || .-. ||  ||  |' .-. |`..'  |  |  ||  |  \  :|  `--, 
-    '  '--'\|  |' '-' ''  ''  '\ `-' | .'  /   |  ||  '--'  /|  `---.
-     `-----'`--' `---'  `----'  `---'  `--'    `--'`-------' `------'
-    ----------------------------------------------------------------- 
+### 2017.8.18 멋사 5기 해커톤에 제출한 프로젝트입니다.
 
+### 친구 1명과 총 2명이서 진행하였는데 서로 운동을 좋아해서 우리한테 유용한 서비스를 직접 개발하였습니다.
+### Ruby On Rails, Bootstrap, Naver Map을 이용해서 개발하였습니다.
+### 참여분야 : 지도 및 마커와 모달 등 자바스크립트, 프로트엔드, 백엔드 개발
 
-Welcome to your Rails project on Cloud9 IDE!
-
-To get started, just do the following:
-
-1. Run the project with the "Run Project" button in the menu bar on top of the IDE.
-2. Preview your new app by clicking on the URL that appears in the Run panel below (https://activity-search-ksm357.c9users.io/).
-
-Happy coding!
-The Cloud9 IDE team
-
-
-## Support & Documentation
-
-Visit http://docs.c9.io for support, or to learn more about using Cloud9 IDE. 
-To watch some training videos, visit http://www.youtube.com/user/c9ide
+https://activitynow.herokuapp.com/
