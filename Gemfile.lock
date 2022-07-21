@@ -1,9 +1,9 @@
 GIT
-  remote: git://github.com/PerfectlyNormal/tinymce-rails-imageupload.git
-  revision: 34a105e77f1746913b8989ad67b75c6f9bc4e8c8
+  remote: https://github.com/PerfectlyNormal/tinymce-rails-imageupload.git
+  revision: 444da5d06762ea48c15e132c10b871d2d321c713
   specs:
     tinymce-rails-imageupload (4.0.17.beta.3)
-      railties (>= 3.2, < 6)
+      railties (>= 3.2)
       tinymce-rails (~> 4.0)
 
 GEM
@@ -230,14 +230,14 @@ GEM
       libv8 (~> 3.16.14.15)
       ref
     thor (0.19.4)
-    thread_safe (0.3.5)
+    thread_safe (0.3.6)
     tilt (2.0.6)
     tinymce-rails (4.6.5)
       railties (>= 3.1.1)
     turbolinks (5.0.1)
       turbolinks-source (~> 5)
     turbolinks-source (5.0.0)
-    tzinfo (1.2.2)
+    tzinfo (1.2.10)
       thread_safe (~> 0.1)
     uglifier (3.0.4)
       execjs (>= 0.3.0, < 3)
